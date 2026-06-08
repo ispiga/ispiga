@@ -40,6 +40,8 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
 <p align="left">
   <img src="https://vercel.app/ispiga&show_icons=true&theme=tokyonight&count_private=true" alt="Estadísticas de GitHub" width="400" />
   <img src="https://vercel.app/ispiga&layout=compact&theme=tokyonight" alt="Lenguajes más usados" width="300" />
+  <img src="https://github-readme-stats.vercel.app/api?username=ispiga&show_icons=true&theme=tokyonight&count_private=true" alt="Estadísticas de GitHub" width="400" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ispiga&layout=compact&theme=tokyonight" alt="Lenguajes más usados" width="300" />
 </p>
 
 ---
