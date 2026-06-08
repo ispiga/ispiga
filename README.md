@@ -44,14 +44,20 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
     height="180"
   />
   <img
+    src="https://streak-stats.demolab.com?user=ispiga&theme=tokyonight"
+    alt="GitHub Streak"
+  />  
+</p>
+<p align="center">
+  <img
     src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=ispiga&layout=compact&theme=tokyonight"
     alt="Top Languages"
     height="180"
   />
-  ![GitHub Streak](https://streak-stats.demolab.com?user=ispiga&theme=tokyonight)
-</p>
-<p align="center">
-  ![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=ispiga&theme=tokyo-night)
+  <img
+    src="https://github-readme-activity-graph.vercel.app/graph?username=ispiga&theme=tokyo-night"
+    alt="Activity Graph"
+  />
 </p>
 
 ---
