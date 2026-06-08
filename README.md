@@ -38,10 +38,14 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
 ## 📈 Estadísticas de GitHub
 
 <p align="left">
-  <img src="https://vercel.app/ispiga&show_icons=true&theme=tokyonight&count_private=true" alt="Estadísticas de GitHub" width="400" />
-  <img src="https://vercel.app/ispiga&layout=compact&theme=tokyonight" alt="Lenguajes más usados" width="300" />
-  <img src="https://github-readme-stats.vercel.app/api?username=ispiga&show_icons=true&theme=tokyonight&count_private=true" alt="Estadísticas de GitHub" width="400" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ispiga&layout=compact&theme=tokyonight" alt="Lenguajes más usados" width="300" />
+  ![GitHub Stats](https://github-readme-stats-sigma-five.vercel.app/api?username=ispiga&show_icons=true&theme=tokyonight)
+  ![Top Langs](https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=ispiga&layout=compact&theme=tokyonight)
+
+  ![GitHub Streak](https://streak-stats.demolab.com?user=ispiga&theme=tokyonight)
+  ![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=ispiga&theme=tokyo-night)
+  
+  <!--<img src="https://github-readme-stats.vercel.app/api?username=ispiga&show_icons=true&theme=tokyonight&count_private=true" alt="Estadísticas de GitHub" width="400" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ispiga&layout=compact&theme=tokyonight" alt="Lenguajes más usados" width="300" />-->
 </p>
 
 ---
