@@ -37,26 +37,35 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
 
 ## 📈 Estadísticas de GitHub
 
+<!-- Primera fila -->
 <p align="center">
   <img
     src="https://github-readme-stats-sigma-five.vercel.app/api?username=ispiga&show_icons=true&theme=tokyonight"
     alt="GitHub Stats"
-    height="180"
+    width="420"
   />
   <img
     src="https://streak-stats.demolab.com?user=ispiga&theme=tokyonight"
     alt="GitHub Streak"
-  />  
+    width="420"
+  />
 </p>
+
+<!-- Segunda fila -->
 <p align="center">
   <img
     src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=ispiga&layout=compact&theme=tokyonight"
     alt="Top Languages"
-    height="180"
+    width="420"
   />
+</p>
+
+<!-- Tercera fila -->
+<p align="center">
   <img
     src="https://github-readme-activity-graph.vercel.app/graph?username=ispiga&theme=tokyo-night"
     alt="Activity Graph"
+    width="90%"
   />
 </p>
 
