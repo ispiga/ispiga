@@ -37,34 +37,40 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
 
 ## 📈 Estadísticas de GitHub
 
-<!-- Primera fila -->
+## 📈 Estadísticas de GitHub
+
+<!-- GitHub Overview -->
 <p align="center">
   <img
-    src="https://github-readme-stats-sigma-five.vercel.app/api?username=ispiga&show_icons=true&theme=tokyonight"
-    alt="GitHub Stats"
-    width="420"
-  />
-  <img
-    src="https://streak-stats.demolab.com?user=ispiga&theme=tokyonight"
-    alt="GitHub Streak"
-    width="420"
+    src="./github-metrics-overview.svg"
+    alt="GitHub Overview"
+    width="90%"
   />
 </p>
 
-<!-- Segunda fila -->
+<!-- Languages -->
 <p align="center">
   <img
-    src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=ispiga&layout=compact&theme=tokyonight"
-    alt="Top Languages"
-    width="420"
+    src="./github-metrics-languages.svg"
+    alt="GitHub Languages"
+    width="90%"
   />
 </p>
 
-<!-- Tercera fila -->
+<!-- Commit Calendar -->
 <p align="center">
   <img
-    src="https://github-readme-activity-graph.vercel.app/graph?username=ispiga&theme=tokyo-night"
-    alt="Activity Graph"
+    src="./github-metrics-calendar.svg"
+    alt="GitHub Commit Calendar"
+    width="90%"
+  />
+</p>
+
+<!-- Coding Habits -->
+<p align="center">
+  <img
+    src="./github-metrics-habits.svg"
+    alt="GitHub Coding Habits"
     width="90%"
   />
 </p>
