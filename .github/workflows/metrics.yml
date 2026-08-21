@@ -20,60 +20,63 @@ jobs:
 
     steps:
 
+      # 1. GitHub Overview
       - name: Generate GitHub Overview
         uses: lowlighter/metrics@latest
         with:
           filename: github-metrics-overview.svg
           token: ${{ secrets.METRICS_TOKEN }}
+
           base: header, activity, community, repositories, metadata
+
           config_display: large
           config_timezone: Europe/Madrid
-          output_action: none
 
+
+      # 2. Languages
       - name: Generate Languages
         uses: lowlighter/metrics@latest
         with:
           filename: github-metrics-languages.svg
           token: ${{ secrets.METRICS_TOKEN }}
+
           base: ""
+
           plugin_languages: yes
           plugin_languages_limit: 6
           plugin_languages_threshold: 0%
+
           config_display: large
           config_timezone: Europe/Madrid
-          output_action: none
 
+
+      # 3. Commit Calendar
       - name: Generate Commit Calendar
         uses: lowlighter/metrics@latest
         with:
           filename: github-metrics-calendar.svg
           token: ${{ secrets.METRICS_TOKEN }}
+
           base: ""
+
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
+
           config_display: large
           config_timezone: Europe/Madrid
-          output_action: none
 
+
+      # 4. Coding Habits
       - name: Generate Coding Habits
         uses: lowlighter/metrics@latest
         with:
           filename: github-metrics-habits.svg
           token: ${{ secrets.METRICS_TOKEN }}
+
           base: ""
+
           plugin_habits: yes
           plugin_habits_facts: yes
           plugin_habits_charts: yes
+
           config_timezone: Europe/Madrid
-          output_action: none
-
-      - name: Commit generated metrics
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add github-metrics-*.svg
-
-          git diff --cached --quiet || git commit -m "Update GitHub metrics"
-
-          git push
