@@ -62,7 +62,7 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
 
 
 ## 🛠️ Technologies & Tools
-/*
+
 <p align="center">
   <img src="./assets/csharp.svg" height="45" alt="C#">
   <img src="./assets/net.svg" height="45" alt=".NET">
@@ -71,12 +71,19 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
 </p>
 
 <p align="center">
+  <img src="./assets/postman.svg" height="45" alt="Postman">
+  <img src="./assets/git.svg" height="45" alt="Git">
+  <img src="./assets/azure.svg" height="45" alt="Azure">
+  <img src="./assets/visual-studio-code.svg" height="45" alt="Visual Studio Code">  
+</p>
+
+<p align="center">
   <img src="./assets/javascript.svg" height="45" alt="JavaScript">
   <img src="./assets/python.svg" height="45" alt="Python">
   <img src="./assets/dart.svg" height="45" alt="Dart">
   <img src="./assets/flutter.svg" height="45" alt="Flutter">  
 </p>
-*/
+<¡--
 <p align="center">
   <img
     src="./assets/technologies-tools.gif"
@@ -84,9 +91,9 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
     width="90%"
   />
 </p>
-
+-->
 ## 📅 Contributions
-/*
+
 <p align="center">
   <img
     src="./profile-3d-contrib/profile-gitblock.svg"
@@ -94,7 +101,7 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
     width="100%"
   />
 </p>
-*/
+
 <p align="center">
   <img
     src="./profile-3d-contrib/profile-custom-gitblock.svg"
