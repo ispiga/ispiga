@@ -4,8 +4,6 @@
 
 Me considero un desarrollador polivalente con un perfil híbrido. Combino años de experiencia en el desarrollo de software empresarial e infraestructuras críticas con una especialización activa en Ciencia de Datos, Inteligencia Artificial y arquitecturas de hardware (Sistemas Embebidos, IoT, GIS y tecnologías aeroespaciales).
 
----
-
 ## 🛠️ Tecnologías y Herramientas
 
 ### 💻 Desarrollo de Software & Backend
@@ -23,8 +21,6 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
 * **Entornos 3D & GIS:** QGIS (Datos satelitales y drones), Unity, Blender, Impresión 3D
 * **Sistemas & Protocolos:** Mensajería HL7, Mirth Connect, Redes Cisco
 
----
-
 ## 🚀 Formación Destacada (Especializaciones SEPE)
 Actualmente me encuentro ampliando y certificando mis conocimientos técnicos mediante itinerarios oficiales del SEPE/Ministerio de Trabajo:
 * 🛰️ **Satélites y Drones:** Desarrollo de Aplicaciones (IFCD0089)
@@ -32,8 +28,6 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
 * 🌐 **Soluciones de IoT y Smart City** aplicables a entornos 5G (IFCD97)
 * 🕶️ **Realidad Virtual y Realidad Aumentada** en entornos 5G (IFCD102)
 * 📈 **Data Science** (IFCT156PO) — *Especialización intensiva de 600 horas*
-
----
 
 ## 📊 GitHub Stats
 
@@ -63,34 +57,12 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
 ## 🛠️ Technologies & Tools
 
 <p align="center">
-  <img src="./assets/csharp.svg" height="45" alt="C#">
-  <img src="./assets/net.svg" height="45" alt=".NET">
-  <img src="./assets/sql-server.svg" height="45" alt="Sql Server">
-  <img src="./assets/docker.svg" height="45" alt="Docker">  
-</p>
-
-<p align="center">
-  <img src="./assets/postman.svg" height="45" alt="Postman">
-  <img src="./assets/git.svg" height="45" alt="Git">
-  <img src="./assets/azure.svg" height="45" alt="Azure">
-  <img src="./assets/visual-studio-code.svg" height="45" alt="Visual Studio Code">  
-</p>
-
-<p align="center">
-  <img src="./assets/javascript.svg" height="45" alt="JavaScript">
-  <img src="./assets/python.svg" height="45" alt="Python">
-  <img src="./assets/dart.svg" height="45" alt="Dart">
-  <img src="./assets/flutter.svg" height="45" alt="Flutter">  
-</p>
-<!--
-<p align="center">
   <img
-    src="./assets/technologies-tools.gif"
+    src="./assets/technologies.svg"
     alt="Technologies & Tools"
     width="90%"
   />
 </p>
--->
 
 ## 📅 Contributions
 
@@ -109,8 +81,6 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
     width="80%"
   />
 </p>
-
----
 
 ## 📬 Conecta conmigo
 * 💼 [Mi Perfil de LinkedIn](https://linkedin.com/ispiga)
