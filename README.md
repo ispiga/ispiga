@@ -41,10 +41,14 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
   <img
     src="./output/tokyonight/stats.svg"
     alt="GitHub Stats"
-    width="100%"
+    width="49%"
+  />
+  <img
+    src="./output/tokyonight/streak.svg"
+    alt="GitHub Streak"
+    width="49%"
   />
 </p>
-
 
 ## 💻 Most Used Languages
 
@@ -58,7 +62,7 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
 
 
 ## 🛠️ Technologies & Tools
-
+/*
 <p align="center">
   <img src="./assets/csharp.svg" height="45" alt="C#">
   <img src="./assets/net.svg" height="45" alt=".NET">
@@ -72,15 +76,30 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
   <img src="./assets/dart.svg" height="45" alt="Dart">
   <img src="./assets/flutter.svg" height="45" alt="Flutter">  
 </p>
-
+*/
+<p align="center">
+  <img
+    src="./assets/technologies-tools.gif"
+    alt="Technologies & Tools"
+    width="90%"
+  />
+</p>
 
 ## 📅 Contributions
-
+/*
 <p align="center">
   <img
     src="./profile-3d-contrib/profile-gitblock.svg"
     alt="GitHub Contributions 3D"
     width="100%"
+  />
+</p>
+*/
+<p align="center">
+  <img
+    src="./profile-3d-contrib/profile-custom-gitblock.svg"
+    alt="GitHub Contributions 3D"
+    width="80%"
   />
 </p>
 
