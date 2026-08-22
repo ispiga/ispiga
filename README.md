@@ -35,43 +35,52 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
 
 ---
 
-## 📈 Estadísticas de GitHub
+## 📊 GitHub Stats
 
-## 📈 Estadísticas de GitHub
-
-<!-- GitHub Overview -->
 <p align="center">
   <img
-    src="./github-metrics-overview.svg"
-    alt="GitHub Overview"
-    width="90%"
+    src="./output/tokyonight/stats.svg"
+    alt="GitHub Stats"
+    width="100%"
   />
 </p>
 
-<!-- Languages -->
+
+## 💻 Most Used Languages
+
 <p align="center">
   <img
     src="./github-metrics-languages.svg"
-    alt="GitHub Languages"
+    alt="Most Used Languages"
     width="90%"
   />
 </p>
 
-<!-- Commit Calendar -->
+
+## 🛠️ Technologies & Tools
+
 <p align="center">
-  <img
-    src="./github-metrics-calendar.svg"
-    alt="GitHub Commit Calendar"
-    width="90%"
-  />
+  <img src="./assets/csharp.svg" height="45" alt="C#">
+  <img src="./assets/net.svg" height="45" alt=".NET">
+  <img src="./assets/sql-server.svg" height="45" alt="Sql Server">
+  <img src="./assets/docker.svg" height="45" alt="Docker">  
 </p>
 
-<!-- Coding Habits -->
+<p align="center">
+  <img src="./assets/javascript.svg" height="45" alt="JavaScript">
+  <img src="./assets/python.svg" height="45" alt="Python">
+  <img src="./assets/dart.svg" height="45" alt="Dart">
+  <img src="./assets/flutter.svg" height="45" alt="Flutter">  
+</p>
+
+
+## 📅 Contributions
+
 <p align="center">
   <img
-    src="./github-metrics-habits.svg"
-    alt="GitHub Coding Habits"
-    width="90%"
+    src="./profile-3d-contrib/profile-gitblock.svg"
+    alt="GitHub Contributions 3D"
+    width="100%"
   />
 </p>
 
