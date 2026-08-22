@@ -60,7 +60,6 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
   />
 </p>
 
-
 ## 🛠️ Technologies & Tools
 
 <p align="center">
@@ -92,6 +91,7 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
   />
 </p>
 -->
+
 ## 📅 Contributions
 
 <p align="center">
