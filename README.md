@@ -68,14 +68,6 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
 
 <p align="center">
   <img
-    src="./profile-3d-contrib/profile-gitblock.svg"
-    alt="GitHub Contributions 3D"
-    width="100%"
-  />
-</p>
-
-<p align="center">
-  <img
     src="./profile-3d-contrib/profile-custom-gitblock.svg"
     alt="GitHub Contributions 3D"
     width="80%"
