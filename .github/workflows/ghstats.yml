@@ -1,0 +1,33 @@
+name: GitHub Stats
+
+on:
+  schedule:
+    - cron: "10 0 * * *"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Generate GitHub Stats
+        uses: tiennm99/ghstats@v1
+        with:
+          user: ${{ github.repository_owner }}
+          token: ${{ github.token }}
+
+          themes: tokyonight
+          tz: Europe/Madrid
+
+          include_forks: "true"
+          include_private: "false"
+
+          commit_changes: "true"
+          commit_message: "chore: update GitHub stats"
