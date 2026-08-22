@@ -83,7 +83,7 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
   <img src="./assets/dart.svg" height="45" alt="Dart">
   <img src="./assets/flutter.svg" height="45" alt="Flutter">  
 </p>
-<¡--
+<!--
 <p align="center">
   <img
     src="./assets/technologies-tools.gif"
