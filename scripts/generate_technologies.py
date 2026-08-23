@@ -17,22 +17,12 @@ HEIGHT = 460
 CENTER_X = WIDTH / 2
 CENTER_Y = HEIGHT / 2
 
-# Tamaño máximo aproximado de la esfera.
 SPHERE_RADIUS = 155
-
-# Tamaño máximo de cada logo.
 ICON_SIZE = 64
 
-# Duración de una vuelta completa.
-ANIMATION_DURATION = 20
+ANIMATION_DURATION = 18
 
-# Fondo.
 BACKGROUND = "#0d1117"
-
-# Línea/esfera decorativa.
-SPHERE_LINE = "#30363d"
-
-# Color de los textos.
 TEXT_COLOR = "#ffffff"
 
 
@@ -45,23 +35,18 @@ def get_svg_root(svg_text):
 
 
 def get_viewbox(root):
-    """
-    Obtiene el viewBox del SVG original.
-    Si no existe, utiliza width y height.
-    """
-
     viewbox = root.attrib.get("viewBox")
 
     if viewbox:
         values = viewbox.replace(",", " ").split()
 
         if len(values) == 4:
-            return [float(value) for value in values]
+            return [float(v) for v in values]
 
     width = root.attrib.get("width", "100")
     height = root.attrib.get("height", "100")
 
-    def parse_number(value):
+    def number(value):
         value = str(value).replace("px", "")
 
         try:
@@ -72,16 +57,12 @@ def get_viewbox(root):
     return [
         0,
         0,
-        parse_number(width),
-        parse_number(height),
+        number(width),
+        number(height)
     ]
 
 
 def get_svg_content(root):
-    """
-    Obtiene el contenido interno del SVG original.
-    """
-
     content = []
 
     for child in list(root):
@@ -95,12 +76,8 @@ def get_svg_content(root):
     return "\n".join(content)
 
 
-def escape_xml(text):
-    return html.escape(text, quote=True)
-
-
 # ============================================================
-# LEER LOS SVG
+# LEER SVG
 # ============================================================
 
 svg_files = sorted(
@@ -109,7 +86,7 @@ svg_files = sorted(
 
 if not svg_files:
     raise SystemExit(
-        f"No se encontraron SVG en {INPUT_DIR}"
+        f"No se encontraron archivos SVG en {INPUT_DIR}"
     )
 
 
@@ -119,28 +96,24 @@ for svg_file in svg_files:
 
     try:
 
-        svg_text = svg_file.read_text(
+        source = svg_file.read_text(
             encoding="utf-8"
         )
 
-        root = get_svg_root(svg_text)
-
-        viewbox = get_viewbox(root)
-
-        content = get_svg_content(root)
+        root = get_svg_root(source)
 
         icons.append(
             {
                 "name": svg_file.stem,
-                "viewbox": viewbox,
-                "content": content,
+                "viewbox": get_viewbox(root),
+                "content": get_svg_content(root)
             }
         )
 
     except Exception as error:
 
         print(
-            f"WARNING: No se pudo procesar "
+            f"WARNING: no se pudo procesar "
             f"{svg_file}: {error}"
         )
 
@@ -151,28 +124,11 @@ if not icons:
     )
 
 
-print(
-    f"Encontrados {len(icons)} iconos:"
-)
-
-for icon in icons:
-    print(
-        f"  - {icon['name']}.svg"
-    )
-
-
 # ============================================================
-# DISTRIBUCIÓN SOBRE UNA ESFERA
+# ESFERA DE FIBONACCI
 # ============================================================
 
 def fibonacci_sphere(count):
-    """
-    Distribuye puntos aproximadamente de forma uniforme
-    sobre la superficie de una esfera.
-
-    Devuelve:
-        [(x, y, z), ...]
-    """
 
     points = []
 
@@ -183,10 +139,10 @@ def fibonacci_sphere(count):
         3 - math.sqrt(5)
     )
 
-    for index in range(count):
+    for i in range(count):
 
         y = 1 - (
-            2 * index / (count - 1)
+            2 * i / (count - 1)
         )
 
         radius = math.sqrt(
@@ -196,26 +152,13 @@ def fibonacci_sphere(count):
             )
         )
 
-        theta = (
-            golden_angle * index
-        )
+        theta = golden_angle * i
 
-        x = (
-            math.cos(theta)
-            * radius
-        )
-
-        z = (
-            math.sin(theta)
-            * radius
-        )
+        x = math.cos(theta) * radius
+        z = math.sin(theta) * radius
 
         points.append(
-            (
-                x,
-                y,
-                z
-            )
+            (x, y, z)
         )
 
     return points
@@ -227,61 +170,69 @@ sphere_points = fibonacci_sphere(
 
 
 # ============================================================
-# TRANSFORMACIÓN 3D
+# ROTACIONES 3D
 # ============================================================
 
 def rotate_y(point, angle):
-    """
-    Rotación alrededor del eje Y.
-    """
 
     x, y, z = point
 
     cos_a = math.cos(angle)
     sin_a = math.sin(angle)
 
-    new_x = (
-        x * cos_a
-        + z * sin_a
-    )
-
-    new_z = (
-        -x * sin_a
-        + z * cos_a
-    )
-
     return (
-        new_x,
+        x * cos_a + z * sin_a,
         y,
-        new_z
+        -x * sin_a + z * cos_a
     )
 
 
 def rotate_x(point, angle):
-    """
-    Rotación alrededor del eje X.
-    """
 
     x, y, z = point
 
     cos_a = math.cos(angle)
     sin_a = math.sin(angle)
 
-    new_y = (
-        y * cos_a
-        - z * sin_a
-    )
-
-    new_z = (
-        y * sin_a
-        + z * cos_a
-    )
-
     return (
         x,
-        new_y,
-        new_z
+        y * cos_a - z * sin_a,
+        y * sin_a + z * cos_a
     )
+
+
+def rotate_z(point, angle):
+
+    x, y, z = point
+
+    cos_a = math.cos(angle)
+    sin_a = math.sin(angle)
+
+    return (
+        x * cos_a - y * sin_a,
+        x * sin_a + y * cos_a,
+        z
+    )
+
+
+# ============================================================
+# PARÁMETROS DE ANIMACIÓN
+# ============================================================
+
+FRAME_COUNT = 96
+
+key_times = []
+
+for frame in range(FRAME_COUNT):
+
+    key_times.append(
+        frame / (FRAME_COUNT - 1)
+    )
+
+key_times_string = ";".join(
+    f"{value:.5f}"
+    for value in key_times
+)
 
 
 # ============================================================
@@ -307,15 +258,15 @@ svg.append(
 # ============================================================
 
 svg.append(
-    f'''
+    """
 <defs>
 
     <filter
-        id="technology-shadow"
-        x="-50%"
-        y="-50%"
-        width="200%"
-        height="200%"
+        id="shadow"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
     >
         <feDropShadow
             dx="0"
@@ -326,86 +277,8 @@ svg.append(
         />
     </filter>
 
-    <radialGradient
-        id="sphere-gradient"
-        cx="35%"
-        cy="30%"
-    >
-        <stop
-            offset="0%"
-            stop-color="#21262d"
-            stop-opacity="0.45"
-        />
-
-        <stop
-            offset="70%"
-            stop-color="#0d1117"
-            stop-opacity="0.1"
-        />
-
-        <stop
-            offset="100%"
-            stop-color="#0d1117"
-            stop-opacity="0"
-        />
-    </radialGradient>
-
 </defs>
-'''
-)
-
-
-# ============================================================
-# ESTILOS
-# ============================================================
-
-svg.append(
-    f'''
-<style>
-
-    .technology-label {{
-        font-family:
-            Arial,
-            Helvetica,
-            sans-serif;
-
-        fill: {TEXT_COLOR};
-
-        font-size: 20px;
-
-        font-weight: 600;
-
-        text-anchor: middle;
-    }}
-
-    .technology-name {{
-        font-family:
-            Arial,
-            Helvetica,
-            sans-serif;
-
-        fill: {TEXT_COLOR};
-
-        font-size: 11px;
-
-        font-weight: 500;
-
-        text-anchor: middle;
-    }}
-
-    .sphere {{
-        transform-origin:
-            {CENTER_X}px {CENTER_Y}px;
-    }}
-
-    @media (prefers-reduced-motion: reduce) {{
-        .sphere {{
-            animation: none;
-        }}
-    }}
-
-</style>
-'''
+"""
 )
 
 
@@ -436,7 +309,11 @@ svg.append(
 <text
     x="{CENTER_X}"
     y="38"
-    class="technology-label"
+    fill="{TEXT_COLOR}"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="20"
+    font-weight="600"
+    text-anchor="middle"
 >
     Technologies &amp; Tools
 </text>
@@ -445,121 +322,10 @@ svg.append(
 
 
 # ============================================================
-# ESFERA DECORATIVA
+# GENERAR CADA LOGO DE FORMA INDEPENDIENTE
 # ============================================================
-
-svg.append(
-    f'''
-<circle
-    cx="{CENTER_X}"
-    cy="{CENTER_Y + 8}"
-    r="{SPHERE_RADIUS}"
-    fill="url(#sphere-gradient)"
-    stroke="{SPHERE_LINE}"
-    stroke-width="1"
-    opacity="0.35"
-/>
-'''
-)
-
-
-# ============================================================
-# GRUPO DE ANIMACIÓN
-# ============================================================
-
-svg.append(
-    f'''
-<g
-    class="sphere"
->
-'''
-)
-
-
-# ============================================================
-# ANIMACIÓN PRINCIPAL
-# ============================================================
-
-svg.append(
-    f'''
-<animateTransform
-    attributeName="transform"
-    type="rotate"
-    from="0 {CENTER_X} {CENTER_Y}"
-    to="360 {CENTER_X} {CENTER_Y}"
-    dur="{ANIMATION_DURATION}s"
-    repeatCount="indefinite"
-/>
-'''
-)
-
-
-# ============================================================
-# GENERAR LOS LOGOS
-# ============================================================
-
-elements = []
-
 
 for index, icon in enumerate(icons):
-
-    x3d, y3d, z3d = sphere_points[index]
-
-    # --------------------------------------------------------
-    # Posición inicial
-    # --------------------------------------------------------
-
-    x = (
-        CENTER_X
-        + x3d * SPHERE_RADIUS
-    )
-
-    y = (
-        CENTER_Y
-        + y3d * SPHERE_RADIUS
-    )
-
-    # --------------------------------------------------------
-    # Profundidad
-    #
-    # z =  1 -> delante
-    # z =  0 -> lateral
-    # z = -1 -> detrás
-    # --------------------------------------------------------
-
-    depth = (
-        z3d + 1
-    ) / 2
-
-    # --------------------------------------------------------
-    # Escala según profundidad
-    # --------------------------------------------------------
-
-    scale = (
-        0.58
-        + depth * 0.42
-    )
-
-    # --------------------------------------------------------
-    # Opacidad según profundidad
-    # --------------------------------------------------------
-
-    opacity = (
-        0.35
-        + depth * 0.65
-    )
-
-    # --------------------------------------------------------
-    # Tamaño
-    # --------------------------------------------------------
-
-    icon_size = (
-        ICON_SIZE * scale
-    )
-
-    # --------------------------------------------------------
-    # ViewBox original
-    # --------------------------------------------------------
 
     vb_x, vb_y, vb_width, vb_height = (
         icon["viewbox"]
@@ -571,10 +337,164 @@ for index, icon in enumerate(icons):
     if vb_height <= 0:
         vb_height = 100
 
+
+    # --------------------------------------------------------
+    # POSICIONES DE LA ESFERA
+    # --------------------------------------------------------
+
+    x_values = []
+    y_values = []
+    scale_values = []
+    opacity_values = []
+
+
+    # Pequeña diferencia de fase para evitar que todos
+    # los logos parezcan moverse exactamente igual.
+    phase = (
+        index * 0.37
+    )
+
+
+    for frame in range(FRAME_COUNT):
+
+        progress = (
+            frame / (FRAME_COUNT - 1)
+        )
+
+        angle = (
+            progress * math.pi * 2
+            + phase
+        )
+
+
+        point = sphere_points[index]
+
+
+        # Rotación principal.
+        point = rotate_y(
+            point,
+            angle
+        )
+
+
+        # Segunda rotación para producir una
+        # sensación más tridimensional.
+        tilt = (
+            math.radians(14)
+            * math.sin(
+                angle * 0.5
+            )
+        )
+
+        point = rotate_x(
+            point,
+            tilt
+        )
+
+
+        # Pequeña rotación adicional.
+        point = rotate_z(
+            point,
+            math.radians(5)
+        )
+
+
+        x3d, y3d, z3d = point
+
+
+        # ----------------------------------------------------
+        # PROYECCIÓN 3D
+        # ----------------------------------------------------
+
+        x = (
+            CENTER_X
+            + x3d * SPHERE_RADIUS
+        )
+
+        y = (
+            CENTER_Y
+            + y3d * SPHERE_RADIUS
+        )
+
+
+        # ----------------------------------------------------
+        # PROFUNDIDAD
+        # ----------------------------------------------------
+
+        depth = (
+            z3d + 1
+        ) / 2
+
+
+        # ----------------------------------------------------
+        # ESCALA
+        # ----------------------------------------------------
+
+        scale = (
+            0.52
+            + depth * 0.48
+        )
+
+
+        # ----------------------------------------------------
+        # OPACIDAD
+        # ----------------------------------------------------
+
+        opacity = (
+            0.30
+            + depth * 0.70
+        )
+
+
+        x_values.append(
+            f"{x:.2f}"
+        )
+
+        y_values.append(
+            f"{y:.2f}"
+        )
+
+        scale_values.append(
+            f"{scale:.3f}"
+        )
+
+        opacity_values.append(
+            f"{opacity:.3f}"
+        )
+
+
+    # --------------------------------------------------------
+    # POSICIÓN INICIAL
+    # --------------------------------------------------------
+
+    initial_x = float(
+        x_values[0]
+    )
+
+    initial_y = float(
+        y_values[0]
+    )
+
+    initial_scale = float(
+        scale_values[0]
+    )
+
+    initial_opacity = float(
+        opacity_values[0]
+    )
+
+
+    icon_size = (
+        ICON_SIZE
+        * initial_scale
+    )
+
+
     icon_scale = min(
         icon_size / vb_width,
         icon_size / vb_height
     )
+
 
     rendered_width = (
         vb_width * icon_scale
@@ -584,81 +504,170 @@ for index, icon in enumerate(icons):
         vb_height * icon_scale
     )
 
-    icon_x = (
-        x
-        - rendered_width / 2
-    )
-
-    icon_y = (
-        y
-        - rendered_height / 2
-    )
 
     # --------------------------------------------------------
-    # Crear elemento
+    # GRUPO DEL LOGO
     # --------------------------------------------------------
 
-    element = f'''
+    svg.append(
+        f'''
 <g
-    opacity="{opacity:.3f}"
-    filter="url(#technology-shadow)"
-    data-depth="{z3d:.4f}"
-    data-index="{index}"
     transform="
-        translate({icon_x:.2f} {icon_y:.2f})
+        translate(
+            {initial_x:.2f}
+            {initial_y:.2f}
+        )
+    "
+    opacity="{initial_opacity:.3f}"
+    filter="url(#shadow)"
+>
+'''
+    )
+
+
+    # --------------------------------------------------------
+    # CÍRCULO INDIVIDUAL DEL LOGO
+    # --------------------------------------------------------
+
+    svg.append(
+        f'''
+<circle
+    cx="0"
+    cy="0"
+    r="{ICON_SIZE * 0.56:.2f}"
+    fill="#161b22"
+    stroke="#30363d"
+    stroke-width="1"
+    opacity="0.95"
+/>
+'''
+    )
+
+
+    # --------------------------------------------------------
+    # CONTENEDOR DEL SVG
+    # --------------------------------------------------------
+
+    svg.append(
+        f'''
+<g
+    transform="
+        translate(
+            {-rendered_width / 2:.2f}
+            {-rendered_height / 2:.2f}
+        )
+        scale({initial_scale:.4f})
     "
 >
-
-    <circle
-        cx="{rendered_width / 2:.2f}"
-        cy="{rendered_height / 2:.2f}"
-        r="{min(rendered_width, rendered_height) * 0.48:.2f}"
-        fill="#161b22"
-        stroke="#30363d"
-        stroke-width="1"
-    />
-
-    <svg
-        x="0"
-        y="0"
-        width="{rendered_width:.2f}"
-        height="{rendered_height:.2f}"
-        viewBox="{vb_x} {vb_y} {vb_width} {vb_height}"
-        preserveAspectRatio="xMidYMid meet"
-    >
-        {icon["content"]}
-    </svg>
-
-</g>
 '''
-
-    elements.append(
-        (
-            z3d,
-            element
-        )
     )
 
 
-# ============================================================
-# ORDENAR POR PROFUNDIDAD
-# ============================================================
+    svg.append(
+        f'''
+<svg
+    x="0"
+    y="0"
+    width="{vb_width}"
+    height="{vb_height}"
+    viewBox="
+        {vb_x}
+        {vb_y}
+        {vb_width}
+        {vb_height}
+    "
+    preserveAspectRatio="xMidYMid meet"
+>
+'''
+    )
 
-# Los elementos traseros se dibujan primero.
-elements.sort(
-    key=lambda item: item[0]
-)
+
+    svg.append(
+        icon["content"]
+    )
 
 
-for _, element in elements:
-    svg.append(element)
+    svg.append(
+        """
+</svg>
+</g>
+"""
+    )
 
 
-# ============================================================
-# CERRAR ESFERA
-# ============================================================
+    # ========================================================
+    # ANIMACIÓN DE POSICIÓN
+    # ========================================================
 
-svg.append("</g>")
+    svg.append(
+        f'''
+<animate
+    attributeName="x"
+    values="{';'.join(x_values)}"
+    keyTimes="{key_times_string}"
+    dur="{ANIMATION_DURATION}s"
+    repeatCount="indefinite"
+    calcMode="linear"
+/>
+'''
+    )
+
+    svg.append(
+        f'''
+<animate
+    attributeName="y"
+    values="{';'.join(y_values)}"
+    keyTimes="{key_times_string}"
+    dur="{ANIMATION_DURATION}s"
+    repeatCount="indefinite"
+    calcMode="linear"
+/>
+'''
+    )
+
+
+    # ========================================================
+    # ANIMACIÓN DE ESCALA
+    # ========================================================
+
+    svg.append(
+        f'''
+<animateTransform
+    attributeName="transform"
+    type="scale"
+    values="{' ; '.join(scale_values)}"
+    keyTimes="{key_times_string}"
+    dur="{ANIMATION_DURATION}s"
+    repeatCount="indefinite"
+    calcMode="linear"
+/>
+'''
+    )
+
+
+    # ========================================================
+    # ANIMACIÓN DE OPACIDAD
+    # ========================================================
+
+    svg.append(
+        f'''
+<animate
+    attributeName="opacity"
+    values="{' ; '.join(opacity_values)}"
+    keyTimes="{key_times_string}"
+    dur="{ANIMATION_DURATION}s"
+    repeatCount="indefinite"
+    calcMode="linear"
+/>
+'''
+    )
+
+
+    svg.append(
+        """
+</g>
+"""
+    )
 
 
 # ============================================================
@@ -669,9 +678,13 @@ svg.append(
     f'''
 <text
     x="{CENTER_X}"
-    y="{HEIGHT - 22}"
-    class="technology-name"
-    opacity="0.7"
+    y="{HEIGHT - 20}"
+    fill="{TEXT_COLOR}"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="11"
+    font-weight="500"
+    text-anchor="middle"
+    opacity="0.65"
 >
     C# · .NET · SQL Server · Docker · JavaScript · Python · Dart · Flutter · Git · Postman · VS Code
 </text>
@@ -683,7 +696,9 @@ svg.append(
 # CERRAR SVG
 # ============================================================
 
-svg.append("</svg>")
+svg.append(
+    "</svg>"
+)
 
 
 # ============================================================
@@ -703,7 +718,7 @@ OUTPUT_FILE.write_text(
 
 print()
 print(
-    "============================================"
+    "=============================================="
 )
 
 print(
@@ -719,5 +734,9 @@ print(
 )
 
 print(
-    "============================================"
+    "Animación: esfera 3D independiente por logo"
+)
+
+print(
+    "=============================================="
 )
