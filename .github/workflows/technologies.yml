@@ -1,39 +1,23 @@
-name: Generate Technologies & Tools
+- name: Checkout
+  uses: actions/checkout@v4
 
-on:
-  workflow_dispatch:
+- name: Setup Python
+  uses: actions/setup-python@v5
+  with:
+    python-version: "3.x"
 
-  push:
-    paths:
-      - "assets/technologies/*.svg"
-      - "scripts/generate_technologies.py"
-      - ".github/workflows/technologies.yml"
+- name: Install dependencies
+  run: |
+    pip install pillow cairosvg
 
-permissions:
-  contents: write
+- name: Generate Technologies GIF
+  run: |
+    python generate_technologies.py
 
-jobs:
-  generate:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
-
-      - name: Generate Technologies & Tools SVG
-        run: |
-          python scripts/generate_technologies.py
-
-      - name: Commit generated SVG
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add assets/technologies.svg
-
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "chore: update technologies animation"
-            git push
-          fi
+- name: Commit generated GIF
+  run: |
+    git config user.name "github-actions[bot]"
+    git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+    git add assets/technologies.gif
+    git diff --cached --quiet || git commit -m "Update technologies animation"
+    git push
