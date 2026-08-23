@@ -1,6 +1,6 @@
 from pathlib import Path
-import math
 import io
+import math
 
 from PIL import Image, ImageDraw
 
@@ -12,37 +12,67 @@ from PIL import Image, ImageDraw
 INPUT_DIR = Path("assets/technologies")
 OUTPUT_FILE = Path("assets/technologies.gif")
 
-WIDTH = 900
-HEIGHT = 460
+# ------------------------------------------------------------
+# Resolución REAL del GIF.
+#
+# Lo hacemos deliberadamente pequeño.
+# GitHub lo ampliará visualmente en el README.
+# ------------------------------------------------------------
 
-CENTER_X = WIDTH / 2
-CENTER_Y = HEIGHT / 2
+WIDTH = 640
+HEIGHT = 330
 
-# Tamaño aproximado de la esfera
-SPHERE_RADIUS_X = 165
-SPHERE_RADIUS_Y = 145
+CENTER_X = WIDTH // 2
+CENTER_Y = HEIGHT // 2
 
-# Tamaño de cada logo
-ICON_SIZE = 58
+# Tamaño de la esfera
+SPHERE_RADIUS_X = 145
+SPHERE_RADIUS_Y = 125
 
-# Animación
-FPS = 20
+# Tamaño máximo de los logos
+ICON_SIZE = 46
+
+
+# ============================================================
+# ANIMACIÓN
+# ============================================================
+
+# 15 FPS es suficiente para una rotación suave y reduce
+# considerablemente el tamaño del GIF.
+FPS = 15
+
+# Una vuelta completa cada 18 segundos.
 DURATION = 18
 
 FRAME_COUNT = FPS * DURATION
 
-# Fondo
-BACKGROUND = (13, 17, 23, 255)
 
-# Color del pequeño fondo circular de cada logo
-ICON_BACKGROUND = (22, 27, 34, 235)
+# ============================================================
+# CALIDAD / COMPRESIÓN
+# ============================================================
 
-# Borde de los logos
-ICON_BORDER = (48, 54, 61, 255)
+# Paleta GIF.
+#
+# 64 colores en lugar de 256 reduce muchísimo el tamaño.
+# Los logos siguen teniendo buena apariencia porque son
+# pequeños y normalmente tienen pocos colores.
+COLORS = 64
 
 
 # ============================================================
-# DEPENDENCIA SVG -> PNG
+# FONDO
+# ============================================================
+
+BACKGROUND = (
+    13,
+    17,
+    23,
+    255
+)
+
+
+# ============================================================
+# CARGAR CAIROSVG
 # ============================================================
 
 try:
@@ -52,19 +82,21 @@ try:
 except ImportError:
 
     raise SystemExit(
-        "\nERROR: falta cairosvg.\n"
-        "Instálalo con:\n\n"
-        "pip install cairosvg pillow\n"
+        "\n"
+        "ERROR: CairoSVG no está instalado.\n\n"
+        "Ejecuta:\n"
+        "pip install pillow cairosvg\n"
     )
 
 
 # ============================================================
-# CARGAR SVG
+# BUSCAR SVG
 # ============================================================
 
 svg_files = sorted(
     INPUT_DIR.glob("*.svg")
 )
+
 
 if not svg_files:
 
@@ -73,6 +105,18 @@ if not svg_files:
     )
 
 
+print(
+    f"Encontrados {len(svg_files)} logos."
+)
+
+
+# ============================================================
+# CONVERTIR SVG -> PNG
+#
+# Se hace solamente UNA VEZ por logo.
+# No se vuelve a convertir en cada frame.
+# ============================================================
+
 icons = []
 
 
@@ -80,26 +124,23 @@ for svg_file in svg_files:
 
     try:
 
-        # ----------------------------------------------------
-        # Convertimos el SVG a PNG de alta resolución.
-        # Lo hacemos una sola vez antes de crear los frames.
-        # ----------------------------------------------------
-
         png_data = cairosvg.svg2png(
             url=str(svg_file),
-            output_width=ICON_SIZE * 4,
-            output_height=ICON_SIZE * 4
+            output_width=ICON_SIZE * 3,
+            output_height=ICON_SIZE * 3
         )
 
-        icon = Image.open(
-            io.BytesIO(png_data)
-        ).convert("RGBA")
 
-        # ----------------------------------------------------
-        # Reducimos al tamaño final.
-        # ----------------------------------------------------
+        image = Image.open(
+            io.BytesIO(
+                png_data
+            )
+        ).convert(
+            "RGBA"
+        )
 
-        icon = icon.resize(
+
+        image = image.resize(
             (
                 ICON_SIZE,
                 ICON_SIZE
@@ -107,22 +148,24 @@ for svg_file in svg_files:
             Image.Resampling.LANCZOS
         )
 
+
         icons.append(
             {
                 "name": svg_file.stem,
-                "image": icon
+                "image": image
             }
         )
 
+
         print(
-            f"OK: {svg_file.name}"
+            f"  OK: {svg_file.name}"
         )
+
 
     except Exception as error:
 
         print(
-            f"ERROR procesando "
-            f"{svg_file.name}: {error}"
+            f"  ERROR: {svg_file.name}: {error}"
         )
 
 
@@ -133,66 +176,74 @@ if not icons:
     )
 
 
-print()
-print(
-    f"Logos cargados: {len(icons)}"
-)
-
-
 # ============================================================
-# ESFERA 3D
+# DISTRIBUCIÓN SOBRE UNA ESFERA
 # ============================================================
 
-def fibonacci_sphere(count):
+def fibonacci_sphere(
+    count
+):
 
     points = []
 
-    # Ángulo dorado
     golden_angle = (
         math.pi *
-        (3.0 - math.sqrt(5.0))
+        (
+            3 -
+            math.sqrt(5)
+        )
     )
 
-    for i in range(count):
 
-        # Evitamos exactamente los polos.
+    for i in range(
+        count
+    ):
+
         y = (
-            1.0 -
-            2.0 *
-            (i + 0.5) /
+            1 -
+            2 *
+            (
+                i + 0.5
+            ) /
             count
         )
 
+
         radius = math.sqrt(
             max(
-                0.0,
-                1.0 -
+                0,
+                1 -
                 y * y
             )
         )
+
 
         theta = (
             golden_angle *
             i
         )
 
+
         x = (
             math.cos(theta) *
             radius
         )
+
 
         z = (
             math.sin(theta) *
             radius
         )
 
+
         points.append(
-            [
+            (
                 x,
                 y,
                 z
-            ]
+            )
         )
+
 
     return points
 
@@ -203,7 +254,7 @@ points = fibonacci_sphere(
 
 
 # ============================================================
-# ROTACIONES 3D
+# ROTACIONES
 # ============================================================
 
 def rotate_x(
@@ -258,18 +309,21 @@ def rotate_z(
 
 
 # ============================================================
-# CALCULAR POSICIONES
+# CALCULAR POSICIONES DE UN FRAME
 # ============================================================
 
-def calculate_frame(frame):
+def calculate_frame(
+    frame_number
+):
 
     progress = (
-        frame /
+        frame_number /
         FRAME_COUNT
     )
 
+
     # --------------------------------------------------------
-    # Rotación principal.
+    # ROTACIÓN PRINCIPAL
     # --------------------------------------------------------
 
     rotation_y = (
@@ -278,11 +332,12 @@ def calculate_frame(frame):
         2
     )
 
+
     # --------------------------------------------------------
-    # Inclinación de la esfera.
+    # INCLINACIÓN
     #
-    # No permanece fija para que todos los logos tengan
-    # movimiento y no haya logos clavados arriba/abajo.
+    # Cambia ligeramente durante la vuelta para que ningún
+    # logo quede permanentemente clavado en el eje vertical.
     # --------------------------------------------------------
 
     rotation_x = (
@@ -294,8 +349,9 @@ def calculate_frame(frame):
             2
         )
         *
-        math.radians(8)
+        math.radians(7)
     )
+
 
     rotation_z = (
         math.sin(
@@ -304,31 +360,35 @@ def calculate_frame(frame):
             2
         )
         *
-        math.radians(5)
+        math.radians(4)
     )
+
 
     result = []
 
 
-    for index, point in enumerate(points):
+    for index, point in enumerate(
+        points
+    ):
 
         x, y, z = point
 
-        # ----------------------------------------------------
-        # Pequeña diferencia de fase por logo.
-        # ----------------------------------------------------
 
+        # Pequeña diferencia de fase.
         phase = (
             index *
-            0.19
+            0.17
         )
+
 
         x, y, z = rotate_y(
             x,
             y,
             z,
-            rotation_y + phase
+            rotation_y +
+            phase
         )
+
 
         x, y, z = rotate_x(
             x,
@@ -336,6 +396,7 @@ def calculate_frame(frame):
             z,
             rotation_x
         )
+
 
         x, y, z = rotate_z(
             x,
@@ -346,7 +407,7 @@ def calculate_frame(frame):
 
 
         # ----------------------------------------------------
-        # Proyección 3D -> 2D
+        # PROYECCIÓN
         # ----------------------------------------------------
 
         screen_x = (
@@ -354,6 +415,7 @@ def calculate_frame(frame):
             x *
             SPHERE_RADIUS_X
         )
+
 
         screen_y = (
             CENTER_Y +
@@ -363,19 +425,16 @@ def calculate_frame(frame):
 
 
         # ----------------------------------------------------
-        # Profundidad
-        #
-        # z = 1  -> totalmente delante
-        # z = -1 -> totalmente detrás
+        # PROFUNDIDAD
         # ----------------------------------------------------
 
         depth = (
-            z + 1.0
-        ) / 2.0
+            z + 1
+        ) / 2
 
 
         # ----------------------------------------------------
-        # Perspectiva
+        # ESCALA
         # ----------------------------------------------------
 
         scale = (
@@ -386,7 +445,7 @@ def calculate_frame(frame):
 
 
         # ----------------------------------------------------
-        # Opacidad
+        # OPACIDAD
         # ----------------------------------------------------
 
         opacity = (
@@ -409,14 +468,13 @@ def calculate_frame(frame):
 
 
     # --------------------------------------------------------
-    # MUY IMPORTANTE:
-    #
-    # Los logos que están detrás se dibujan primero.
-    # Los que están delante se dibujan después.
+    # PROFUNDIDAD:
+    # atrás -> delante
     # --------------------------------------------------------
 
     result.sort(
-        key=lambda item: item["z"]
+        key=lambda item:
+        item["z"]
     )
 
 
@@ -424,10 +482,12 @@ def calculate_frame(frame):
 
 
 # ============================================================
-# CREAR UN FRAME
+# CREAR FRAME
 # ============================================================
 
-def create_frame(frame_number):
+def create_frame(
+    frame_number
+):
 
     frame = Image.new(
         "RGBA",
@@ -446,29 +506,40 @@ def create_frame(frame_number):
 
     for position in positions:
 
-        index = position["index"]
+        index = position[
+            "index"
+        ]
 
-        x = position["x"]
-        y = position["y"]
+        x = position[
+            "x"
+        ]
 
-        scale = position["scale"]
+        y = position[
+            "y"
+        ]
 
-        opacity = position["opacity"]
+        scale = position[
+            "scale"
+        ]
+
+        opacity = position[
+            "opacity"
+        ]
+
+
+        icon = icons[
+            index
+        ][
+            "image"
+        ]
 
 
         # ----------------------------------------------------
-        # Logo original
-        # ----------------------------------------------------
-
-        icon = icons[index]["image"]
-
-
-        # ----------------------------------------------------
-        # Tamaño según profundidad.
+        # Tamaño según profundidad
         # ----------------------------------------------------
 
         size = max(
-            20,
+            18,
             int(
                 ICON_SIZE *
                 scale
@@ -486,12 +557,13 @@ def create_frame(frame_number):
 
 
         # ----------------------------------------------------
-        # Opacidad.
+        # Opacidad
         # ----------------------------------------------------
 
         alpha = icon_scaled.getchannel(
             "A"
         )
+
 
         alpha = alpha.point(
             lambda value:
@@ -501,106 +573,32 @@ def create_frame(frame_number):
             )
         )
 
+
         icon_scaled.putalpha(
             alpha
         )
 
 
         # ----------------------------------------------------
-        # Fondo circular.
+        # Composición
         #
-        # No representa la esfera:
-        # es solamente el fondo individual del logo.
-        # ----------------------------------------------------
-
-        circle_radius = (
-            size *
-            0.52
-        )
-
-
-        overlay = Image.new(
-            "RGBA",
-            (
-                size * 2,
-                size * 2
-            ),
-            (
-                0,
-                0,
-                0,
-                0
-            )
-        )
-
-
-        draw = ImageDraw.Draw(
-            overlay
-        )
-
-
-        center = size
-
-
-        draw.ellipse(
-            (
-                center - circle_radius,
-                center - circle_radius,
-                center + circle_radius,
-                center + circle_radius
-            ),
-            fill=(
-                ICON_BACKGROUND[0],
-                ICON_BACKGROUND[1],
-                ICON_BACKGROUND[2],
-                int(
-                    235 *
-                    opacity
-                )
-            ),
-            outline=(
-                ICON_BORDER[0],
-                ICON_BORDER[1],
-                ICON_BORDER[2],
-                int(
-                    255 *
-                    opacity
-                )
-            ),
-            width=1
-        )
-
-
-        # ----------------------------------------------------
-        # Colocar logo sobre el círculo.
-        # ----------------------------------------------------
-
-        overlay.alpha_composite(
-            icon_scaled,
-            (
-                size // 2,
-                size // 2
-            )
-        )
-
-
-        # ----------------------------------------------------
-        # Posición final.
+        # NO dibujamos ningún círculo.
         # ----------------------------------------------------
 
         paste_x = int(
             x -
-            overlay.width / 2
+            size / 2
         )
+
 
         paste_y = int(
             y -
-            overlay.height / 2
+            size / 2
         )
 
 
         frame.alpha_composite(
-            overlay,
+            icon_scaled,
             (
                 paste_x,
                 paste_y
@@ -609,14 +607,23 @@ def create_frame(frame_number):
 
 
     # ========================================================
-    # CONVERTIR A RGB
+    # CONVERSIÓN A PALETA
     #
-    # GIF no necesita canal alpha.
+    # Esta parte es una de las claves para reducir el GIF.
     # ========================================================
 
-    return frame.convert(
+    frame = frame.convert(
         "RGB"
     )
+
+
+    frame = frame.quantize(
+        colors=COLORS,
+        method=Image.Quantize.MEDIANCUT
+    )
+
+
+    return frame
 
 
 # ============================================================
@@ -628,7 +635,7 @@ frames = []
 
 print()
 print(
-    "Generando frames..."
+    "Generando animación..."
 )
 
 
@@ -640,12 +647,15 @@ for frame_number in range(
         frame_number
     )
 
+
     frames.append(
         frame
     )
 
+
     if (
-        frame_number % FPS
+        frame_number %
+        FPS
         == 0
     ):
 
@@ -655,7 +665,8 @@ for frame_number in range(
         )
 
         print(
-            f"  {seconds:.0f}/{DURATION}s"
+            f"  {seconds:.0f}/"
+            f"{DURATION}s"
         )
 
 
@@ -669,15 +680,9 @@ OUTPUT_FILE.parent.mkdir(
 )
 
 
-frame_duration = int(
-    1000 /
-    FPS
-)
-
-
 print()
 print(
-    "Guardando GIF..."
+    "Guardando GIF optimizado..."
 )
 
 
@@ -685,14 +690,18 @@ frames[0].save(
     OUTPUT_FILE,
     save_all=True,
     append_images=frames[1:],
-    duration=frame_duration,
+    duration=int(
+        1000 /
+        FPS
+    ),
     loop=0,
-    optimize=False
+    optimize=True,
+    disposal=2
 )
 
 
 # ============================================================
-# RESULTADO
+# INFORMACIÓN FINAL
 # ============================================================
 
 file_size = (
@@ -710,7 +719,7 @@ print(
 )
 
 print(
-    "Technologies & Tools generado correctamente"
+    "Technologies GIF generado"
 )
 
 print(
@@ -722,7 +731,7 @@ print(
 )
 
 print(
-    f"Frames: {FRAME_COUNT}"
+    f"Resolución: {WIDTH}x{HEIGHT}"
 )
 
 print(
@@ -730,15 +739,19 @@ print(
 )
 
 print(
-    f"Duración: {DURATION} segundos"
+    f"Duración: {DURATION}s"
+)
+
+print(
+    f"Frames: {FRAME_COUNT}"
+)
+
+print(
+    f"Paleta: {COLORS} colores"
 )
 
 print(
     f"Tamaño: {file_size:.2f} MB"
-)
-
-print(
-    "Loop: infinito"
 )
 
 print(
