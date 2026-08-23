@@ -16,20 +16,22 @@ HEIGHT = 460
 CENTER_X = WIDTH / 2
 CENTER_Y = HEIGHT / 2
 
-SPHERE_RADIUS_X = 155
+SPHERE_RADIUS_X = 165
 SPHERE_RADIUS_Y = 145
 
 ICON_SIZE = 58
 
-# Más puntos de animación para conseguir un movimiento fluido.
-FRAME_COUNT = 180
+# Número de estados de la animación.
+# 120 ofrece un movimiento bastante más fluido
+# sin hacer el SVG excesivamente grande.
+FRAME_COUNT = 120
 
-# Una vuelta completa.
-ANIMATION_DURATION = 18
+# Tiempo de una vuelta completa.
+ANIMATION_DURATION = 16
 
 
 # ============================================================
-# CARGAR SVG
+# SVG
 # ============================================================
 
 def get_viewbox(root):
@@ -37,21 +39,40 @@ def get_viewbox(root):
     viewbox = root.attrib.get("viewBox")
 
     if viewbox:
+
         values = viewbox.replace(",", " ").split()
 
         if len(values) == 4:
-            return [float(v) for v in values]
 
-    width = root.attrib.get("width", "100")
-    height = root.attrib.get("height", "100")
+            return [
+                float(v)
+                for v in values
+            ]
+
+    width = root.attrib.get(
+        "width",
+        "100"
+    )
+
+    height = root.attrib.get(
+        "height",
+        "100"
+    )
 
     def number(value):
 
-        value = str(value).replace("px", "")
+        value = str(
+            value
+        ).replace(
+            "px",
+            ""
+        )
 
         try:
             return float(value)
+
         except ValueError:
+
             return 100.0
 
     return [
@@ -75,11 +96,13 @@ def get_svg_content(root):
             )
         )
 
-    return "\n".join(content)
+    return "\n".join(
+        content
+    )
 
 
 # ============================================================
-# LEER TECNOLOGÍAS
+# CARGAR ICONOS
 # ============================================================
 
 svg_files = sorted(
@@ -89,7 +112,7 @@ svg_files = sorted(
 if not svg_files:
 
     raise SystemExit(
-        f"No se encontraron SVG en {INPUT_DIR}"
+        f"No hay SVG en {INPUT_DIR}"
     )
 
 
@@ -104,7 +127,9 @@ for svg_file in svg_files:
             encoding="utf-8"
         )
 
-        root = ET.fromstring(source)
+        root = ET.fromstring(
+            source
+        )
 
         icons.append(
             {
@@ -117,53 +142,56 @@ for svg_file in svg_files:
     except Exception as error:
 
         print(
-            f"WARNING: no se pudo procesar "
-            f"{svg_file.name}: {error}"
+            f"ERROR: {svg_file.name}: {error}"
         )
 
 
 if not icons:
 
     raise SystemExit(
-        "No se pudo cargar ningún icono."
+        "No se pudo cargar ningún SVG."
     )
 
 
+print(
+    f"Iconos encontrados: {len(icons)}"
+)
+
+
 # ============================================================
-# ESFERA DE FIBONACCI
+# DISTRIBUCIÓN SOBRE ESFERA
 # ============================================================
 
 def fibonacci_sphere(count):
 
     points = []
 
-    if count == 1:
-
-        return [
-            [0.0, 0.0, 1.0]
-        ]
-
     golden_angle = (
         math.pi *
-        (3.0 - math.sqrt(5.0))
+        (3 - math.sqrt(5))
     )
 
     for i in range(count):
 
-        y = 1.0 - (
-            2.0 * i /
-            (count - 1)
+        # Evitamos exactamente los polos.
+        y = (
+            1 -
+            2 *
+            (i + 0.5) /
+            count
         )
 
         radius = math.sqrt(
             max(
-                0.0,
-                1.0 - y * y
+                0,
+                1 -
+                y * y
             )
         )
 
         theta = (
-            golden_angle * i
+            golden_angle *
+            (i + 0.5)
         )
 
         x = (
@@ -177,145 +205,185 @@ def fibonacci_sphere(count):
         )
 
         points.append(
-            [x, y, z]
+            [
+                x,
+                y,
+                z
+            ]
         )
 
     return points
 
 
-base_points = fibonacci_sphere(
+points = fibonacci_sphere(
     len(icons)
 )
 
 
 # ============================================================
-# ROTACIONES 3D
+# ROTACIÓN 3D
 # ============================================================
 
-def rotate_y(point, angle):
-
-    x, y, z = point
+def rotate_y(
+    x,
+    y,
+    z,
+    angle
+):
 
     c = math.cos(angle)
     s = math.sin(angle)
 
-    return [
+    return (
         x * c + z * s,
         y,
         -x * s + z * c
-    ]
+    )
 
 
-def rotate_x(point, angle):
-
-    x, y, z = point
+def rotate_x(
+    x,
+    y,
+    z,
+    angle
+):
 
     c = math.cos(angle)
     s = math.sin(angle)
 
-    return [
+    return (
         x,
         y * c - z * s,
         y * s + z * c
-    ]
+    )
 
 
-def rotate_z(point, angle):
-
-    x, y, z = point
+def rotate_z(
+    x,
+    y,
+    z,
+    angle
+):
 
     c = math.cos(angle)
     s = math.sin(angle)
 
-    return [
+    return (
         x * c - y * s,
         x * s + y * c,
         z
-    ]
+    )
 
 
 # ============================================================
-# GENERAR VALORES DE ANIMACIÓN
+# CALCULAR TRAYECTORIA DE CADA LOGO
 # ============================================================
 
-def generate_animation_values(point, phase):
+trajectories = []
 
-    x_values = []
-    y_values = []
-    scale_values = []
-    opacity_values = []
 
-    for frame in range(FRAME_COUNT):
+for index, point in enumerate(points):
+
+    trajectory = []
+
+    x0, y0, z0 = point
+
+    # Cada logo tiene una pequeña diferencia de fase.
+    phase = (
+        index *
+        0.23
+    )
+
+    for frame in range(
+        FRAME_COUNT
+    ):
 
         progress = (
             frame /
             FRAME_COUNT
         )
 
-        # Rotación principal.
+        # ----------------------------------------------------
+        # ROTACIÓN PRINCIPAL
+        # ----------------------------------------------------
+
         angle_y = (
             progress *
             math.pi *
             2
-            + phase
+            +
+            phase
         )
 
-        # Inclinación vertical.
+        # ----------------------------------------------------
+        # INCLINACIÓN DE LA ESFERA
         #
-        # Al contrario que la versión anterior,
-        # la inclinación no es fija.
-        # Esto hace que incluso los puntos situados
-        # inicialmente arriba y abajo se desplacen.
+        # Cambia continuamente, evitando que los logos
+        # situados inicialmente arriba/abajo se queden fijos.
+        # ----------------------------------------------------
+
         angle_x = (
-            math.radians(22)
-            * math.sin(
+            math.radians(18)
+            +
+            math.sin(
                 progress *
                 math.pi *
                 2
             )
+            *
+            math.radians(10)
         )
 
-        # Rotación secundaria.
+        # ----------------------------------------------------
+        # PEQUEÑA ROTACIÓN SECUNDARIA
+        # ----------------------------------------------------
+
         angle_z = (
-            math.radians(9)
-            * math.sin(
+            math.sin(
                 progress *
                 math.pi *
                 2
-                + phase
+                +
+                phase
             )
+            *
+            math.radians(8)
         )
 
-        rotated = rotate_y(
-            point,
+        x, y, z = rotate_y(
+            x0,
+            y0,
+            z0,
             angle_y
         )
 
-        rotated = rotate_x(
-            rotated,
+        x, y, z = rotate_x(
+            x,
+            y,
+            z,
             angle_x
         )
 
-        rotated = rotate_z(
-            rotated,
+        x, y, z = rotate_z(
+            x,
+            y,
+            z,
             angle_z
         )
 
-        x3d, y3d, z3d = rotated
-
         # ----------------------------------------------------
-        # POSICIÓN
+        # PROYECCIÓN 3D
         # ----------------------------------------------------
 
-        x = (
-            CENTER_X
-            + x3d *
+        screen_x = (
+            CENTER_X +
+            x *
             SPHERE_RADIUS_X
         )
 
-        y = (
-            CENTER_Y
-            + y3d *
+        screen_y = (
+            CENTER_Y +
+            y *
             SPHERE_RADIUS_Y
         )
 
@@ -324,16 +392,17 @@ def generate_animation_values(point, phase):
         # ----------------------------------------------------
 
         depth = (
-            z3d + 1.0
-        ) / 2.0
+            z + 1
+        ) / 2
 
         # ----------------------------------------------------
         # PERSPECTIVA
         # ----------------------------------------------------
 
         scale = (
-            0.55
-            + depth * 0.45
+            0.55 +
+            depth *
+            0.45
         )
 
         # ----------------------------------------------------
@@ -341,36 +410,23 @@ def generate_animation_values(point, phase):
         # ----------------------------------------------------
 
         opacity = (
-            0.28
-            + depth * 0.72
+            0.30 +
+            depth *
+            0.70
         )
 
-        # Los elementos muy alejados se atenúan.
-        if z3d < -0.65:
-
-            opacity *= 0.72
-
-        x_values.append(
-            f"{x:.2f}"
+        trajectory.append(
+            {
+                "x": screen_x,
+                "y": screen_y,
+                "z": z,
+                "scale": scale,
+                "opacity": opacity
+            }
         )
 
-        y_values.append(
-            f"{y:.2f}"
-        )
-
-        scale_values.append(
-            f"{scale:.4f}"
-        )
-
-        opacity_values.append(
-            f"{opacity:.4f}"
-        )
-
-    return (
-        ";".join(x_values),
-        ";".join(y_values),
-        ";".join(scale_values),
-        ";".join(opacity_values)
+    trajectories.append(
+        trajectory
     )
 
 
@@ -378,33 +434,29 @@ def generate_animation_values(point, phase):
 # KEY TIMES
 # ============================================================
 
-key_times = []
-
-for frame in range(FRAME_COUNT):
-
-    key_times.append(
-        f"{frame / FRAME_COUNT:.6f}"
-    )
-
 key_times = ";".join(
-    key_times
+    f"{i / FRAME_COUNT:.6f}"
+    for i in range(
+        FRAME_COUNT
+    )
 )
 
 
 # ============================================================
-# CREAR SVG
+# GENERAR SVG
 # ============================================================
 
 svg = []
 
 
 svg.append(
-    f'''<?xml version="1.0" encoding="UTF-8"?>
+    '''<?xml version="1.0" encoding="UTF-8"?>
+
 <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="{WIDTH}"
-    height="{HEIGHT}"
-    viewBox="0 0 {WIDTH} {HEIGHT}"
+    width="900"
+    height="460"
+    viewBox="0 0 900 460"
 >
 '''
 )
@@ -419,7 +471,7 @@ svg.append(
 <defs>
 
     <filter
-        id="technology-shadow"
+        id="tech-shadow"
         x="-100%"
         y="-100%"
         width="300%"
@@ -429,9 +481,9 @@ svg.append(
         <feDropShadow
             dx="0"
             dy="3"
-            stdDeviation="4"
+            stdDeviation="3"
             flood-color="#000000"
-            flood-opacity="0.40"
+            flood-opacity="0.45"
         />
 
     </filter>
@@ -446,12 +498,12 @@ svg.append(
 # ============================================================
 
 svg.append(
-    f'''
+    '''
 <rect
     x="0"
     y="0"
-    width="{WIDTH}"
-    height="{HEIGHT}"
+    width="900"
+    height="460"
     rx="20"
     fill="#0d1117"
 />
@@ -460,138 +512,89 @@ svg.append(
 
 
 # ============================================================
-# LOGOS
+# CREAR LOGOS
 # ============================================================
 
 for index, icon in enumerate(icons):
 
-    point = base_points[index]
-
-    # Cada logo tiene una fase diferente.
-    phase = (
-        index *
-        0.43
-    )
-
-    (
-        x_values,
-        y_values,
-        scale_values,
-        opacity_values
-    ) = generate_animation_values(
-        point,
-        phase
-    )
-
-    # --------------------------------------------------------
-    # VIEWBOX
-    # --------------------------------------------------------
+    trajectory = trajectories[index]
 
     vb_x, vb_y, vb_width, vb_height = (
         icon["viewbox"]
     )
 
-    if vb_width <= 0:
-        vb_width = 100
-
-    if vb_height <= 0:
-        vb_height = 100
-
-
     # --------------------------------------------------------
-    # POSICIÓN INICIAL
+    # VALORES
     # --------------------------------------------------------
 
-    initial_point = point.copy()
-
-    initial_point = rotate_y(
-        initial_point,
-        phase
+    x_values = ";".join(
+        f"{p['x']:.2f}"
+        for p in trajectory
     )
 
-    initial_point = rotate_x(
-        initial_point,
-        0
+    y_values = ";".join(
+        f"{p['y']:.2f}"
+        for p in trajectory
     )
 
-    initial_point = rotate_z(
-        initial_point,
-        0
+    scale_values = ";".join(
+        f"{p['scale']:.4f}"
+        for p in trajectory
     )
 
-    initial_x3d, initial_y3d, initial_z3d = (
-        initial_point
-    )
-
-    initial_x = (
-        CENTER_X
-        + initial_x3d *
-        SPHERE_RADIUS_X
-    )
-
-    initial_y = (
-        CENTER_Y
-        + initial_y3d *
-        SPHERE_RADIUS_Y
-    )
-
-    initial_depth = (
-        initial_z3d + 1
-    ) / 2
-
-    initial_scale = (
-        0.55
-        + initial_depth * 0.45
-    )
-
-    initial_opacity = (
-        0.28
-        + initial_depth * 0.72
+    opacity_values = ";".join(
+        f"{p['opacity']:.4f}"
+        for p in trajectory
     )
 
 
-    # --------------------------------------------------------
-    # GRUPO DEL LOGO
-    # --------------------------------------------------------
+    first = trajectory[0]
+
+
+    # ========================================================
+    # GRUPO EXTERIOR
+    #
+    # Este grupo SOLO controla la posición.
+    # ========================================================
 
     svg.append(
         f'''
 <g
     transform="
         translate(
-            {initial_x:.2f}
-            {initial_y:.2f}
+            {first['x']:.2f}
+            {first['y']:.2f}
         )
     "
-    opacity="{initial_opacity:.4f}"
-    filter="url(#technology-shadow)"
+    opacity="{first['opacity']:.4f}"
+    filter="url(#tech-shadow)"
 >
 '''
     )
 
 
-    # --------------------------------------------------------
-    # FONDO DEL ICONO
-    # --------------------------------------------------------
+    # ========================================================
+    # GRUPO INTERIOR
+    #
+    # Este grupo SOLO controla escala.
+    # ========================================================
 
     svg.append(
         f'''
-<circle
-    cx="0"
-    cy="0"
-    r="{ICON_SIZE * 0.52:.2f}"
-    fill="#161b22"
-    stroke="#30363d"
-    stroke-width="1"
-    opacity="0.92"
-/>
+<g
+    transform="
+        scale(
+            {first['scale']:.4f}
+        )
+    "
+>
 '''
     )
 
 
-    # --------------------------------------------------------
+    # ========================================================
     # ICONO
-    # --------------------------------------------------------
+    # ========================================================
 
     svg.append(
         f'''
@@ -623,7 +626,33 @@ for index, icon in enumerate(icons):
 
 
     # ========================================================
-    # ANIMACIÓN DE POSICIÓN X
+    # ESCALA
+    # ========================================================
+
+    svg.append(
+        f'''
+<animateTransform
+    attributeName="transform"
+    type="scale"
+    values="{scale_values}"
+    keyTimes="{key_times}"
+    dur="{ANIMATION_DURATION}s"
+    repeatCount="indefinite"
+    calcMode="linear"
+/>
+'''
+    )
+
+
+    svg.append(
+        '''
+</g>
+'''
+    )
+
+
+    # ========================================================
+    # POSICIÓN X
     # ========================================================
 
     svg.append(
@@ -634,30 +663,6 @@ for index, icon in enumerate(icons):
     keyTimes="{key_times}"
     dur="{ANIMATION_DURATION}s"
     repeatCount="indefinite"
-    calcMode="spline"
-    keySplines="
-        0.42 0 0.58 1;
-        0.42 0 0.58 1;
-        0.42 0 0.58 1;
-        0.42 0 0.58 1
-    "
-/>
-'''
-    )
-
-
-    # ========================================================
-    # ANIMACIÓN DE POSICIÓN Y
-    # ========================================================
-
-    svg.append(
-        f'''
-<animate
-    attributeName="y"
-    values="{y_values}"
-    keyTimes="{key_times}"
-    dur="{ANIMATION_DURATION}s"
-    repeatCount="indefinite"
     calcMode="linear"
 />
 '''
@@ -665,15 +670,14 @@ for index, icon in enumerate(icons):
 
 
     # ========================================================
-    # ESCALA
+    # POSICIÓN Y
     # ========================================================
 
     svg.append(
         f'''
-<animateTransform
-    attributeName="transform"
-    type="scale"
-    values="{scale_values}"
+<animate
+    attributeName="y"
+    values="{y_values}"
     keyTimes="{key_times}"
     dur="{ANIMATION_DURATION}s"
     repeatCount="indefinite"
@@ -709,7 +713,7 @@ for index, icon in enumerate(icons):
 
 
 # ============================================================
-# CERRAR SVG
+# GUARDAR
 # ============================================================
 
 svg.append(
@@ -718,10 +722,6 @@ svg.append(
 '''
 )
 
-
-# ============================================================
-# GUARDAR
-# ============================================================
 
 OUTPUT_FILE.parent.mkdir(
     parents=True,
@@ -738,31 +738,24 @@ print()
 print(
     "=============================================="
 )
-
 print(
-    "Technologies & Tools generado correctamente."
+    "Technologies & Tools generado correctamente"
 )
-
 print(
     f"Iconos: {len(icons)}"
 )
-
 print(
-    f"Frames de movimiento: {FRAME_COUNT}"
+    f"Frames: {FRAME_COUNT}"
 )
-
 print(
     f"Duración: {ANIMATION_DURATION}s"
 )
-
 print(
-    f"Salida: {OUTPUT_FILE}"
+    f"Archivo: {OUTPUT_FILE}"
 )
-
 print(
-    "Animación: esfera 3D continua por icono"
+    "Movimiento: esfera 3D continua"
 )
-
 print(
     "=============================================="
 )
