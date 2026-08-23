@@ -1,25 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="340" height="200" viewBox="0 0 340 200" font-family="'Segoe UI', Ubuntu, Sans-Serif">
   <rect x="0.5" y="0.5" width="339" height="199" rx="6" fill="#1a1b27" stroke="#1a1b27" stroke-opacity="1.00"/>
   <text x="20" y="30" font-size="15" font-weight="600" fill="#70a5fd">Most Commit Language (last year)</text>
-  <rect x="20" y="47" width="10" height="10" fill="#178600" stroke="#1a1b27" stroke-width="1"/>
-  <text x="36" y="55" font-size="11" fill="#38bdae">C# 33.34%</text>
-  <rect x="20" y="67" width="10" height="10" fill="#f34b7d" stroke="#1a1b27" stroke-width="1"/>
-  <text x="36" y="75" font-size="11" fill="#38bdae">C++ 22.39%</text>
-  <rect x="20" y="87" width="10" height="10" fill="#00B4AB" stroke="#1a1b27" stroke-width="1"/>
-  <text x="36" y="95" font-size="11" fill="#38bdae">Dart 22.37%</text>
-  <rect x="20" y="107" width="10" height="10" fill="#DA3434" stroke="#1a1b27" stroke-width="1"/>
-  <text x="36" y="115" font-size="11" fill="#38bdae">CMake 17.26%</text>
-  <rect x="20" y="127" width="10" height="10" fill="#F05138" stroke="#1a1b27" stroke-width="1"/>
-  <text x="36" y="135" font-size="11" fill="#38bdae">Swift 1.88%</text>
-  <rect x="20" y="147" width="10" height="10" fill="#e34c26" stroke="#1a1b27" stroke-width="1"/>
-  <text x="36" y="155" font-size="11" fill="#38bdae">HTML 1.33%</text>
+  <rect x="20" y="47" width="10" height="10" fill="#3572A5" stroke="#1a1b27" stroke-width="1"/>
+  <text x="36" y="55" font-size="11" fill="#38bdae">Python 95.52%</text>
+  <rect x="20" y="67" width="10" height="10" fill="#178600" stroke="#1a1b27" stroke-width="1"/>
+  <text x="36" y="75" font-size="11" fill="#38bdae">C# 1.49%</text>
+  <rect x="20" y="87" width="10" height="10" fill="#f34b7d" stroke="#1a1b27" stroke-width="1"/>
+  <text x="36" y="95" font-size="11" fill="#38bdae">C++ 1.00%</text>
+  <rect x="20" y="107" width="10" height="10" fill="#00B4AB" stroke="#1a1b27" stroke-width="1"/>
+  <text x="36" y="115" font-size="11" fill="#38bdae">Dart 1.00%</text>
+  <rect x="20" y="127" width="10" height="10" fill="#DA3434" stroke="#1a1b27" stroke-width="1"/>
+  <text x="36" y="135" font-size="11" fill="#38bdae">CMake 0.77%</text>
+  <rect x="20" y="147" width="10" height="10" fill="#F05138" stroke="#1a1b27" stroke-width="1"/>
+  <text x="36" y="155" font-size="11" fill="#38bdae">Swift 0.08%</text>
   <rect x="20" y="167" width="10" height="10" fill="#bf91f3" stroke="#1a1b27" stroke-width="1"/>
-  <text x="36" y="175" font-size="11" fill="#38bdae">Other 1.43%</text>
-  <path d="M250.00,55.00 A55.00,55.00 0 0 1 297.62,137.53 L275.97,125.01 A30.00,30.00 0 0 0 250.00,80.00 Z" fill="#178600" stroke="#1a1b27" stroke-width="1.5"/>
-  <path d="M297.62,137.53 A55.00,55.00 0 0 1 230.61,161.47 L239.42,138.07 A30.00,30.00 0 0 0 275.97,125.01 Z" fill="#f34b7d" stroke="#1a1b27" stroke-width="1.5"/>
-  <path d="M230.61,161.47 A55.00,55.00 0 0 1 196.05,99.33 L220.57,104.18 A30.00,30.00 0 0 0 239.42,138.07 Z" fill="#00B4AB" stroke="#1a1b27" stroke-width="1.5"/>
-  <path d="M196.05,99.33 A55.00,55.00 0 0 1 234.21,57.32 L241.39,81.26 A30.00,30.00 0 0 0 220.57,104.18 Z" fill="#DA3434" stroke="#1a1b27" stroke-width="1.5"/>
-  <path d="M234.21,57.32 A55.00,55.00 0 0 1 240.53,55.82 L244.83,80.45 A30.00,30.00 0 0 0 241.39,81.26 Z" fill="#F05138" stroke="#1a1b27" stroke-width="1.5"/>
-  <path d="M240.53,55.82 A55.00,55.00 0 0 1 245.08,55.22 L247.31,80.12 A30.00,30.00 0 0 0 244.83,80.45 Z" fill="#e34c26" stroke="#1a1b27" stroke-width="1.5"/>
-  <path d="M245.08,55.22 A55.00,55.00 0 0 1 250.00,55.00 L250.00,80.00 A30.00,30.00 0 0 0 247.31,80.12 Z" fill="#bf91f3" stroke="#1a1b27" stroke-width="1.5"/>
+  <text x="36" y="175" font-size="11" fill="#38bdae">Other 0.12%</text>
+  <path d="M250.00,55.00 A55.00,55.00 0 1 1 234.73,57.16 L241.67,81.18 A30.00,30.00 0 1 0 250.00,80.00 Z" fill="#3572A5" stroke="#1a1b27" stroke-width="1.5"/>
+  <path d="M234.73,57.16 A55.00,55.00 0 0 1 239.75,55.96 L244.41,80.53 A30.00,30.00 0 0 0 241.67,81.18 Z" fill="#178600" stroke="#1a1b27" stroke-width="1.5"/>
+  <path d="M239.75,55.96 A55.00,55.00 0 0 1 243.17,55.43 L246.27,80.23 A30.00,30.00 0 0 0 244.41,80.53 Z" fill="#f34b7d" stroke="#1a1b27" stroke-width="1.5"/>
+  <path d="M243.17,55.43 A55.00,55.00 0 0 1 246.62,55.10 L248.15,80.06 A30.00,30.00 0 0 0 246.27,80.23 Z" fill="#00B4AB" stroke="#1a1b27" stroke-width="1.5"/>
+  <path d="M246.62,55.10 A55.00,55.00 0 0 1 249.28,55.00 L249.61,80.00 A30.00,30.00 0 0 0 248.15,80.06 Z" fill="#DA3434" stroke="#1a1b27" stroke-width="1.5"/>
+  <path d="M249.28,55.00 A55.00,55.00 0 0 1 249.57,55.00 L249.77,80.00 A30.00,30.00 0 0 0 249.61,80.00 Z" fill="#F05138" stroke="#1a1b27" stroke-width="1.5"/>
+  <path d="M249.57,55.00 A55.00,55.00 0 0 1 250.00,55.00 L250.00,80.00 A30.00,30.00 0 0 0 249.77,80.00 Z" fill="#bf91f3" stroke="#1a1b27" stroke-width="1.5"/>
 </svg>
