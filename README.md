@@ -60,7 +60,7 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
   <img
     src="./assets/technologies.gif"
     alt="Technologies & Tools"
-    width="90%"
+    width="80%"
   />
 </p>
 
