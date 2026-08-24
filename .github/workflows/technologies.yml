@@ -32,7 +32,7 @@ jobs:
 
       - name: Generate Technologies GIF
         run: |
-          scripts/python generate_technologies.py
+          python scripts/generate_technologies.py
 
       - name: Check generated GIF
         run: |
