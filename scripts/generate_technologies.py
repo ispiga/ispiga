@@ -1,8 +1,11 @@
 from pathlib import Path
 import io
 import math
+import random
+import subprocess
+import shutil
 
-from PIL import Image, ImageDraw
+from PIL import Image
 
 
 # ============================================================
@@ -10,82 +13,81 @@ from PIL import Image, ImageDraw
 # ============================================================
 
 INPUT_DIR = Path("assets/technologies")
-OUTPUT_FILE = Path("assets/technologies.gif")
 
-# ------------------------------------------------------------
-# Resolución REAL del GIF.
-#
-# Lo hacemos deliberadamente pequeño.
-# GitHub lo ampliará visualmente en el README.
-# ------------------------------------------------------------
+TEMP_GIF = Path("assets/technologies_raw.gif")
+OUTPUT_GIF = Path("assets/technologies.gif")
 
-WIDTH = 640
-HEIGHT = 330
+WIDTH = 535
+HEIGHT = 460
 
-CENTER_X = WIDTH // 2
-CENTER_Y = HEIGHT // 2
-
-# Tamaño de la esfera
-SPHERE_RADIUS_X = 145
-SPHERE_RADIUS_Y = 125
-
-# Tamaño máximo de los logos
-ICON_SIZE = 46
-
+CENTER_X = WIDTH / 2
+CENTER_Y = HEIGHT / 2
 
 # ============================================================
 # ANIMACIÓN
 # ============================================================
 
-# 15 FPS es suficiente para una rotación suave y reduce
-# considerablemente el tamaño del GIF.
-FPS = 15
-
-# Una vuelta completa cada 18 segundos.
-DURATION = 18
-
+FPS = 14
+DURATION = 32
 FRAME_COUNT = FPS * DURATION
 
-
 # ============================================================
-# CALIDAD / COMPRESIÓN
+# LOGOS
 # ============================================================
 
-# Paleta GIF.
-#
-# 64 colores en lugar de 256 reduce muchísimo el tamaño.
-# Los logos siguen teniendo buena apariencia porque son
-# pequeños y normalmente tienen pocos colores.
-COLORS = 64
-
+ICON_SIZE = 54
 
 # ============================================================
 # FONDO
 # ============================================================
 
-BACKGROUND = (
-    13,
-    17,
-    23,
-    255
-)
+BACKGROUND = (13, 17, 23, 255)
+
+# ============================================================
+# ESFERA / NUBE
+# ============================================================
+
+# Radio de la zona donde se distribuyen inicialmente
+# los logos.
+SPREAD_X = 205
+SPREAD_Y = 175
+
+# ============================================================
+# MOVIMIENTO
+# ============================================================
+
+# Velocidad general de movimiento
+MOVEMENT_SPEED = 0.75
+
+# ============================================================
+# ALEATORIEDAD DETERMINISTA
+# ============================================================
+
+random.seed(12345)
 
 
 # ============================================================
-# CARGAR CAIROSVG
+# COMPROBAR CAIROSVG
 # ============================================================
 
 try:
-
     import cairosvg
-
 except ImportError:
-
     raise SystemExit(
-        "\n"
-        "ERROR: CairoSVG no está instalado.\n\n"
-        "Ejecuta:\n"
-        "pip install pillow cairosvg\n"
+        "CairoSVG no está instalado.\n"
+        "Ejecuta: pip install pillow cairosvg"
+    )
+
+
+# ============================================================
+# COMPROBAR GIFSICLE
+# ============================================================
+
+if shutil.which("gifsicle") is None:
+    raise SystemExit(
+        "Gifsicle no está instalado.\n"
+        "En GitHub Actions utiliza:\n"
+        "sudo apt-get update && sudo apt-get install -y gifsicle"
     )
 
 
@@ -97,28 +99,20 @@ svg_files = sorted(
     INPUT_DIR.glob("*.svg")
 )
 
-
 if not svg_files:
-
     raise SystemExit(
         f"No se encontraron SVG en {INPUT_DIR}"
     )
 
 
-print(
-    f"Encontrados {len(svg_files)} logos."
-)
+print(f"Encontrados {len(svg_files)} logos.")
 
 
 # ============================================================
-# CONVERTIR SVG -> PNG
-#
-# Se hace solamente UNA VEZ por logo.
-# No se vuelve a convertir en cada frame.
+# CARGAR LOS LOGOS
 # ============================================================
 
 icons = []
-
 
 for svg_file in svg_files:
 
@@ -130,24 +124,14 @@ for svg_file in svg_files:
             output_height=ICON_SIZE * 3
         )
 
-
         image = Image.open(
-            io.BytesIO(
-                png_data
-            )
-        ).convert(
-            "RGBA"
-        )
-
+            io.BytesIO(png_data)
+        ).convert("RGBA")
 
         image = image.resize(
-            (
-                ICON_SIZE,
-                ICON_SIZE
-            ),
+            (ICON_SIZE, ICON_SIZE),
             Image.Resampling.LANCZOS
         )
-
 
         icons.append(
             {
@@ -156,11 +140,7 @@ for svg_file in svg_files:
             }
         )
 
-
-        print(
-            f"  OK: {svg_file.name}"
-        )
-
+        print(f"  OK: {svg_file.name}")
 
     except Exception as error:
 
@@ -170,324 +150,346 @@ for svg_file in svg_files:
 
 
 if not icons:
-
     raise SystemExit(
         "No se pudo cargar ningún logo."
     )
 
 
 # ============================================================
-# DISTRIBUCIÓN SOBRE UNA ESFERA
+# CREAR UNA NUBE 3D
 # ============================================================
 
-def fibonacci_sphere(
-    count
-):
+particles = []
 
-    points = []
 
-    golden_angle = (
-        math.pi *
-        (
-            3 -
-            math.sqrt(5)
-        )
+for index, icon in enumerate(icons):
+
+    # --------------------------------------------------------
+    # Posición inicial aleatoria
+    # --------------------------------------------------------
+
+    theta = random.uniform(
+        0,
+        math.pi * 2
     )
 
+    phi = random.uniform(
+        -math.pi / 2,
+        math.pi / 2
+    )
 
-    for i in range(
-        count
-    ):
+    x = (
+        math.cos(phi)
+        * math.cos(theta)
+    )
 
-        y = (
-            1 -
-            2 *
-            (
-                i + 0.5
-            ) /
-            count
-        )
+    y = (
+        math.sin(phi)
+    )
 
+    z = (
+        math.cos(phi)
+        * math.sin(theta)
+    )
 
-        radius = math.sqrt(
-            max(
+    # --------------------------------------------------------
+    # Movimiento individual
+    # --------------------------------------------------------
+
+    vx = random.uniform(
+        -0.45,
+        0.45
+    )
+
+    vy = random.uniform(
+        -0.35,
+        0.35
+    )
+
+    vz = random.uniform(
+        -0.45,
+        0.45
+    )
+
+    # --------------------------------------------------------
+    # Movimiento orbital individual
+    # --------------------------------------------------------
+
+    orbit_speed = random.uniform(
+        0.35,
+        0.85
+    )
+
+    orbit_phase = random.uniform(
+        0,
+        math.pi * 2
+    )
+
+    orbit_radius = random.uniform(
+        0.85,
+        1.15
+    )
+
+    # --------------------------------------------------------
+    # Oscilación
+    # --------------------------------------------------------
+
+    wobble_speed = random.uniform(
+        0.5,
+        1.2
+    )
+
+    wobble_phase = random.uniform(
+        0,
+        math.pi * 2
+    )
+
+    # --------------------------------------------------------
+    # Cada logo parte de una posición diferente
+    # --------------------------------------------------------
+
+    particles.append(
+        {
+            "icon": icon["image"],
+            "name": icon["name"],
+
+            "x": x,
+            "y": y,
+            "z": z,
+
+            "vx": vx,
+            "vy": vy,
+            "vz": vz,
+
+            "orbit_speed": orbit_speed,
+            "orbit_phase": orbit_phase,
+            "orbit_radius": orbit_radius,
+
+            "wobble_speed": wobble_speed,
+            "wobble_phase": wobble_phase,
+
+            "phase": random.uniform(
                 0,
-                1 -
-                y * y
+                math.pi * 2
             )
-        )
-
-
-        theta = (
-            golden_angle *
-            i
-        )
-
-
-        x = (
-            math.cos(theta) *
-            radius
-        )
-
-
-        z = (
-            math.sin(theta) *
-            radius
-        )
-
-
-        points.append(
-            (
-                x,
-                y,
-                z
-            )
-        )
-
-
-    return points
-
-
-points = fibonacci_sphere(
-    len(icons)
-)
-
-
-# ============================================================
-# ROTACIONES
-# ============================================================
-
-def rotate_x(
-    x,
-    y,
-    z,
-    angle
-):
-
-    c = math.cos(angle)
-    s = math.sin(angle)
-
-    return (
-        x,
-        y * c - z * s,
-        y * s + z * c
-    )
-
-
-def rotate_y(
-    x,
-    y,
-    z,
-    angle
-):
-
-    c = math.cos(angle)
-    s = math.sin(angle)
-
-    return (
-        x * c + z * s,
-        y,
-        -x * s + z * c
-    )
-
-
-def rotate_z(
-    x,
-    y,
-    z,
-    angle
-):
-
-    c = math.cos(angle)
-    s = math.sin(angle)
-
-    return (
-        x * c - y * s,
-        x * s + y * c,
-        z
+        }
     )
 
 
 # ============================================================
-# CALCULAR POSICIONES DE UN FRAME
+# FUNCIÓN PARA LIMITAR LA POSICIÓN
 # ============================================================
 
-def calculate_frame(
-    frame_number
+def wrap(value, minimum, maximum):
+
+    if value < minimum:
+        return maximum - (
+            minimum - value
+        )
+
+    if value > maximum:
+        return minimum + (
+            value - maximum
+        )
+
+    return value
+
+
+# ============================================================
+# CALCULAR POSICIÓN DE CADA LOGO
+# ============================================================
+
+def calculate_particle(
+    particle,
+    time
 ):
 
-    progress = (
-        frame_number /
-        FRAME_COUNT
-    )
-
+    base_x = particle["x"]
+    base_y = particle["y"]
+    base_z = particle["z"]
 
     # --------------------------------------------------------
-    # ROTACIÓN PRINCIPAL
+    # Movimiento orbital independiente
     # --------------------------------------------------------
 
-    rotation_y = (
-        progress *
-        math.pi *
-        2
-    )
-
-
-    # --------------------------------------------------------
-    # INCLINACIÓN
-    #
-    # Cambia ligeramente durante la vuelta para que ningún
-    # logo quede permanentemente clavado en el eje vertical.
-    # --------------------------------------------------------
-
-    rotation_x = (
-        math.radians(18)
+    angle = (
+        particle["orbit_phase"]
         +
-        math.sin(
-            progress *
-            math.pi *
-            2
-        )
+        time
         *
-        math.radians(7)
+        particle["orbit_speed"]
+        *
+        MOVEMENT_SPEED
     )
 
+    radius = particle[
+        "orbit_radius"
+    ]
 
-    rotation_z = (
-        math.sin(
-            progress *
-            math.pi *
-            2
-        )
-        *
-        math.radians(4)
+    orbit_x = (
+        math.cos(angle)
+        * radius
+        * 0.16
     )
 
-
-    result = []
-
-
-    for index, point in enumerate(
-        points
-    ):
-
-        x, y, z = point
-
-
-        # Pequeña diferencia de fase.
-        phase = (
-            index *
-            0.17
+    orbit_y = (
+        math.sin(
+            angle * 0.73
         )
+        * radius
+        * 0.13
+    )
 
-
-        x, y, z = rotate_y(
-            x,
-            y,
-            z,
-            rotation_y +
-            phase
-        )
-
-
-        x, y, z = rotate_x(
-            x,
-            y,
-            z,
-            rotation_x
-        )
-
-
-        x, y, z = rotate_z(
-            x,
-            y,
-            z,
-            rotation_z
-        )
-
-
-        # ----------------------------------------------------
-        # PROYECCIÓN
-        # ----------------------------------------------------
-
-        screen_x = (
-            CENTER_X +
-            x *
-            SPHERE_RADIUS_X
-        )
-
-
-        screen_y = (
-            CENTER_Y +
-            y *
-            SPHERE_RADIUS_Y
-        )
-
-
-        # ----------------------------------------------------
-        # PROFUNDIDAD
-        # ----------------------------------------------------
-
-        depth = (
-            z + 1
-        ) / 2
-
-
-        # ----------------------------------------------------
-        # ESCALA
-        # ----------------------------------------------------
-
-        scale = (
-            0.58 +
-            depth *
-            0.42
-        )
-
-
-        # ----------------------------------------------------
-        # OPACIDAD
-        # ----------------------------------------------------
-
-        opacity = (
-            0.35 +
-            depth *
-            0.65
-        )
-
-
-        result.append(
-            {
-                "index": index,
-                "x": screen_x,
-                "y": screen_y,
-                "z": z,
-                "scale": scale,
-                "opacity": opacity
-            }
-        )
-
+    orbit_z = (
+        math.sin(angle)
+        * radius
+        * 0.16
+    )
 
     # --------------------------------------------------------
-    # PROFUNDIDAD:
-    # atrás -> delante
+    # Movimiento propio
     # --------------------------------------------------------
 
-    result.sort(
-        key=lambda item:
-        item["z"]
+    movement_x = (
+        particle["vx"]
+        *
+        time
+        *
+        MOVEMENT_SPEED
+        *
+        0.10
     )
 
+    movement_y = (
+        particle["vy"]
+        *
+        time
+        *
+        MOVEMENT_SPEED
+        *
+        0.10
+    )
 
-    return result
+    movement_z = (
+        particle["vz"]
+        *
+        time
+        *
+        MOVEMENT_SPEED
+        *
+        0.10
+    )
+
+    # --------------------------------------------------------
+    # Oscilación
+    # --------------------------------------------------------
+
+    wobble = (
+        math.sin(
+            particle["wobble_phase"]
+            +
+            time
+            *
+            particle["wobble_speed"]
+        )
+        * 0.06
+    )
+
+    x = (
+        base_x
+        + orbit_x
+        + movement_x
+        + wobble
+    )
+
+    y = (
+        base_y
+        + orbit_y
+        + movement_y
+    )
+
+    z = (
+        base_z
+        + orbit_z
+        + movement_z
+    )
+
+    # --------------------------------------------------------
+    # Mantener los logos dentro de la zona
+    # --------------------------------------------------------
+
+    x = math.sin(x * 2.2) * 0.95
+
+    y = math.sin(y * 2.0) * 0.90
+
+    z = math.sin(z * 2.1) * 0.95
+
+    # --------------------------------------------------------
+    # PROYECCIÓN 3D
+    # --------------------------------------------------------
+
+    screen_x = (
+        CENTER_X
+        +
+        x
+        * SPREAD_X
+    )
+
+    screen_y = (
+        CENTER_Y
+        +
+        y
+        * SPREAD_Y
+    )
+
+    # --------------------------------------------------------
+    # PROFUNDIDAD
+    #
+    # z = delante
+    # z = detrás
+    # --------------------------------------------------------
+
+    depth = (
+        z + 1
+    ) / 2
+
+    # --------------------------------------------------------
+    # TAMAÑO
+    # --------------------------------------------------------
+
+    scale = (
+        0.48
+        +
+        depth
+        * 0.52
+    )
+
+    # --------------------------------------------------------
+    # OPACIDAD
+    # --------------------------------------------------------
+
+    opacity = (
+        0.30
+        +
+        depth
+        * 0.70
+    )
+
+    return {
+        "x": screen_x,
+        "y": screen_y,
+        "z": z,
+        "scale": scale,
+        "opacity": opacity,
+        "icon": particle["icon"]
+    }
 
 
 # ============================================================
 # CREAR FRAME
 # ============================================================
 
-def create_frame(
-    frame_number
-):
+def create_frame(frame_number):
 
     frame = Image.new(
         "RGBA",
@@ -498,56 +500,50 @@ def create_frame(
         BACKGROUND
     )
 
-
-    positions = calculate_frame(
+    time = (
         frame_number
+        / FPS
     )
 
+    objects = []
 
-    for position in positions:
+    for particle in particles:
 
-        index = position[
-            "index"
-        ]
+        obj = calculate_particle(
+            particle,
+            time
+        )
 
-        x = position[
-            "x"
-        ]
+        objects.append(
+            obj
+        )
 
-        y = position[
-            "y"
-        ]
+    # --------------------------------------------------------
+    # Dibujar primero los objetos del fondo
+    # --------------------------------------------------------
 
-        scale = position[
-            "scale"
-        ]
+    objects.sort(
+        key=lambda obj:
+        obj["z"]
+    )
 
-        opacity = position[
-            "opacity"
-        ]
+    for obj in objects:
 
+        icon = obj["icon"]
 
-        icon = icons[
-            index
-        ][
-            "image"
-        ]
+        scale = obj["scale"]
 
-
-        # ----------------------------------------------------
-        # Tamaño según profundidad
-        # ----------------------------------------------------
+        opacity = obj["opacity"]
 
         size = max(
-            18,
+            16,
             int(
-                ICON_SIZE *
-                scale
+                ICON_SIZE
+                * scale
             )
         )
 
-
-        icon_scaled = icon.resize(
+        resized = icon.resize(
             (
                 size,
                 size
@@ -555,75 +551,43 @@ def create_frame(
             Image.Resampling.LANCZOS
         )
 
-
-        # ----------------------------------------------------
-        # Opacidad
-        # ----------------------------------------------------
-
-        alpha = icon_scaled.getchannel(
+        alpha = resized.getchannel(
             "A"
         )
-
 
         alpha = alpha.point(
             lambda value:
             int(
-                value *
-                opacity
+                value
+                * opacity
             )
         )
 
-
-        icon_scaled.putalpha(
+        resized.putalpha(
             alpha
         )
 
-
-        # ----------------------------------------------------
-        # Composición
-        #
-        # NO dibujamos ningún círculo.
-        # ----------------------------------------------------
-
-        paste_x = int(
-            x -
+        x = int(
+            obj["x"]
+            -
             size / 2
         )
 
-
-        paste_y = int(
-            y -
+        y = int(
+            obj["y"]
+            -
             size / 2
         )
-
 
         frame.alpha_composite(
-            icon_scaled,
+            resized,
             (
-                paste_x,
-                paste_y
+                x,
+                y
             )
         )
 
-
-    # ========================================================
-    # CONVERSIÓN A PALETA
-    #
-    # Esta parte es una de las claves para reducir el GIF.
-    # ========================================================
-
-    frame = frame.convert(
-        "RGB"
-    )
-
-
-    frame = frame.quantize(
-        colors=COLORS,
-        method=Image.Quantize.MEDIANCUT
-    )
-
-
-    return frame
+    return frame.convert("RGB")
 
 
 # ============================================================
@@ -632,12 +596,10 @@ def create_frame(
 
 frames = []
 
-
 print()
 print(
-    "Generando animación..."
+    "Generando nube 3D..."
 )
-
 
 for frame_number in range(
     FRAME_COUNT
@@ -647,57 +609,119 @@ for frame_number in range(
         frame_number
     )
 
+    # --------------------------------------------------------
+    # 128 colores.
+    #
+    # Dejamos que Gifsicle haga posteriormente la optimización
+    # principal de los frames.
+    # --------------------------------------------------------
+
+    frame = frame.quantize(
+        colors=128,
+        method=Image.Quantize.MEDIANCUT
+    )
 
     frames.append(
         frame
     )
 
-
     if (
-        frame_number %
-        FPS
+        frame_number % FPS
         == 0
     ):
 
-        seconds = (
-            frame_number /
-            FPS
-        )
-
         print(
-            f"  {seconds:.0f}/"
+            f"  {frame_number / FPS:.0f}/"
             f"{DURATION}s"
         )
 
 
 # ============================================================
-# GUARDAR GIF
+# GUARDAR GIF TEMPORAL
 # ============================================================
 
-OUTPUT_FILE.parent.mkdir(
+TEMP_GIF.parent.mkdir(
     parents=True,
     exist_ok=True
 )
 
-
 print()
 print(
-    "Guardando GIF optimizado..."
+    "Creando GIF temporal..."
 )
 
-
 frames[0].save(
-    OUTPUT_FILE,
+    TEMP_GIF,
     save_all=True,
     append_images=frames[1:],
     duration=int(
-        1000 /
-        FPS
+        1000 / FPS
     ),
     loop=0,
-    optimize=True,
-    disposal=2
+    optimize=False,
+    disposal=1
 )
+
+
+# ============================================================
+# OPTIMIZACIÓN CON GIFSICLE
+# ============================================================
+
+print()
+print(
+    "Optimizando GIF con Gifsicle..."
+)
+
+command = [
+    "gifsicle",
+
+    "--optimize=3",
+
+    "--colors",
+    "128",
+
+    "--careful",
+
+    "--output",
+    str(OUTPUT_GIF),
+
+    str(TEMP_GIF)
+]
+
+
+result = subprocess.run(
+    command,
+    capture_output=True,
+    text=True
+)
+
+
+if result.returncode != 0:
+
+    print(
+        result.stdout
+    )
+
+    print(
+        result.stderr
+    )
+
+    raise SystemExit(
+        "Gifsicle ha fallado."
+    )
+
+
+# ============================================================
+# ELIMINAR TEMPORAL
+# ============================================================
+
+try:
+
+    TEMP_GIF.unlink()
+
+except FileNotFoundError:
+
+    pass
 
 
 # ============================================================
@@ -705,29 +729,24 @@ frames[0].save(
 # ============================================================
 
 file_size = (
-    OUTPUT_FILE.stat().st_size
+    OUTPUT_GIF.stat().st_size
     /
     1024
     /
     1024
 )
-
 
 print()
 print(
-    "=============================================="
+    "=========================================="
 )
 
 print(
-    "Technologies GIF generado"
+    "Technologies GIF generado correctamente"
 )
 
 print(
-    f"Archivo: {OUTPUT_FILE}"
-)
-
-print(
-    f"Logos: {len(icons)}"
+    f"Archivo: {OUTPUT_GIF}"
 )
 
 print(
@@ -747,13 +766,9 @@ print(
 )
 
 print(
-    f"Paleta: {COLORS} colores"
+    f"Tamaño final: {file_size:.2f} MB"
 )
 
 print(
-    f"Tamaño: {file_size:.2f} MB"
-)
-
-print(
-    "=============================================="
+    "=========================================="
 )
