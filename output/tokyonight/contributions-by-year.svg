@@ -4,20 +4,12 @@
   <line x1="35" y1="45" x2="35" y2="155" stroke="#bf91f3"/>
   <line x1="31" y1="155" x2="35" y2="155" stroke="#bf91f3"/>
   <text x="29" y="158" font-size="10" fill="#bf91f3" text-anchor="end">0</text>
-  <line x1="31" y1="142" x2="35" y2="142" stroke="#bf91f3"/>
-  <text x="29" y="145" font-size="10" fill="#bf91f3" text-anchor="end">10</text>
   <line x1="31" y1="128" x2="35" y2="128" stroke="#bf91f3"/>
   <text x="29" y="131" font-size="10" fill="#bf91f3" text-anchor="end">20</text>
-  <line x1="31" y1="114" x2="35" y2="114" stroke="#bf91f3"/>
-  <text x="29" y="117" font-size="10" fill="#bf91f3" text-anchor="end">30</text>
   <line x1="31" y1="100" x2="35" y2="100" stroke="#bf91f3"/>
   <text x="29" y="103" font-size="10" fill="#bf91f3" text-anchor="end">40</text>
-  <line x1="31" y1="87" x2="35" y2="87" stroke="#bf91f3"/>
-  <text x="29" y="90" font-size="10" fill="#bf91f3" text-anchor="end">50</text>
   <line x1="31" y1="73" x2="35" y2="73" stroke="#bf91f3"/>
   <text x="29" y="76" font-size="10" fill="#bf91f3" text-anchor="end">60</text>
-  <line x1="31" y1="59" x2="35" y2="59" stroke="#bf91f3"/>
-  <text x="29" y="62" font-size="10" fill="#bf91f3" text-anchor="end">70</text>
   <line x1="31" y1="45" x2="35" y2="45" stroke="#bf91f3"/>
   <text x="29" y="48" font-size="10" fill="#bf91f3" text-anchor="end">80</text>
   <line x1="35" y1="155" x2="325" y2="155" stroke="#bf91f3"/>
@@ -38,6 +30,6 @@
   <rect x="254.00" y="155.00" width="22.33" height="0.00" rx="2" fill="#745b97"><title>2024 — 0 commits</title></rect>
   <rect x="278.33" y="155.00" width="22.33" height="0.00" rx="2" fill="#745b97"><title>2025 — 0 commits</title></rect>
   <text x="289.50" y="169" font-size="10" fill="#bf91f3" text-anchor="middle">2025</text>
-  <rect x="302.67" y="57.38" width="22.33" height="97.62" rx="2" fill="#bf91f3"><title>2026 — 71 commits</title></rect>
+  <rect x="302.67" y="45.00" width="22.33" height="110.00" rx="2" fill="#bf91f3"><title>2026 — 80 commits</title></rect>
   <text x="313.83" y="169" font-size="10" fill="#bf91f3" text-anchor="middle">2026</text>
 </svg>
