@@ -6,6 +6,7 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
 
 ## 🛠️ Tecnologías y Herramientas
   
+<div width="100%">
 <div width="45%" align="center" valign="middle">
 	<img src="./assets/technologies.gif" alt="Technologies & Tools" width="90%" />
 </div>
@@ -38,6 +39,7 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
 		<li>🕶️ <strong>Realidad Virtual y Realidad Aumentada</strong> en entornos 5G (IFCD102)</li>
 		<li>📈 <strong>Data Science</strong> (IFCT156PO) — <em>Especialización intensiva de 600 horas</em></li>
 	</ul>
+</div>
 </div>
 
 ## 📊 GitHub Stats
