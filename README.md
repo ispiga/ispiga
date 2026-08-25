@@ -1,4 +1,4 @@
-# ¡Hola! Soy Ismael 👋 
+# ¡Hola! Soy Ismael 👋
 
 ### Analista Programador .NET | Data Scientist | IoT & Embedded Systems Specialist
 
@@ -6,56 +6,146 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
 
 ## 🛠️ Tecnologías y Herramientas
 
-<p align="center">
-  <img
-    src="./assets/technologies.gif"
-    alt="Technologies & Tools"
-    width="535"
+<table width="100%">
+  <tr>
+
+  <td width="40%" align="center" valign="top">
+
+  <picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="./assets/technologies-dark.gif"
   />
-</p>
 
-### 💻 Desarrollo de Software & Backend
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="./assets/technologies-light.gif"
+  />
 
-- **Lenguajes:** C#, Java, PHP, JavaScript, SQL, HTML5, CSS3
-- **Frameworks & Librerías:** .NET Core, .NET Framework 4.8, Spring Boot, ReactJS, jQuery, Bootstrap 4
-- **Bases de Datos:** SQL Server, Oracle PL/SQL
-- **Control de Versiones & Gestión:** Git, TFS, Subversion, Jira
+  <img
+    src="./assets/technologies-dark.gif"
+    alt="Technologies & Tools"
+    width="100%"
+  />
+</picture>
 
-### 📊 Data Science & Inteligencia Artificial
+  </td>
 
-- **Análisis de Datos:** Python (Pandas, NumPy), JSON
-- **BI & ETL:** Power BI, Pentaho, Crystal Reports, RDLC
+  <td width="60%" valign="top">
 
-### 🔌 Hardware, IoT & Sistemas GIS
+  <h3>💻 Desarrollo de Software & Backend</h3>
 
-- **Electrónica & Control:** MSP430, Arduino, Raspberry Pi, MATLAB (Simulink), PSpice, Eagle
-- **Entornos 3D & GIS:** QGIS, Unity, Blender, Impresión 3D
-- **Sistemas & Protocolos:** HL7, Mirth Connect, Redes Cisco
+  <ul>
+  <li><b>Lenguajes:</b> C#, Java, PHP, JavaScript, SQL, HTML5, CSS3</li>
 
-### 🚀 Formación Destacada
+  <li><b>Frameworks & Librerías:</b> .NET Core, .NET Framework 4.8, Spring Boot, ReactJS, jQuery, Bootstrap 4</li>
 
-Actualmente me encuentro ampliando y certificando mis conocimientos técnicos mediante itinerarios oficiales del SEPE/Ministerio de Trabajo.
+  <li><b>Bases de Datos:</b> SQL Server, Oracle PL/SQL</li>
 
-- 🛰️ **Satélites y Drones:** Desarrollo de Aplicaciones (IFCD0089)
-- 🤖 **Inteligencia Artificial y Big Data:** Entornos 5G (IFCD99)
-- 🌐 **IoT y Smart City:** Entornos 5G (IFCD97)
-- 🕶️ **Realidad Virtual y Aumentada:** Entornos 5G (IFCD102)
-- 📈 **Data Science:** IFCT156PO — *600 horas*
+  <li><b>Control de Versiones & Gestión:</b> Git, TFS, Subversion, Jira</li>
+  </ul>
+
+
+  <h3>📊 Data Science & Inteligencia Artificial</h3>
+
+  <ul>
+  <li><b>Análisis de Datos:</b> Python (Pandas, NumPy), JSON</li>
+
+  <li><b>BI & ETL:</b> Power BI, Pentaho, Crystal Reports, RDLC</li>
+  </ul>
+
+
+  <h3>🔌 Hardware, IoT & Sistemas GIS</h3>
+
+  <ul>
+  <li><b>Electrónica & Control:</b> Microcontroladores (MSP430, Arduino, Raspberry Pi), MATLAB (Simulink), PSpice, Eagle</li>
+
+  <li><b>Entornos 3D & GIS:</b> QGIS (Datos satelitales y drones), Unity, Blender, Impresión 3D</li>
+
+  <li><b>Sistemas & Protocolos:</b> Mensajería HL7, Mirth Connect, Redes Cisco</li>
+  </ul>
+
+
+  <h3>🚀 Formación Destacada (Especializaciones SEPE)</h3>
+
+  <p>
+        Actualmente me encuentro ampliando y certificando mis conocimientos
+        técnicos mediante itinerarios oficiales del SEPE/Ministerio de Trabajo:
+      </p>
+
+  <ul>
+  <li>🛰️ <b>Satélites y Drones:</b> Desarrollo de Aplicaciones (IFCD0089)</li>
+
+  <li>🤖 <b>Inteligencia Artificial y Big Data</b> aplicables en entornos 5G (IFCD99)</li>
+
+  <li>🌐 <b>Soluciones de IoT y Smart City</b> aplicables a entornos 5G (IFCD97)</li>
+
+  <li>🕶️ <b>Realidad Virtual y Realidad Aumentada</b> en entornos 5G (IFCD102)</li>
+
+  <li>📈 <b>Data Science</b> (IFCT156PO) — <i>Especialización intensiva de 600 horas</i></li>
+      </ul>
+
+  </td>
+
+  </tr>
+</table>
+
 
 ## 📊 GitHub Stats
 
-<p align="center">
+<table width="100%">
+  <tr>
+
+  <td width="50%" align="center">
+
+  <h3>GitHub Stats</h3>
+
+  <picture>
+        <source
+          media="(prefers-color-scheme: dark)"
+          srcset="./output/tokyonight/stats.svg"
+        />
+
+  <source
+          media="(prefers-color-scheme: light)"
+          srcset="./output/github/stats.svg"
+        />
+
   <img
-    src="./output/tokyonight/stats.svg"
-    alt="GitHub Stats"
-    width="49%"
-  />
+          src="./output/tokyonight/stats.svg"
+          alt="GitHub Stats"
+          width="100%"
+        />
+      </picture>
+
+  </td>
+
+  <td width="50%" align="center">
+
+  <h3>GitHub Streak</h3>
+
+  <picture>
+        <source
+          media="(prefers-color-scheme: dark)"
+          srcset="./output/tokyonight/streak.svg"
+        />
+
+  <source
+          media="(prefers-color-scheme: light)"
+          srcset="./output/github/streak.svg"
+        />
+
   <img
-    src="./output/tokyonight/streak.svg"
-    alt="GitHub Streak"
-    width="49%"
-  />
-</p>
+          src="./output/tokyonight/streak.svg"
+          alt="GitHub Streak"
+          width="100%"
+        />
+      </picture>
+
+    </td>
+
+  </tr>
+</table>
 
 ## 💻 Most Used Languages
 
@@ -67,6 +157,7 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
   />
 </p>
 
+
 ## 📅 Contributions
 
 <p align="center">
@@ -77,7 +168,10 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
   />
 </p>
 
+
 ## 📬 Conecta conmigo
+
 * 💼 [Mi Perfil de LinkedIn](https://linkedin.com/ispiga)
+
 * 📧 [ipinzon.quiroga@gmail.com](mailto:ipinzon.quiroga@gmail.com)
 
