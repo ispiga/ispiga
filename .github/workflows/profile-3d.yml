@@ -16,6 +16,7 @@ jobs:
     name: Generate GitHub Profile 3D
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v5
 
