@@ -6,50 +6,42 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
 
 ## 🛠️ Tecnologías y Herramientas
 
-<!-- CONTENEDOR PRINCIPAL -->
-<div width="100%">
-
-  <!-- COLUMNA IZQUIERDA: GIF (Se adapta a PC y Móvil) -->
-  <div align="left" style="width: 100%; max-width: 380px; display: inline-block; vertical-align: top; margin-bottom: 20px;">
-    <div align="center">
-      <img src="./assets/technologies.gif" alt="Technologies & Tools" width="90%" />
-    </div>
-  </div>
-
-  <!-- COLUMNA DERECHA: TEXTO (Se adapta a PC y Móvil) -->
-  <div align="left" style="width: 100%; max-width: 520px; display: inline-block; vertical-align: top;">
-    <h3>💻 Desarrollo de Software & Backend</h3>
-    <ul>
-      <li><strong>Lenguajes:</strong> C#, Java, PHP, JavaScript, SQL, HTML5, CSS3</li>
-      <li><strong>Frameworks & Librerías:</strong> .NET Core, .NET Framework 4.8, Spring Boot, ReactJS, jQuery, Bootstrap 4</li>
-      <li><strong>Bases de Datos:</strong> SQL Server, Oracle PL/SQL</li>
-      <li><strong>Control de Versiones & Gestión:</strong> Git, TFS, Subversion, Jira</li>
-    </ul>
-    <h3>📊 Data Science & Inteligencia Artificial</h3>
-    <ul>
-      <li><strong>Análisis de Datos:</strong> Python (Pandas, NumPy), JSON</li>
-      <li><strong>BI & ETL:</strong> Power BI, Pentaho, Crystal Reports, RDLC</li>
-    </ul>
-    <h3>🔌 Hardware, IoT & Sistemas GIS</h3>
-    <ul>
-      <li><strong>Electrónica & Control:</strong> Microcontroladores (MSP430, Arduino, Raspberry Pi), MATLAB (Simulink), PSpice, Eagle</li>
-      <li><strong>Entornos 3D & GIS:</strong> QGIS (Datos satelitales y drones), Unity, Blender, Impresión 3D</li>
-      <li><strong>Sistemas & Protocolos:</strong> Mensajería HL7, Mirth Connect, Redes Cisco</li>
-    </ul>
-    <h3>🚀 Formación Destacada (Especializaciones SEPE)</h3>
-    <p>Actualmente me encuentro ampliando y certificando mis conocimientos técnicos mediante itinerarios oficiales del SEPE/Ministerio de Trabajo:</p>
-    <ul>
-      <li>🛰️ <strong>Satélites y Drones:</strong> Desarrollo de Aplicaciones (IFCD0089)</li>
-      <li>🤖 <strong>Inteligencia Artificial y Big Data</strong> aplicables en entornos 5G (IFCD99)</li>
-      <li>🌐 <strong>Soluciones de IoT y Smart City</strong> aplicables a entornos 5G (IFCD97)</li>
-      <li>🕶️ <strong>Realidad Virtual y Realidad Aumentada</strong> en entornos 5G (IFCD102)</li>
-      <li>📈 <strong>Data Science</strong> (IFCT156PO) — <em>Especialización intensiva de 600 horas</em></li>
-    </ul>
-  </div>
-
-</div>
-<!-- FIN DEL CONTENEDOR (Limpia el flujo flotante) -->
-<br clear="left" />
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="center" valign="top" width="40%">
+      <img src="./assets/technologies.gif" alt="Technologies & Tools" width="100%" />
+    </td>
+    <td valign="top" width="60%">
+      <h3>💻 Desarrollo de Software & Backend</h3>
+      <ul>
+        <li><b>Lenguajes:</b> C#, Java, PHP, JavaScript, SQL, HTML5, CSS3</li>
+        <li><b>Frameworks & Librerías:</b> .NET Core, .NET Framework 4.8, Spring Boot, ReactJS, jQuery, Bootstrap 4</li>
+        <li><b>Bases de Datos:</b> SQL Server, Oracle PL/SQL</li>
+        <li><b>Control de Versiones & Gestión:</b> Git, TFS, Subversion, Jira</li>
+      </ul>
+      <h3>📊 Data Science & Inteligencia Artificial</h3>
+      <ul>
+        <li><b>Análisis de Datos:</b> Python (Pandas, NumPy), JSON</li>
+        <li><b>BI & ETL:</b> Power BI, Pentaho, Crystal Reports, RDLC</li>
+      </ul>
+      <h3>🔌 Hardware, IoT & Sistemas GIS</h3>
+      <ul>
+        <li><b>Electrónica & Control:</b> Microcontroladores (MSP430, Arduino, Raspberry Pi), MATLAB (Simulink), PSpice, Eagle</li>
+        <li><b>Entornos 3D & GIS:</b> QGIS (Datos satelitales y drones), Unity, Blender, Impresión 3D</li>
+        <li><b>Sistemas & Protocolos:</b> Mensajería HL7, Mirth Connect, Redes Cisco</li>
+      </ul>
+      <h3>🚀 Formación Destacada (Especializaciones SEPE)</h3>
+      <p>Actualmente me encuentro ampliando y certificando mis conocimientos técnicos mediante itinerarios oficiales del SEPE/Ministerio de Trabajo:</p>
+      <ul>
+        <li>🛰️ <b>Satélites y Drones:</b> Desarrollo de Aplicaciones (IFCD0089)</li>
+        <li>🤖 <b>Inteligencia Artificial y Big Data</b> aplicables en entornos 5G (IFCD99)</li>
+        <li>🌐 <b>Soluciones de IoT y Smart City</b> aplicables a entornos 5G (IFCD97)</li>
+        <li>🕶️ <b>Realidad Virtual y Realidad Aumentada</b> en entornos 5G (IFCD102)</li>
+        <li>📈 <b>Data Science</b> (IFCT156PO) — <em>Especialización intensiva de 600 horas</em></li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 ## 📊 GitHub Stats
 
@@ -89,3 +81,4 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
 ## 📬 Conecta conmigo
 * 💼 [Mi Perfil de LinkedIn](https://linkedin.com/ispiga)
 * 📧 [ipinzon.quiroga@gmail.com](mailto:ipinzon.quiroga@gmail.com)
+
