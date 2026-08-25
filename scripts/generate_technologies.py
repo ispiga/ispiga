@@ -155,15 +155,9 @@ for index, icon in enumerate(icons):
     # Coordenada Y sobre la esfera
     # --------------------------------------------------------
 
-    if count == 1:
-
-        y = 0
-
-    else:
-
-        y = 1 - (
-            2 * index / (count - 1)
-        )
+    # Evitamos los polos exactos de la esfera.
+    # El +0.5 hace que ningún logo tenga radius = 0.
+    y = 1 - (2 * (index + 0.5) / count)
 
     # --------------------------------------------------------
     # Radio horizontal correspondiente a la latitud
