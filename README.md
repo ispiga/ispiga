@@ -42,6 +42,21 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
 - 🕶️ **Realidad Virtual y Aumentada:** Entornos 5G (IFCD102)
 - 📈 **Data Science:** IFCT156PO — *600 horas*
 
+## 📊 GitHub Stats
+
+<p align="center">
+  <img
+    src="./output/tokyonight/stats.svg"
+    alt="GitHub Stats"
+    width="49%"
+  />
+  <img
+    src="./output/tokyonight/streak.svg"
+    alt="GitHub Streak"
+    width="49%"
+  />
+</p>
+
 ## 💻 Most Used Languages
 
 <p align="center">
