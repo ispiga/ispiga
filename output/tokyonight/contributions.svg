@@ -7,34 +7,22 @@
   <text x="22" y="153" font-size="10" fill="#bf91f3" text-anchor="end">0</text>
   <line x1="312" y1="150" x2="316" y2="150" stroke="#bf91f3"/>
   <text x="318" y="153" font-size="10" fill="#bf91f3" text-anchor="start">0</text>
-  <line x1="24" y1="135" x2="28" y2="135" stroke="#bf91f3"/>
-  <text x="22" y="138" font-size="10" fill="#bf91f3" text-anchor="end">10</text>
-  <line x1="312" y1="135" x2="316" y2="135" stroke="#bf91f3"/>
-  <text x="318" y="138" font-size="10" fill="#bf91f3" text-anchor="start">10</text>
-  <line x1="24" y1="120" x2="28" y2="120" stroke="#bf91f3"/>
-  <text x="22" y="123" font-size="10" fill="#bf91f3" text-anchor="end">20</text>
-  <line x1="312" y1="120" x2="316" y2="120" stroke="#bf91f3"/>
-  <text x="318" y="123" font-size="10" fill="#bf91f3" text-anchor="start">20</text>
-  <line x1="24" y1="105" x2="28" y2="105" stroke="#bf91f3"/>
-  <text x="22" y="108" font-size="10" fill="#bf91f3" text-anchor="end">30</text>
-  <line x1="312" y1="105" x2="316" y2="105" stroke="#bf91f3"/>
-  <text x="318" y="108" font-size="10" fill="#bf91f3" text-anchor="start">30</text>
-  <line x1="24" y1="90" x2="28" y2="90" stroke="#bf91f3"/>
-  <text x="22" y="93" font-size="10" fill="#bf91f3" text-anchor="end">40</text>
-  <line x1="312" y1="90" x2="316" y2="90" stroke="#bf91f3"/>
-  <text x="318" y="93" font-size="10" fill="#bf91f3" text-anchor="start">40</text>
-  <line x1="24" y1="75" x2="28" y2="75" stroke="#bf91f3"/>
-  <text x="22" y="78" font-size="10" fill="#bf91f3" text-anchor="end">50</text>
-  <line x1="312" y1="75" x2="316" y2="75" stroke="#bf91f3"/>
-  <text x="318" y="78" font-size="10" fill="#bf91f3" text-anchor="start">50</text>
-  <line x1="24" y1="60" x2="28" y2="60" stroke="#bf91f3"/>
-  <text x="22" y="63" font-size="10" fill="#bf91f3" text-anchor="end">60</text>
-  <line x1="312" y1="60" x2="316" y2="60" stroke="#bf91f3"/>
-  <text x="318" y="63" font-size="10" fill="#bf91f3" text-anchor="start">60</text>
+  <line x1="24" y1="124" x2="28" y2="124" stroke="#bf91f3"/>
+  <text x="22" y="127" font-size="10" fill="#bf91f3" text-anchor="end">20</text>
+  <line x1="312" y1="124" x2="316" y2="124" stroke="#bf91f3"/>
+  <text x="318" y="127" font-size="10" fill="#bf91f3" text-anchor="start">20</text>
+  <line x1="24" y1="98" x2="28" y2="98" stroke="#bf91f3"/>
+  <text x="22" y="101" font-size="10" fill="#bf91f3" text-anchor="end">40</text>
+  <line x1="312" y1="98" x2="316" y2="98" stroke="#bf91f3"/>
+  <text x="318" y="101" font-size="10" fill="#bf91f3" text-anchor="start">40</text>
+  <line x1="24" y1="72" x2="28" y2="72" stroke="#bf91f3"/>
+  <text x="22" y="75" font-size="10" fill="#bf91f3" text-anchor="end">60</text>
+  <line x1="312" y1="72" x2="316" y2="72" stroke="#bf91f3"/>
+  <text x="318" y="75" font-size="10" fill="#bf91f3" text-anchor="start">60</text>
   <line x1="24" y1="45" x2="28" y2="45" stroke="#bf91f3"/>
-  <text x="22" y="48" font-size="10" fill="#bf91f3" text-anchor="end">70</text>
+  <text x="22" y="48" font-size="10" fill="#bf91f3" text-anchor="end">80</text>
   <line x1="312" y1="45" x2="316" y2="45" stroke="#bf91f3"/>
-  <text x="318" y="48" font-size="10" fill="#bf91f3" text-anchor="start">70</text>
+  <text x="318" y="48" font-size="10" fill="#bf91f3" text-anchor="start">80</text>
   <line x1="28" y1="150" x2="312" y2="150" stroke="#bf91f3"/>
   <line x1="28" y1="150" x2="28" y2="154" stroke="#bf91f3"/>
   <text x="28" y="166" font-size="10" fill="#bf91f3" text-anchor="middle">08/25</text>
@@ -50,7 +38,7 @@
   <text x="264" y="166" font-size="10" fill="#bf91f3" text-anchor="middle">06/26</text>
   <line x1="312" y1="150" x2="312" y2="154" stroke="#bf91f3"/>
   <text x="312" y="166" font-size="10" fill="#bf91f3" text-anchor="middle">08/26</text>
-  <path d="M28.00,150.00 C31.94,150.00 43.78,150.00 51.67,150.00 C59.56,150.00 67.44,150.00 75.33,150.00 C83.22,150.00 91.11,150.00 99.00,150.00 C106.89,150.00 114.78,150.00 122.67,150.00 C130.56,150.00 138.44,150.00 146.33,150.00 C154.22,150.00 162.11,150.00 170.00,150.00 C177.89,150.00 185.78,150.00 193.67,150.00 C201.56,150.00 209.44,150.00 217.33,150.00 C225.22,150.00 233.11,152.50 241.00,150.00 C248.89,147.50 256.78,135.00 264.67,135.00 C272.56,135.00 280.44,165.00 288.33,150.00 C296.22,135.00 308.06,62.50 312.00,45.00 L312.00,150.00 L28.00,150.00 Z" fill="#bf91f3" fill-opacity="0.25" stroke="none"/>
-  <path d="M28.00,150.00 C31.94,150.00 43.78,150.00 51.67,150.00 C59.56,150.00 67.44,150.00 75.33,150.00 C83.22,150.00 91.11,150.00 99.00,150.00 C106.89,150.00 114.78,150.00 122.67,150.00 C130.56,150.00 138.44,150.00 146.33,150.00 C154.22,150.00 162.11,150.00 170.00,150.00 C177.89,150.00 185.78,150.00 193.67,150.00 C201.56,150.00 209.44,150.00 217.33,150.00 C225.22,150.00 233.11,152.50 241.00,150.00 C248.89,147.50 256.78,135.00 264.67,135.00 C272.56,135.00 280.44,165.00 288.33,150.00 C296.22,135.00 308.06,62.50 312.00,45.00" fill="none" stroke="#bf91f3" stroke-width="2"/>
+  <path d="M28.00,150.00 C31.94,150.00 43.78,150.00 51.67,150.00 C59.56,150.00 67.44,150.00 75.33,150.00 C83.22,150.00 91.11,150.00 99.00,150.00 C106.89,150.00 114.78,150.00 122.67,150.00 C130.56,150.00 138.44,150.00 146.33,150.00 C154.22,150.00 162.11,150.00 170.00,150.00 C177.89,150.00 185.78,150.00 193.67,150.00 C201.56,150.00 209.44,150.00 217.33,150.00 C225.22,150.00 233.11,152.19 241.00,150.00 C248.89,147.81 256.78,136.88 264.67,136.88 C272.56,136.88 280.44,164.88 288.33,150.00 C296.22,135.12 308.06,64.69 312.00,47.62 L312.00,150.00 L28.00,150.00 Z" fill="#bf91f3" fill-opacity="0.25" stroke="none"/>
+  <path d="M28.00,150.00 C31.94,150.00 43.78,150.00 51.67,150.00 C59.56,150.00 67.44,150.00 75.33,150.00 C83.22,150.00 91.11,150.00 99.00,150.00 C106.89,150.00 114.78,150.00 122.67,150.00 C130.56,150.00 138.44,150.00 146.33,150.00 C154.22,150.00 162.11,150.00 170.00,150.00 C177.89,150.00 185.78,150.00 193.67,150.00 C201.56,150.00 209.44,150.00 217.33,150.00 C225.22,150.00 233.11,152.19 241.00,150.00 C248.89,147.81 256.78,136.88 264.67,136.88 C272.56,136.88 280.44,164.88 288.33,150.00 C296.22,135.12 308.06,64.69 312.00,47.62" fill="none" stroke="#bf91f3" stroke-width="2"/>
   <text x="170" y="184" font-size="11" fill="#bf91f3" text-anchor="middle">mm/yy</text>
 </svg>

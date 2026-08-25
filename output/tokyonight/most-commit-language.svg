@@ -2,24 +2,24 @@
   <rect x="0.5" y="0.5" width="339" height="199" rx="6" fill="#1a1b27" stroke="#1a1b27" stroke-opacity="1.00"/>
   <text x="20" y="30" font-size="15" font-weight="600" fill="#70a5fd">Most Commit Language (last year)</text>
   <rect x="20" y="47" width="10" height="10" fill="#3572A5" stroke="#1a1b27" stroke-width="1"/>
-  <text x="36" y="55" font-size="11" fill="#38bdae">Python 96.05%</text>
+  <text x="36" y="55" font-size="11" fill="#38bdae">Python 96.43%</text>
   <rect x="20" y="67" width="10" height="10" fill="#178600" stroke="#1a1b27" stroke-width="1"/>
-  <text x="36" y="75" font-size="11" fill="#38bdae">C# 1.32%</text>
+  <text x="36" y="75" font-size="11" fill="#38bdae">C# 1.19%</text>
   <rect x="20" y="87" width="10" height="10" fill="#f34b7d" stroke="#1a1b27" stroke-width="1"/>
-  <text x="36" y="95" font-size="11" fill="#38bdae">C++ 0.88%</text>
+  <text x="36" y="95" font-size="11" fill="#38bdae">C++ 0.80%</text>
   <rect x="20" y="107" width="10" height="10" fill="#00B4AB" stroke="#1a1b27" stroke-width="1"/>
-  <text x="36" y="115" font-size="11" fill="#38bdae">Dart 0.88%</text>
+  <text x="36" y="115" font-size="11" fill="#38bdae">Dart 0.80%</text>
   <rect x="20" y="127" width="10" height="10" fill="#DA3434" stroke="#1a1b27" stroke-width="1"/>
-  <text x="36" y="135" font-size="11" fill="#38bdae">CMake 0.68%</text>
+  <text x="36" y="135" font-size="11" fill="#38bdae">CMake 0.62%</text>
   <rect x="20" y="147" width="10" height="10" fill="#F05138" stroke="#1a1b27" stroke-width="1"/>
   <text x="36" y="155" font-size="11" fill="#38bdae">Swift 0.07%</text>
   <rect x="20" y="167" width="10" height="10" fill="#bf91f3" stroke="#1a1b27" stroke-width="1"/>
-  <text x="36" y="175" font-size="11" fill="#38bdae">Other 0.11%</text>
-  <path d="M250.00,55.00 A55.00,55.00 0 1 1 236.50,56.68 L242.64,80.92 A30.00,30.00 0 1 0 250.00,80.00 Z" fill="#3572A5" stroke="#1a1b27" stroke-width="1.5"/>
-  <path d="M236.50,56.68 A55.00,55.00 0 0 1 240.95,55.75 L245.06,80.41 A30.00,30.00 0 0 0 242.64,80.92 Z" fill="#178600" stroke="#1a1b27" stroke-width="1.5"/>
-  <path d="M240.95,55.75 A55.00,55.00 0 0 1 243.98,55.33 L246.71,80.18 A30.00,30.00 0 0 0 245.06,80.41 Z" fill="#f34b7d" stroke="#1a1b27" stroke-width="1.5"/>
-  <path d="M243.98,55.33 A55.00,55.00 0 0 1 247.02,55.08 L248.37,80.04 A30.00,30.00 0 0 0 246.71,80.18 Z" fill="#00B4AB" stroke="#1a1b27" stroke-width="1.5"/>
-  <path d="M247.02,55.08 A55.00,55.00 0 0 1 249.37,55.00 L249.66,80.00 A30.00,30.00 0 0 0 248.37,80.04 Z" fill="#DA3434" stroke="#1a1b27" stroke-width="1.5"/>
-  <path d="M249.37,55.00 A55.00,55.00 0 0 1 249.62,55.00 L249.80,80.00 A30.00,30.00 0 0 0 249.66,80.00 Z" fill="#F05138" stroke="#1a1b27" stroke-width="1.5"/>
-  <path d="M249.62,55.00 A55.00,55.00 0 0 1 250.00,55.00 L250.00,80.00 A30.00,30.00 0 0 0 249.80,80.00 Z" fill="#bf91f3" stroke="#1a1b27" stroke-width="1.5"/>
+  <text x="36" y="175" font-size="11" fill="#38bdae">Other 0.10%</text>
+  <path d="M250.00,55.00 A55.00,55.00 0 1 1 237.76,56.38 L243.33,80.75 A30.00,30.00 0 1 0 250.00,80.00 Z" fill="#3572A5" stroke="#1a1b27" stroke-width="1.5"/>
+  <path d="M237.76,56.38 A55.00,55.00 0 0 1 241.81,55.61 L245.53,80.33 A30.00,30.00 0 0 0 243.33,80.75 Z" fill="#178600" stroke="#1a1b27" stroke-width="1.5"/>
+  <path d="M241.81,55.61 A55.00,55.00 0 0 1 244.55,55.27 L247.03,80.15 A30.00,30.00 0 0 0 245.53,80.33 Z" fill="#f34b7d" stroke="#1a1b27" stroke-width="1.5"/>
+  <path d="M244.55,55.27 A55.00,55.00 0 0 1 247.30,55.07 L248.53,80.04 A30.00,30.00 0 0 0 247.03,80.15 Z" fill="#00B4AB" stroke="#1a1b27" stroke-width="1.5"/>
+  <path d="M247.30,55.07 A55.00,55.00 0 0 1 249.43,55.00 L249.69,80.00 A30.00,30.00 0 0 0 248.53,80.04 Z" fill="#DA3434" stroke="#1a1b27" stroke-width="1.5"/>
+  <path d="M249.43,55.00 A55.00,55.00 0 0 1 249.66,55.00 L249.81,80.00 A30.00,30.00 0 0 0 249.69,80.00 Z" fill="#F05138" stroke="#1a1b27" stroke-width="1.5"/>
+  <path d="M249.66,55.00 A55.00,55.00 0 0 1 250.00,55.00 L250.00,80.00 A30.00,30.00 0 0 0 249.81,80.00 Z" fill="#bf91f3" stroke="#1a1b27" stroke-width="1.5"/>
 </svg>
