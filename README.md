@@ -4,148 +4,110 @@
 
 Me considero un desarrollador polivalente con un perfil híbrido. Combino años de experiencia en el desarrollo de software empresarial e infraestructuras críticas con una especialización activa en Ciencia de Datos, Inteligencia Artificial y arquitecturas de hardware (Sistemas Embebidos, IoT, GIS y tecnologías aeroespaciales).
 
+---
+
 ## 🛠️ Tecnologías y Herramientas
 
-<table width="100%">
-  <tr>
-
-  <td width="40%" align="center" valign="top">
-
-  <picture>
+<picture>
   <source
     media="(prefers-color-scheme: dark)"
-    srcset="./assets/technologies-dark.gif"
-  />
-
+    srcset="./assets/technologies.gif"
+  >
   <source
     media="(prefers-color-scheme: light)"
-    srcset="./assets/technologies-light.gif"
-  />
-
+    srcset="./assets/technologies.gif"
+  >
   <img
-    src="./assets/technologies-dark.gif"
+    align="left"
+    width="42%"
+    src="./assets/technologies.gif"
     alt="Technologies & Tools"
-    width="100%"
-  />
+  >
 </picture>
 
-  </td>
+<h3 align="left">💻 Desarrollo de Software & Backend</h3>
 
-  <td width="60%" valign="top">
-
-  <h3>💻 Desarrollo de Software & Backend</h3>
-
-  <ul>
+<ul align="left">
   <li><b>Lenguajes:</b> C#, Java, PHP, JavaScript, SQL, HTML5, CSS3</li>
-
   <li><b>Frameworks & Librerías:</b> .NET Core, .NET Framework 4.8, Spring Boot, ReactJS, jQuery, Bootstrap 4</li>
-
   <li><b>Bases de Datos:</b> SQL Server, Oracle PL/SQL</li>
-
   <li><b>Control de Versiones & Gestión:</b> Git, TFS, Subversion, Jira</li>
-  </ul>
+</ul>
 
+<h3 align="left">📊 Data Science & Inteligencia Artificial</h3>
 
-  <h3>📊 Data Science & Inteligencia Artificial</h3>
-
-  <ul>
+<ul align="left">
   <li><b>Análisis de Datos:</b> Python (Pandas, NumPy), JSON</li>
-
   <li><b>BI & ETL:</b> Power BI, Pentaho, Crystal Reports, RDLC</li>
-  </ul>
+</ul>
 
+<h3 align="left">🔌 Hardware, IoT & Sistemas GIS</h3>
 
-  <h3>🔌 Hardware, IoT & Sistemas GIS</h3>
-
-  <ul>
+<ul align="left">
   <li><b>Electrónica & Control:</b> Microcontroladores (MSP430, Arduino, Raspberry Pi), MATLAB (Simulink), PSpice, Eagle</li>
-
   <li><b>Entornos 3D & GIS:</b> QGIS (Datos satelitales y drones), Unity, Blender, Impresión 3D</li>
-
   <li><b>Sistemas & Protocolos:</b> Mensajería HL7, Mirth Connect, Redes Cisco</li>
-  </ul>
+</ul>
 
+<h3 align="left">🚀 Formación Destacada (Especializaciones SEPE)</h3>
 
-  <h3>🚀 Formación Destacada (Especializaciones SEPE)</h3>
+<p align="left">
+Actualmente me encuentro ampliando y certificando mis conocimientos técnicos mediante itinerarios oficiales del SEPE/Ministerio de Trabajo:
+</p>
 
-  <p>
-        Actualmente me encuentro ampliando y certificando mis conocimientos
-        técnicos mediante itinerarios oficiales del SEPE/Ministerio de Trabajo:
-      </p>
-
-  <ul>
+<ul align="left">
   <li>🛰️ <b>Satélites y Drones:</b> Desarrollo de Aplicaciones (IFCD0089)</li>
-
-  <li>🤖 <b>Inteligencia Artificial y Big Data</b> aplicables en entornos 5G (IFCD99)</li>
-
+  <li>🤖 <b>Inteligencia Artificial y Big Data</b> aplicables a entornos 5G (IFCD99)</li>
   <li>🌐 <b>Soluciones de IoT y Smart City</b> aplicables a entornos 5G (IFCD97)</li>
-
   <li>🕶️ <b>Realidad Virtual y Realidad Aumentada</b> en entornos 5G (IFCD102)</li>
-
   <li>📈 <b>Data Science</b> (IFCT156PO) — <i>Especialización intensiva de 600 horas</i></li>
-      </ul>
+</ul>
 
-  </td>
+<br clear="left">
 
-  </tr>
-</table>
-
+---
 
 ## 📊 GitHub Stats
 
-<table width="100%">
-  <tr>
-
-  <td width="50%" align="center">
-
-  <h3>GitHub Stats</h3>
+<p>
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="./output/tokyonight/stats.svg"
+    >
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="./output/default/stats.svg"
+    >
+    <img
+      align="left"
+      width="49%"
+      src="./output/default/stats.svg"
+      alt="GitHub Stats"
+    >
+  </picture>
 
   <picture>
-        <source
-          media="(prefers-color-scheme: dark)"
-          srcset="./output/tokyonight/stats.svg"
-        />
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="./output/tokyonight/streak.svg"
+    >
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="./output/default/streak.svg"
+    >
+    <img
+      align="right"
+      width="49%"
+      src="./output/default/streak.svg"
+      alt="GitHub Streak"
+    >
+  </picture>
+</p>
 
-  <source
-          media="(prefers-color-scheme: light)"
-          srcset="./output/github/stats.svg"
-        />
+<br clear="all">
 
-  <img
-          src="./output/tokyonight/stats.svg"
-          alt="GitHub Stats"
-          width="100%"
-        />
-      </picture>
-
-  </td>
-
-  <td width="50%" align="center">
-
-  <h3>GitHub Streak</h3>
-
-  <picture>
-        <source
-          media="(prefers-color-scheme: dark)"
-          srcset="./output/tokyonight/streak.svg"
-        />
-
-  <source
-          media="(prefers-color-scheme: light)"
-          srcset="./output/github/streak.svg"
-        />
-
-  <img
-          src="./output/tokyonight/streak.svg"
-          alt="GitHub Streak"
-          width="100%"
-        />
-      </picture>
-
-    </td>
-
-  </tr>
-</table>
+---
 
 ## 💻 Most Used Languages
 
@@ -154,24 +116,32 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
     src="./github-metrics-languages.svg"
     alt="Most Used Languages"
     width="90%"
-  />
+  >
 </p>
 
+---
 
 ## 📅 Contributions
 
-<p align="center">
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="./profile-custom-gitblock-dark.svg"
+  >
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="./profile-custom-gitblock-light.svg"
+  >
   <img
-    src="./profile-3d-contrib/profile-custom-gitblock.svg"
+    src="./profile-custom-gitblock-light.svg"
     alt="GitHub Contributions 3D"
     width="80%"
-  />
-</p>
+  >
+</picture>
 
+---
 
 ## 📬 Conecta conmigo
 
-* 💼 [Mi Perfil de LinkedIn](https://linkedin.com/ispiga)
-
-* 📧 [ipinzon.quiroga@gmail.com](mailto:ipinzon.quiroga@gmail.com)
-
+- 💼 [Mi Perfil de LinkedIn](https://linkedin.com/ispiga)
+- 📧 [ipinzon.quiroga@gmail.com](mailto:ipinzon.quiroga@gmail.com)
