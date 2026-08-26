@@ -10,23 +10,22 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
 
 ## 🛠️ Tecnologías y Herramientas
 
-<p align="left">
-  <picture>
-    <source
-      media="(prefers-color-scheme: dark)"
-      srcset="./assets/technologies-dark.gif"
-    />
-    <source
-      media="(prefers-color-scheme: light)"
-      srcset="./assets/technologies-light.gif"
-    />
-    <img
-      src="./assets/technologies-light.gif"
-      alt="Technologies & Tools"
-      width="40%"
-    />
-  </picture>
-</p>
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="./assets/technologies-dark.gif"
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="./assets/technologies-light.gif"
+  />
+  <img
+    src="./assets/technologies-light.gif"
+    alt="Technologies & Tools"
+    align="left"
+    width="40%"
+  />
+</picture>
 
 <h3 align="left">💻 Desarrollo de Software & Backend</h3>
 
