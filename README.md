@@ -8,22 +8,25 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
 
 ## 🛠️ Tecnologías y Herramientas
 
-<picture>
-  <source
-    media="(prefers-color-scheme: dark)"
-    srcset="./assets/technologies-dark.gif"
-  />
-  <source
-    media="(prefers-color-scheme: light)"
-    srcset="./assets/technologies-light.gif"
-  />
-  <img
-    align="left"
-    width="45%"
-    src="./assets/technologies-light.gif"
-    alt="Technologies & Tools"
-  />
-</picture>
+## 🛠️ Tecnologías y Herramientas
+
+<p align="center">
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="./assets/technologies-dark.gif"
+    />
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="./assets/technologies-light.gif"
+    />
+    <img
+      src="./assets/technologies-light.gif"
+      alt="Technologies & Tools"
+      width="400"
+    />
+  </picture>
+</p>
 
 <h3 align="left">💻 Desarrollo de Software & Backend</h3>
 
@@ -49,15 +52,13 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
   <li><b>Sistemas & Protocolos:</b> Mensajería HL7, Mirth Connect, Redes Cisco</li>
 </ul>
 
-<br clear="left">
+<h3 align="left">🚀 Formación Destacada (Especializaciones SEPE)</h3>
 
-<h3>🚀 Formación Destacada (Especializaciones SEPE)</h3>
-
-<p>
+<p align="left">
 Actualmente me encuentro ampliando y certificando mis conocimientos técnicos mediante itinerarios oficiales del SEPE/Ministerio de Trabajo:
 </p>
 
-<ul>
+<ul align="left">
   <li>🛰️ <b>Satélites y Drones:</b> Desarrollo de Aplicaciones (IFCD0089)</li>
   <li>🤖 <b>Inteligencia Artificial y Big Data:</b> aplicables a entornos 5G (IFCD99)</li>
   <li>🌐 <b>Soluciones de IoT y Smart City:</b> aplicables a entornos 5G (IFCD97)</li>
