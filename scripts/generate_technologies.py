@@ -14,7 +14,11 @@ from PIL import Image
 INPUT_DIR = Path("assets/technologies")
 
 TEMP_GIF = Path("assets/technologies_raw.gif")
-OUTPUT_GIF = Path("assets/technologies.gif")
+OUTPUT_GIF_DARK = Path("assets/technologies-dark.gif")
+OUTPUT_GIF_LIGHT = Path("assets/technologies-light.gif")
+
+DARK_BACKGROUND = (13, 17, 23, 255)
+LIGHT_BACKGROUND = (255, 255, 255, 255)
 
 WIDTH = 535
 HEIGHT = 460
@@ -190,20 +194,18 @@ for index, icon in enumerate(icons):
 # CREAR FRAME
 # ============================================================
 
-def create_frame(frame_number):
-
+def create_frame(frame_number, background):
     frame = Image.new(
         "RGBA",
         (
             WIDTH,
             HEIGHT
         ),
-        BACKGROUND
+        background
     )
 
     time = (
-        frame_number
-        /
+        frame_number /
         FPS
     )
 
@@ -214,41 +216,31 @@ def create_frame(frame_number):
         angle = (
             particle["angle"]
             +
-            time
-            *
-            ROTATION_SPEED
+            time * ROTATION_SPEED
         )
 
         radius = particle["radius"]
 
         x = (
-            radius
-            *
+            radius *
             math.cos(angle)
         )
 
         z = (
-            radius
-            *
+            radius *
             math.sin(angle)
         )
 
         y = particle["y"]
 
         screen_x = (
-            CENTER_X
-            +
-            x
-            *
-            SPHERE_RADIUS_X
+            CENTER_X +
+            x * SPHERE_RADIUS_X
         )
 
         screen_y = (
-            CENTER_Y
-            +
-            y
-            *
-            SPHERE_RADIUS_Y
+            CENTER_Y +
+            y * SPHERE_RADIUS_Y
         )
 
         depth = (
@@ -256,28 +248,21 @@ def create_frame(frame_number):
         ) / 2
 
         scale = (
-            0.58
-            +
-            depth
-            *
-            0.42
+            0.58 +
+            depth * 0.42
         )
 
         size = max(
             20,
             int(
-                ICON_SIZE
-                *
+                ICON_SIZE *
                 scale
             )
         )
 
         opacity = (
-            0.40
-            +
-            depth
-            *
-            0.60
+            0.40 +
+            depth * 0.60
         )
 
         objects.append(
@@ -291,6 +276,240 @@ def create_frame(frame_number):
             }
         )
 
+    objects.sort(
+        key=lambda item: item["z"]
+    )
+
+    for obj in objects:
+
+        size = obj["size"]
+
+        resized = obj["icon"].resize(
+            (
+                size,
+                size
+            ),
+            Image.Resampling.LANCZOS
+        )
+
+        alpha = resized.getchannel("A")
+
+        alpha = alpha.point(
+            lambda value:
+            int(
+                value *
+                obj["opacity"]
+            )
+        )
+
+        resized.putalpha(alpha)
+
+        x = int(
+            obj["x"] -
+            size / 2
+        )
+
+        y = int(
+            obj["y"] -
+            size / 2
+        )
+
+        frame.alpha_composite(
+            resized,
+            (
+                x,
+                y
+            )
+        )
+
+    return frame.convert("RGB")
+
+    def generate_gif(background, output_gif):
+
+    print()
+    print(
+        f"Generando: {output_gif}"
+    )
+
+    frames_rgb = []
+
+    for frame_number in range(FRAME_COUNT):
+
+        frame = create_frame(
+            frame_number,
+            background
+        )
+
+        frames_rgb.append(frame)
+
+        if frame_number % FPS == 0:
+            print(
+                f"  {frame_number // FPS}"
+                f"/{DURATION} segundos"
+            )
+
+    print()
+    print("Generando paleta global...")
+
+    sample_count = min(
+        32,
+        len(frames_rgb)
+    )
+
+    sample_width = WIDTH // 2
+    sample_height = HEIGHT // 2
+
+    palette_canvas = Image.new(
+        "RGB",
+        (
+            sample_width,
+            sample_height * sample_count
+        )
+    )
+
+    for i in range(sample_count):
+
+        index = int(
+            i *
+            (
+                len(frames_rgb) - 1
+            )
+            /
+            max(
+                1,
+                sample_count - 1
+            )
+        )
+
+        sample = frames_rgb[index].resize(
+            (
+                sample_width,
+                sample_height
+            ),
+            Image.Resampling.LANCZOS
+        )
+
+        palette_canvas.paste(
+            sample,
+            (
+                0,
+                i * sample_height
+            )
+        )
+
+    palette = palette_canvas.quantize(
+        colors=256,
+        method=Image.Quantize.MEDIANCUT
+    )
+
+    print()
+    print("Aplicando paleta global...")
+
+    frames = []
+
+    for frame in frames_rgb:
+
+        indexed = frame.quantize(
+            palette=palette,
+            dither=Image.Dither.NONE
+        )
+
+        frames.append(indexed)
+
+    delay_pattern = [
+        60,
+        60,
+        70,
+        60,
+        70,
+        60,
+        60,
+        70,
+        60,
+        60
+    ]
+
+    durations = [
+        delay_pattern[
+            i % len(delay_pattern)
+        ]
+        for i in range(FRAME_COUNT)
+    ]
+
+    temp_gif = output_gif.with_name(
+        output_gif.stem + "_raw.gif"
+    )
+
+    frames[0].save(
+        temp_gif,
+        save_all=True,
+        append_images=frames[1:],
+        duration=durations,
+        loop=0,
+        optimize=False,
+        disposal=1
+    )
+
+    print()
+    print("Optimizando GIF...")
+
+    command = [
+        "gifsicle",
+        "--optimize=3",
+        "--colors",
+        "256",
+        "--careful",
+        "--output",
+        str(output_gif),
+        str(temp_gif)
+    ]
+
+    result = subprocess.run(
+        command,
+        capture_output=True,
+        text=True
+    )
+
+    if result.returncode != 0:
+
+        print(result.stdout)
+        print(result.stderr)
+
+        raise SystemExit(
+            "Gifsicle ha fallado."
+        )
+
+    try:
+        temp_gif.unlink()
+    except FileNotFoundError:
+        pass
+
+    size_mb = (
+        output_gif.stat().st_size
+        /
+        1024
+        /
+        1024
+    )
+
+    print(
+        f"Generado: {output_gif}"
+    )
+
+    print(
+        f"Tamaño: {size_mb:.2f} MB"
+    )
+
+
+generate_gif(
+    DARK_BACKGROUND,
+    OUTPUT_GIF_DARK
+)
+
+generate_gif(
+    LIGHT_BACKGROUND,
+    OUTPUT_GIF_LIGHT
+)
 
     # ========================================================
     # PROFUNDIDAD
