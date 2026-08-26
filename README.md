@@ -27,23 +27,23 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
 
 <h3 align="left">💻 Desarrollo de Software & Backend</h3>
 <ul align="left">
-  <li>Lenguajes:** C#, Java, PHP, JavaScript, SQL, HTML5, CSS3</li>
-  <li>Frameworks & Librerías:** .NET Core, .NET Framework 4.8, Spring Boot, ReactJS, jQuery, Bootstrap 4</li>
-  <li>Bases de Datos:** SQL Server, Oracle PL/SQL</li>
-  <li></li>Control de Versiones & Gestión:** Git, TFS, Subversion, Jira</ul>
+  <li>Lenguajes: C#, Java, PHP, JavaScript, SQL, HTML5, CSS3</li>
+  <li>Frameworks & Librerías: .NET Core, .NET Framework 4.8, Spring Boot, ReactJS, jQuery, Bootstrap 4</li>
+  <li>Bases de Datos: SQL Server, Oracle PL/SQL</li>
+  <li></li>Control de Versiones & Gestión: Git, TFS, Subversion, Jira</ul>
 </ul>
 
 <h3 align="left">📊 Data Science & Inteligencia Artificial</h3>
 <ul align="left">
-<li>Análisis de Datos:** Python (Pandas, NumPy), JSON</li>
-<li>BI & ETL:** Power BI, Pentaho, Crystal Reports, RDLC</li>
+<li>Análisis de Datos: Python (Pandas, NumPy), JSON</li>
+<li>BI & ETL: Power BI, Pentaho, Crystal Reports, RDLC</li>
 </ul>
 
 <h3 align="left">🔌 Hardware, IoT & Sistemas GIS</h3>
 <ul align="left">
-<li>Electrónica & Control:** Microcontroladores (MSP430, Arduino, Raspberry Pi), MATLAB (Simulink), PSpice, Eagle</li>
-<li>Entornos 3D & GIS:** QGIS (Datos satelitales y drones), Unity, Blender, Impresión 3D</li>
-<li>Sistemas & Protocolos:** Mensajería HL7, Mirth Connect, Redes Cisco</li>
+<li>Electrónica & Control: Microcontroladores (MSP430, Arduino, Raspberry Pi), MATLAB (Simulink), PSpice, Eagle</li>
+<li>Entornos 3D & GIS: QGIS (Datos satelitales y drones), Unity, Blender, Impresión 3D</li>
+<li>Sistemas & Protocolos: Mensajería HL7, Mirth Connect, Redes Cisco</li>
 </ul>
 
 ### 🚀 Formación Destacada (Especializaciones SEPE)
