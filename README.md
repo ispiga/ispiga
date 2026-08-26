@@ -22,7 +22,6 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
     <img
       src="./assets/technologies-light.gif"
       alt="Technologies & Tools"
-      width="100%"
     />
   </picture>
 </div>
