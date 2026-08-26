@@ -36,15 +36,15 @@
   <rect x="156.25" y="155.00" width="11.12" height="0.00" rx="2" fill="#bf91f3"><title>10:00 — 0 commits</title></rect>
   <rect x="168.38" y="144.00" width="11.12" height="11.00" rx="2" fill="#bf91f3"><title>11:00 — 2 commits</title></rect>
   <rect x="180.50" y="116.50" width="11.12" height="38.50" rx="2" fill="#bf91f3"><title>12:00 — 7 commits</title></rect>
-  <rect x="192.62" y="61.50" width="11.12" height="93.50" rx="2" fill="#bf91f3"><title>13:00 — 17 commits</title></rect>
-  <rect x="204.75" y="144.00" width="11.12" height="11.00" rx="2" fill="#bf91f3"><title>14:00 — 2 commits</title></rect>
+  <rect x="192.62" y="45.00" width="11.12" height="110.00" rx="2" fill="#bf91f3"><title>13:00 — 20 commits</title></rect>
+  <rect x="204.75" y="122.00" width="11.12" height="33.00" rx="2" fill="#bf91f3"><title>14:00 — 6 commits</title></rect>
   <rect x="216.88" y="155.00" width="11.12" height="0.00" rx="2" fill="#bf91f3"><title>15:00 — 0 commits</title></rect>
   <rect x="229.00" y="127.50" width="11.12" height="27.50" rx="2" fill="#bf91f3"><title>16:00 — 5 commits</title></rect>
   <rect x="241.12" y="116.50" width="11.12" height="38.50" rx="2" fill="#bf91f3"><title>17:00 — 7 commits</title></rect>
-  <rect x="253.25" y="89.00" width="11.12" height="66.00" rx="2" fill="#bf91f3"><title>18:00 — 12 commits</title></rect>
+  <rect x="253.25" y="78.00" width="11.12" height="77.00" rx="2" fill="#bf91f3"><title>18:00 — 14 commits</title></rect>
   <rect x="265.38" y="122.00" width="11.12" height="33.00" rx="2" fill="#bf91f3"><title>19:00 — 6 commits</title></rect>
   <rect x="277.50" y="89.00" width="11.12" height="66.00" rx="2" fill="#bf91f3"><title>20:00 — 12 commits</title></rect>
-  <rect x="289.62" y="89.00" width="11.12" height="66.00" rx="2" fill="#bf91f3"><title>21:00 — 12 commits</title></rect>
+  <rect x="289.62" y="56.00" width="11.12" height="99.00" rx="2" fill="#bf91f3"><title>21:00 — 18 commits</title></rect>
   <rect x="301.75" y="149.50" width="11.12" height="5.50" rx="2" fill="#bf91f3"><title>22:00 — 1 commits</title></rect>
   <rect x="313.88" y="61.50" width="11.12" height="93.50" rx="2" fill="#bf91f3"><title>23:00 — 17 commits</title></rect>
   <text x="180" y="189" font-size="11" fill="#bf91f3" text-anchor="middle">hour of day</text>
