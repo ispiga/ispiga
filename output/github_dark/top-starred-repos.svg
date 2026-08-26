@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="200" viewBox="0 0 340 200" font-family="'Segoe UI', Ubuntu, Sans-Serif">
+  <rect x="0.5" y="0.5" width="339" height="199" rx="6" fill="#0d1117" stroke="#2e343b" stroke-opacity="1.00"/>
+  <text x="20" y="30" font-size="15" font-weight="600" fill="#0366d6">Top Starred Repos</text>
+  <text x="25" y="100" font-size="13" fill="#8b949e">No public repos with stars.</text>
+</svg>
