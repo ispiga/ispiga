@@ -8,8 +8,7 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
 
 ## 🛠️ Tecnologías y Herramientas
 
-<div align="center">
-<div align="left">
+<div align="left" width="45%">
   <picture>
     <source
       media="(prefers-color-scheme: dark)"
@@ -22,7 +21,6 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
     <img
       src="./assets/technologies-light.gif"
       alt="Technologies & Tools"
-      width="45%"
     />
   </picture>
 </div>
@@ -48,7 +46,6 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
   <li>Entornos 3D & GIS: QGIS (Datos satelitales y drones), Unity, Blender, Impresión 3D</li>
   <li>Sistemas & Protocolos: Mensajería HL7, Mirth Connect, Redes Cisco</li>
   </ul>
-</div>
 </div>
 
 ### 🚀 Formación Destacada (Especializaciones SEPE)
