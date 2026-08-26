@@ -18,29 +18,33 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
     srcset="./assets/technologies-light.gif"
   />
   <img
+    align="left"
     src="./assets/technologies-light.gif"
     alt="Technologies & Tools"
     width="100%"
   />
 </picture>
 
-### 💻 Desarrollo de Software & Backend
+<h3 align="left">💻 Desarrollo de Software & Backend</h3>
+<ul align="left">
+  <li>Lenguajes:** C#, Java, PHP, JavaScript, SQL, HTML5, CSS3</li>
+  <li>Frameworks & Librerías:** .NET Core, .NET Framework 4.8, Spring Boot, ReactJS, jQuery, Bootstrap 4</li>
+  <li>Bases de Datos:** SQL Server, Oracle PL/SQL</li>
+  <li></li>Control de Versiones & Gestión:** Git, TFS, Subversion, Jira</ul>
+</ul>
 
-- **Lenguajes:** C#, Java, PHP, JavaScript, SQL, HTML5, CSS3
-- **Frameworks & Librerías:** .NET Core, .NET Framework 4.8, Spring Boot, ReactJS, jQuery, Bootstrap 4
-- **Bases de Datos:** SQL Server, Oracle PL/SQL
-- **Control de Versiones & Gestión:** Git, TFS, Subversion, Jira
+<h3 align="left">📊 Data Science & Inteligencia Artificial</h3>
+<ul align="left">
+<li>Análisis de Datos:** Python (Pandas, NumPy), JSON</li>
+<li>BI & ETL:** Power BI, Pentaho, Crystal Reports, RDLC</li>
+</ul>
 
-### 📊 Data Science & Inteligencia Artificial
-
-- **Análisis de Datos:** Python (Pandas, NumPy), JSON
-- **BI & ETL:** Power BI, Pentaho, Crystal Reports, RDLC
-
-### 🔌 Hardware, IoT & Sistemas GIS
-
-- **Electrónica & Control:** Microcontroladores (MSP430, Arduino, Raspberry Pi), MATLAB (Simulink), PSpice, Eagle
-- **Entornos 3D & GIS:** QGIS (Datos satelitales y drones), Unity, Blender, Impresión 3D
-- **Sistemas & Protocolos:** Mensajería HL7, Mirth Connect, Redes Cisco
+<h3 align="left">🔌 Hardware, IoT & Sistemas GIS</h3>
+<ul align="left">
+<li>Electrónica & Control:** Microcontroladores (MSP430, Arduino, Raspberry Pi), MATLAB (Simulink), PSpice, Eagle</li>
+<li>Entornos 3D & GIS:** QGIS (Datos satelitales y drones), Unity, Blender, Impresión 3D</li>
+<li>Sistemas & Protocolos:** Mensajería HL7, Mirth Connect, Redes Cisco</li>
+</ul>
 
 ### 🚀 Formación Destacada (Especializaciones SEPE)
 
