@@ -10,77 +10,55 @@ permissions:
   contents: write
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
 
     name: Generate GitHub Profile 3D
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Generate 3D contribution profile
+      # ======================================================
+      # DARK
+      # ======================================================
+
+      - name: Generate dark profile
         uses: yoshi389111/github-profile-3d-contrib@latest
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
           USERNAME: ${{ github.repository_owner }}
-          SETTING_JSON: profile-3d-settings.json
+          SETTING_JSON: profile-3d-settings-dark.json
 
-      - name: Rename dark version
-        run: |
-          if [ -f profile-custom-gitblock.svg ]; then
-            mv profile-custom-gitblock.svg profile-custom-gitblock-dark.svg
-          else
-            echo "ERROR: profile-custom-gitblock.svg was not generated"
-            exit 1
-          fi
 
-      - name: Generate light version
-        run: |
-          python3 - <<'PY'
-          import json
+      # ======================================================
+      # LIGHT
+      # ======================================================
 
-          path = "profile-3d-settings.json"
-
-          with open(path, "r", encoding="utf-8") as f:
-              data = json.load(f)
-
-          data["backgroundColor"] = "#ffffff"
-          data["foregroundColor"] = "#24292f"
-          data["strongColor"] = "#24292f"
-          data["weakColor"] = "#57606a"
-
-          with open("profile-3d-settings-light.json", "w", encoding="utf-8") as f:
-              json.dump(data, f, indent=2)
-          PY
-
-          rm -f profile-custom-gitblock.svg
-
-      - name: Generate light 3D profile
+      - name: Generate light profile
         uses: yoshi389111/github-profile-3d-contrib@latest
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
           USERNAME: ${{ github.repository_owner }}
           SETTING_JSON: profile-3d-settings-light.json
 
-      - name: Rename light version
-        run: |
-          if [ -f profile-custom-gitblock.svg ]; then
-            mv profile-custom-gitblock.svg profile-custom-gitblock-light.svg
-          else
-            echo "ERROR: profile-custom-gitblock.svg was not generated"
-            exit 1
-          fi
+
+      # ======================================================
+      # COMMIT
+      # ======================================================
 
       - name: Commit and Push
         run: |
+
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add -A .
 
-          if git commit -m "chore: update 3D contribution profiles"; then
+          if git commit -m "chore: update 3D contribution profile"; then
             git push
-          else
-            echo "No changes to commit"
           fi
