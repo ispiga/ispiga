@@ -10,7 +10,7 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
 
 ## 🛠️ Tecnologías y Herramientas
 
-<p align="center">
+<p align="left">
   <picture>
     <source
       media="(prefers-color-scheme: dark)"
@@ -23,7 +23,7 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
     <img
       src="./assets/technologies-light.gif"
       alt="Technologies & Tools"
-      width="400"
+      width="40%"
     />
   </picture>
 </p>
