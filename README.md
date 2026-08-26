@@ -51,21 +51,19 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
 
 <br clear="left">
 
-<h3 align="left">🚀 Formación Destacada (Especializaciones SEPE)</h3>
+<h3>🚀 Formación Destacada (Especializaciones SEPE)</h3>
 
-<p align="left">
+<p>
 Actualmente me encuentro ampliando y certificando mis conocimientos técnicos mediante itinerarios oficiales del SEPE/Ministerio de Trabajo:
 </p>
 
-<ul align="left">
+<ul>
   <li>🛰️ <b>Satélites y Drones:</b> Desarrollo de Aplicaciones (IFCD0089)</li>
   <li>🤖 <b>Inteligencia Artificial y Big Data:</b> aplicables a entornos 5G (IFCD99)</li>
   <li>🌐 <b>Soluciones de IoT y Smart City:</b> aplicables a entornos 5G (IFCD97)</li>
   <li>🕶️ <b>Realidad Virtual y Realidad Aumentada:</b> en entornos 5G (IFCD102)</li>
   <li>📈 <b>Data Science:</b> (IFCT156PO) — <i>Especialización intensiva de 600 horas</i></li>
 </ul>
-
-<br clear="left">
 
 ---
 
