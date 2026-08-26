@@ -8,136 +8,122 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
 
 ## 🛠️ Tecnologías y Herramientas
 
-<picture>
-  <source
-    media="(prefers-color-scheme: dark)"
-    srcset="./assets/technologies.gif"
-  >
-  <source
-    media="(prefers-color-scheme: light)"
-    srcset="./assets/technologies.gif"
-  >
+<p align="center">
+
   <img
-    align="left"
-    width="42%"
     src="./assets/technologies.gif"
     alt="Technologies & Tools"
-  >
-</picture>
+    width="535"
+  />
 
-<h3 align="left">💻 Desarrollo de Software & Backend</h3>
-
-<ul align="left">
-  <li><b>Lenguajes:</b> C#, Java, PHP, JavaScript, SQL, HTML5, CSS3</li>
-  <li><b>Frameworks & Librerías:</b> .NET Core, .NET Framework 4.8, Spring Boot, ReactJS, jQuery, Bootstrap 4</li>
-  <li><b>Bases de Datos:</b> SQL Server, Oracle PL/SQL</li>
-  <li><b>Control de Versiones & Gestión:</b> Git, TFS, Subversion, Jira</li>
-</ul>
-
-<h3 align="left">📊 Data Science & Inteligencia Artificial</h3>
-
-<ul align="left">
-  <li><b>Análisis de Datos:</b> Python (Pandas, NumPy), JSON</li>
-  <li><b>BI & ETL:</b> Power BI, Pentaho, Crystal Reports, RDLC</li>
-</ul>
-
-<h3 align="left">🔌 Hardware, IoT & Sistemas GIS</h3>
-
-<ul align="left">
-  <li><b>Electrónica & Control:</b> Microcontroladores (MSP430, Arduino, Raspberry Pi), MATLAB (Simulink), PSpice, Eagle</li>
-  <li><b>Entornos 3D & GIS:</b> QGIS (Datos satelitales y drones), Unity, Blender, Impresión 3D</li>
-  <li><b>Sistemas & Protocolos:</b> Mensajería HL7, Mirth Connect, Redes Cisco</li>
-</ul>
-
-<h3 align="left">🚀 Formación Destacada (Especializaciones SEPE)</h3>
-
-<p align="left">
-Actualmente me encuentro ampliando y certificando mis conocimientos técnicos mediante itinerarios oficiales del SEPE/Ministerio de Trabajo:
 </p>
 
-<ul align="left">
-  <li>🛰️ <b>Satélites y Drones:</b> Desarrollo de Aplicaciones (IFCD0089)</li>
-  <li>🤖 <b>Inteligencia Artificial y Big Data</b> aplicables a entornos 5G (IFCD99)</li>
-  <li>🌐 <b>Soluciones de IoT y Smart City</b> aplicables a entornos 5G (IFCD97)</li>
-  <li>🕶️ <b>Realidad Virtual y Realidad Aumentada</b> en entornos 5G (IFCD102)</li>
-  <li>📈 <b>Data Science</b> (IFCT156PO) — <i>Especialización intensiva de 600 horas</i></li>
-</ul>
+### 💻 Desarrollo de Software & Backend
 
-<br clear="left">
+- **Lenguajes:** C#, Java, PHP, JavaScript, SQL, HTML5, CSS3
+- **Frameworks & Librerías:** .NET Core, .NET Framework 4.8, Spring Boot, ReactJS, jQuery, Bootstrap 4
+- **Bases de Datos:** SQL Server, Oracle PL/SQL
+- **Control de Versiones & Gestión:** Git, TFS, Subversion, Jira
+
+### 📊 Data Science & Inteligencia Artificial
+
+- **Análisis de Datos:** Python (Pandas, NumPy), JSON
+- **BI & ETL:** Power BI, Pentaho, Crystal Reports, RDLC
+
+### 🔌 Hardware, IoT & Sistemas GIS
+
+- **Electrónica & Control:** Microcontroladores (MSP430, Arduino, Raspberry Pi), MATLAB (Simulink), PSpice, Eagle
+- **Entornos 3D & GIS:** QGIS (Datos satelitales y drones), Unity, Blender, Impresión 3D
+- **Sistemas & Protocolos:** Mensajería HL7, Mirth Connect, Redes Cisco
+
+### 🚀 Formación Destacada (Especializaciones SEPE)
+
+Actualmente me encuentro ampliando y certificando mis conocimientos técnicos mediante itinerarios oficiales del SEPE/Ministerio de Trabajo:
+
+- 🛰️ **Satélites y Drones:** Desarrollo de Aplicaciones (IFCD0089)
+- 🤖 **Inteligencia Artificial y Big Data** aplicables a entornos 5G (IFCD99)
+- 🌐 **Soluciones de IoT y Smart City** aplicables a entornos 5G (IFCD97)
+- 🕶️ **Realidad Virtual y Realidad Aumentada** en entornos 5G (IFCD102)
+- 📈 **Data Science** (IFCT156PO) — *Especialización intensiva de 600 horas*
 
 ---
 
 ## 📊 GitHub Stats
 
-<p>
+<p align="center">
+
   <picture>
     <source
       media="(prefers-color-scheme: dark)"
-      srcset="./output/tokyonight/stats.svg"
-    >
+      srcset="./output/github_dark/stats.svg"
+    />
     <source
       media="(prefers-color-scheme: light)"
-      srcset="./output/default/stats.svg"
-    >
+      srcset="./output/github/stats.svg"
+    />
     <img
-      align="left"
-      width="49%"
-      src="./output/default/stats.svg"
+      src="./output/github/stats.svg"
       alt="GitHub Stats"
-    >
+      width="420"
+    />
   </picture>
 
   <picture>
     <source
       media="(prefers-color-scheme: dark)"
-      srcset="./output/tokyonight/streak.svg"
-    >
+      srcset="./output/github_dark/streak.svg"
+    />
     <source
       media="(prefers-color-scheme: light)"
-      srcset="./output/default/streak.svg"
-    >
+      srcset="./output/github/streak.svg"
+    />
     <img
-      align="right"
-      width="49%"
-      src="./output/default/streak.svg"
+      src="./output/github/streak.svg"
       alt="GitHub Streak"
-    >
+      width="420"
+    />
   </picture>
-</p>
 
-<br clear="all">
+</p>
 
 ---
 
 ## 💻 Most Used Languages
 
 <p align="center">
+
   <img
     src="./github-metrics-languages.svg"
     alt="Most Used Languages"
     width="90%"
-  >
+  />
+
 </p>
 
 ---
 
 ## 📅 Contributions
 
-<picture>
-  <source
-    media="(prefers-color-scheme: dark)"
-    srcset="./profile-custom-gitblock-dark.svg"
-  >
-  <source
-    media="(prefers-color-scheme: light)"
-    srcset="./profile-custom-gitblock-light.svg"
-  >
-  <img
-    src="./profile-custom-gitblock-light.svg"
-    alt="GitHub Contributions 3D"
-    width="80%"
-  >
-</picture>
+<p align="center">
+
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="./profile-3d-contrib/profile-custom-gitblock-dark.svg"
+    />
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="./profile-3d-contrib/profile-custom-gitblock-light.svg"
+    />
+    <img
+      src="./profile-3d-contrib/profile-custom-gitblock-light.svg"
+      alt="GitHub Contributions 3D"
+      width="80%"
+    />
+
+  </picture>
+
+</p>
 
 ---
 
