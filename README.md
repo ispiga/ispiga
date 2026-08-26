@@ -8,57 +8,64 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
 
 ## 🛠️ Tecnologías y Herramientas
 
-<div align="left" width="45%">
-  <picture>
-    <source
-      media="(prefers-color-scheme: dark)"
-      srcset="./assets/technologies-dark.gif"
-    />
-    <source
-      media="(prefers-color-scheme: light)"
-      srcset="./assets/technologies-light.gif"
-    />
-    <img
-      src="./assets/technologies-light.gif"
-      alt="Technologies & Tools"
-    />
-  </picture>
-</div>
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="./assets/technologies-dark.gif"
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="./assets/technologies-light.gif"
+  />
+  <img
+    align="left"
+    width="45%"
+    src="./assets/technologies-light.gif"
+    alt="Technologies & Tools"
+  />
+</picture>
 
-<div align="left" width="45%">
-  <h3>💻 Desarrollo de Software & Backend</h3>
-  <ul>
-    <li>Lenguajes: C#, Java, PHP, JavaScript, SQL, HTML5, CSS3</li>
-    <li>Frameworks & Librerías: .NET Core, .NET Framework 4.8, Spring Boot, ReactJS, jQuery, Bootstrap 4</li>
-    <li>Bases de Datos: SQL Server, Oracle PL/SQL</li>
-    <li>Control de Versiones & Gestión: Git, TFS, Subversion, Jira</li>
-  </ul>
-  
-  <h3>📊 Data Science & Inteligencia Artificial</h3>
-  <ul>
-    <li>Análisis de Datos: Python (Pandas, NumPy), JSON</li>
-    <li>BI & ETL: Power BI, Pentaho, Crystal Reports, RDLC</li>
-  </ul>
-  
-  <h3>🔌 Hardware, IoT & Sistemas GIS</h3>
-  <ul>
-    <li>Electrónica & Control: Microcontroladores (MSP430, Arduino, Raspberry Pi), MATLAB (Simulink), PSpice, Eagle</li>
-    <li>Entornos 3D & GIS: QGIS (Datos satelitales y drones), Unity, Blender, Impresión 3D</li>
-    <li>Sistemas & Protocolos: Mensajería HL7, Mirth Connect, Redes Cisco</li>
-  </ul>
-</div>
+<h3 align="left">💻 Desarrollo de Software & Backend</h3>
 
-<div align="left" width="100%">
-  <h3>🚀 Formación Destacada (Especializaciones SEPE)</h3>
-  <p>Actualmente me encuentro ampliando y certificando mis conocimientos técnicos mediante itinerarios oficiales del SEPE/Ministerio de Trabajo:</p>
-  <ul>
-    <li>🛰️ Satélites y Drones: Desarrollo de Aplicaciones (IFCD0089)</li>
-    <li> 🤖 Inteligencia Artificial y Big Data aplicables a entornos 5G (IFCD99)</li>
-    <li>🌐 Soluciones de IoT y Smart City aplicables a entornos 5G (IFCD97)</li>
-    <li> 🕶️ Realidad Virtual y Realidad Aumentada en entornos 5G (IFCD102)</li>
-    <li> 📈 Data Science (IFCT156PO) Especialización intensiva de 600 horas</li>
-  </ul>
-</div>
+<ul align="left">
+  <li><b>Lenguajes:</b> C#, Java, PHP, JavaScript, SQL, HTML5, CSS3</li>
+  <li><b>Frameworks & Librerías:</b> .NET Core, .NET Framework 4.8, Spring Boot, ReactJS, jQuery, Bootstrap 4</li>
+  <li><b>Bases de Datos:</b> SQL Server, Oracle PL/SQL</li>
+  <li><b>Control de Versiones & Gestión:</b> Git, TFS, Subversion, Jira</li>
+</ul>
+
+<h3 align="left">📊 Data Science & Inteligencia Artificial</h3>
+
+<ul align="left">
+  <li><b>Análisis de Datos:</b> Python (Pandas, NumPy), JSON</li>
+  <li><b>BI & ETL:</b> Power BI, Pentaho, Crystal Reports, RDLC</li>
+</ul>
+
+<h3 align="left">🔌 Hardware, IoT & Sistemas GIS</h3>
+
+<ul align="left">
+  <li><b>Electrónica & Control:</b> Microcontroladores (MSP430, Arduino, Raspberry Pi), MATLAB (Simulink), PSpice, Eagle</li>
+  <li><b>Entornos 3D & GIS:</b> QGIS (Datos satelitales y drones), Unity, Blender, Impresión 3D</li>
+  <li><b>Sistemas & Protocolos:</b> Mensajería HL7, Mirth Connect, Redes Cisco</li>
+</ul>
+
+<br clear="left">
+
+<h3 align="left">🚀 Formación Destacada (Especializaciones SEPE)</h3>
+
+<p align="left">
+Actualmente me encuentro ampliando y certificando mis conocimientos técnicos mediante itinerarios oficiales del SEPE/Ministerio de Trabajo:
+</p>
+
+<ul align="left">
+  <li>🛰️ <b>Satélites y Drones:</b> Desarrollo de Aplicaciones (IFCD0089)</li>
+  <li>🤖 <b>Inteligencia Artificial y Big Data:</b> aplicables a entornos 5G (IFCD99)</li>
+  <li>🌐 <b>Soluciones de IoT y Smart City:</b> aplicables a entornos 5G (IFCD97)</li>
+  <li>🕶️ <b>Realidad Virtual y Realidad Aumentada:</b> en entornos 5G (IFCD102)</li>
+  <li>📈 <b>Data Science:</b> (IFCT156PO) — <i>Especialización intensiva de 600 horas</i></li>
+</ul>
+
+<br clear="left">
 
 ---
 
