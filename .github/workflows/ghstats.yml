@@ -24,7 +24,7 @@ jobs:
           user: ${{ github.repository_owner }}
           token: ${{ github.token }}
 
-          themes: github,github_dark
+          themes: github,tokyonight
 
           tz: Europe/Madrid
 
