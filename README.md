@@ -26,7 +26,7 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
   </picture>
 </div>
 
-<div align="left" width="55%">
+<div align="left" width="45%">
   <h3>💻 Desarrollo de Software & Backend</h3>
   <ul>
     <li>Lenguajes: C#, Java, PHP, JavaScript, SQL, HTML5, CSS3</li>
