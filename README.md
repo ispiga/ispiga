@@ -27,37 +27,37 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
   />
 </picture>
 
-<h3 align="left">💻 Desarrollo de Software & Backend</h3>
+<h3 align="left" width="50%">💻 Desarrollo de Software & Backend</h3>
 
-<ul align="left">
+<ul align="left" width="50%">
   <li><b>Lenguajes:</b> C#, Java, PHP, JavaScript, SQL, HTML5, CSS3</li>
   <li><b>Frameworks & Librerías:</b> .NET Core, .NET Framework 4.8, Spring Boot, ReactJS, jQuery, Bootstrap 4</li>
   <li><b>Bases de Datos:</b> SQL Server, Oracle PL/SQL</li>
   <li><b>Control de Versiones & Gestión:</b> Git, TFS, Subversion, Jira</li>
 </ul>
 
-<h3 align="left">📊 Data Science & Inteligencia Artificial</h3>
+<h3 align="left" width="50%">📊 Data Science & Inteligencia Artificial</h3>
 
-<ul align="left">
+<ul align="left" width="50%">
   <li><b>Análisis de Datos:</b> Python (Pandas, NumPy), JSON</li>
   <li><b>BI & ETL:</b> Power BI, Pentaho, Crystal Reports, RDLC</li>
 </ul>
 
-<h3 align="left">🔌 Hardware, IoT & Sistemas GIS</h3>
+<h3 align="left" width="50%">🔌 Hardware, IoT & Sistemas GIS</h3>
 
-<ul align="left">
+<ul align="left" width="50%">
   <li><b>Electrónica & Control:</b> Microcontroladores (MSP430, Arduino, Raspberry Pi), MATLAB (Simulink), PSpice, Eagle</li>
   <li><b>Entornos 3D & GIS:</b> QGIS (Datos satelitales y drones), Unity, Blender, Impresión 3D</li>
   <li><b>Sistemas & Protocolos:</b> Mensajería HL7, Mirth Connect, Redes Cisco</li>
 </ul>
 
-<h3 align="left">🚀 Formación Destacada (Especializaciones SEPE)</h3>
+<h3>🚀 Formación Destacada (Especializaciones SEPE)</h3>
 
-<p align="left">
+<p>
 Actualmente me encuentro ampliando y certificando mis conocimientos técnicos mediante itinerarios oficiales del SEPE/Ministerio de Trabajo:
 </p>
 
-<ul align="left">
+<ul>
   <li>🛰️ <b>Satélites y Drones:</b> Desarrollo de Aplicaciones (IFCD0089)</li>
   <li>🤖 <b>Inteligencia Artificial y Big Data:</b> aplicables a entornos 5G (IFCD99)</li>
   <li>🌐 <b>Soluciones de IoT y Smart City:</b> aplicables a entornos 5G (IFCD97)</li>
