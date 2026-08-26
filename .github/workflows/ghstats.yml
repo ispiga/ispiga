@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v5
 
@@ -23,11 +24,13 @@ jobs:
           user: ${{ github.repository_owner }}
           token: ${{ github.token }}
 
-          themes: tokyonight,default
+          themes: github,github_dark
+
           tz: Europe/Madrid
 
           include_forks: "true"
           include_private: "false"
 
           commit_changes: "true"
+
           commit_message: "chore: update GitHub stats"
