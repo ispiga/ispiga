@@ -31,7 +31,7 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
     <li>Lenguajes: C#, Java, PHP, JavaScript, SQL, HTML5, CSS3</li>
     <li>Frameworks & Librerías: .NET Core, .NET Framework 4.8, Spring Boot, ReactJS, jQuery, Bootstrap 4</li>
     <li>Bases de Datos: SQL Server, Oracle PL/SQL</li>
-    <li></li>Control de Versiones & Gestión: Git, TFS, Subversion, Jira</ul>
+    <li>Control de Versiones & Gestión: Git, TFS, Subversion, Jira</li>
   </ul>
   
   <h3>📊 Data Science & Inteligencia Artificial</h3>
