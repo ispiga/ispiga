@@ -8,7 +8,7 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
 
 ## 🛠️ Tecnologías y Herramientas
 
-<div align="center">
+<div align="left">
   <picture>
     <source
       media="(prefers-color-scheme: dark)"
@@ -24,7 +24,9 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
       width="100%"
     />
   </picture>
-  
+</div>
+
+<div align="left">
   <h3>💻 Desarrollo de Software & Backend</h3>
   <ul>
     <li>Lenguajes: C#, Java, PHP, JavaScript, SQL, HTML5, CSS3</li>
