@@ -19,23 +19,58 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Generate dark 3D contribution profile
+      - name: Generate 3D contribution profile
         uses: yoshi389111/github-profile-3d-contrib@latest
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
           SETTING_JSON: profile-3d-settings.json
 
-      - name: Rename dark profile
+      - name: Rename dark version
         run: |
-          mv profile-custom-gitblock.svg profile-custom-gitblock-dark.svg
+          if [ -f profile-custom-gitblock.svg ]; then
+            mv profile-custom-gitblock.svg profile-custom-gitblock-dark.svg
+          else
+            echo "ERROR: profile-custom-gitblock.svg was not generated"
+            exit 1
+          fi
 
-      - name: Generate light 3D contribution profile
+      - name: Generate light version
+        run: |
+          python3 - <<'PY'
+          import json
+
+          path = "profile-3d-settings.json"
+
+          with open(path, "r", encoding="utf-8") as f:
+              data = json.load(f)
+
+          data["backgroundColor"] = "#ffffff"
+          data["foregroundColor"] = "#24292f"
+          data["strongColor"] = "#24292f"
+          data["weakColor"] = "#57606a"
+
+          with open("profile-3d-settings-light.json", "w", encoding="utf-8") as f:
+              json.dump(data, f, indent=2)
+          PY
+
+          rm -f profile-custom-gitblock.svg
+
+      - name: Generate light 3D profile
         uses: yoshi389111/github-profile-3d-contrib@latest
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
           SETTING_JSON: profile-3d-settings-light.json
+
+      - name: Rename light version
+        run: |
+          if [ -f profile-custom-gitblock.svg ]; then
+            mv profile-custom-gitblock.svg profile-custom-gitblock-light.svg
+          else
+            echo "ERROR: profile-custom-gitblock.svg was not generated"
+            exit 1
+          fi
 
       - name: Commit and Push
         run: |
@@ -46,4 +81,6 @@ jobs:
 
           if git commit -m "chore: update 3D contribution profiles"; then
             git push
+          else
+            echo "No changes to commit"
           fi
