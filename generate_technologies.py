@@ -13,12 +13,18 @@ from PIL import Image
 
 INPUT_DIR = Path("assets/technologies")
 
-TEMP_GIF = Path("assets/technologies_raw.gif")
-OUTPUT_GIF_DARK = Path("assets/technologies-dark.gif")
-OUTPUT_GIF_LIGHT = Path("assets/technologies-light.gif")
+OUTPUT_GIF_DARK = Path(
+    "assets/technologies-dark.gif"
+)
 
-DARK_BACKGROUND = (13, 17, 23, 255)
-LIGHT_BACKGROUND = (255, 255, 255, 255)
+OUTPUT_GIF_LIGHT = Path(
+    "assets/technologies-light.gif"
+)
+
+
+# ============================================================
+# DIMENSIONES
+# ============================================================
 
 WIDTH = 535
 HEIGHT = 460
@@ -26,16 +32,50 @@ HEIGHT = 460
 CENTER_X = WIDTH / 2
 CENTER_Y = HEIGHT / 2
 
-# Fondo TRANSPARENTE
-BACKGROUND = (0, 0, 0, 0)
 
-# Renderizado de SVG a alta resolución
+# ============================================================
+# FONDOS
+# ============================================================
+
+DARK_BACKGROUND = (
+    13,
+    17,
+    23,
+    255
+)
+
+LIGHT_BACKGROUND = (
+    255,
+    255,
+    255,
+    255
+)
+
+
+# ============================================================
+# RENDERIZADO DE LOS SVG
+# ============================================================
+
+# Los SVG se renderizan a mayor resolución
+# y posteriormente se reducen.
+#
+# Esto ayuda a mantener una mejor calidad
+# de los logos.
+
 SVG_RENDER_SIZE = 256
 
-# Tamaño máximo de los logos
+
+# ============================================================
+# TAMAÑO DE LOS LOGOS
+# ============================================================
+
 ICON_SIZE = 64
 
-# Tamaño de la esfera
+
+# ============================================================
+# TAMAÑO VISUAL DE LA ESFERA
+# ============================================================
+
 SPHERE_RADIUS_X = 205
 SPHERE_RADIUS_Y = 180
 
@@ -44,29 +84,47 @@ SPHERE_RADIUS_Y = 180
 # ANIMACIÓN
 # ============================================================
 
+# Duración de un ciclo completo.
+
 DURATION = 16
 
-# 15 FPS = equilibrio entre fluidez y tamaño
+
+# Número de frames por segundo.
+
 FPS = 15
 
-FRAME_COUNT = DURATION * FPS
 
-ROTATION_SPEED = (2 * math.pi) / DURATION
+FRAME_COUNT = (
+    DURATION *
+    FPS
+)
+
+
+# Una vuelta completa durante todo el GIF.
+
+ROTATION_SPEED = (
+    2 *
+    math.pi
+) / DURATION
 
 
 # ============================================================
-# DEPENDENCIAS
+# COMPROBAR DEPENDENCIAS
 # ============================================================
 
 try:
+
     import cairosvg
+
 except ImportError:
+
     raise SystemExit(
         "ERROR: CairoSVG no está instalado."
     )
 
 
 if shutil.which("gifsicle") is None:
+
     raise SystemExit(
         "ERROR: gifsicle no está instalado."
     )
@@ -80,21 +138,26 @@ svg_files = sorted(
     INPUT_DIR.glob("*.svg")
 )
 
+
 if not svg_files:
+
     raise SystemExit(
         f"No se encontraron SVG en {INPUT_DIR}"
     )
 
+
+print()
 print(
     f"Encontrados {len(svg_files)} logos."
 )
 
 
 # ============================================================
-# CARGAR SVG
+# CARGAR SVG A ALTA RESOLUCIÓN
 # ============================================================
 
 icons = []
+
 
 for svg_file in svg_files:
 
@@ -124,11 +187,14 @@ for svg_file in svg_files:
     except Exception as error:
 
         print(
-            f"  ERROR: {svg_file.name}: {error}"
+            f"  ERROR: "
+            f"{svg_file.name}: "
+            f"{error}"
         )
 
 
 if not icons:
+
     raise SystemExit(
         "No se pudo cargar ningún logo."
     )
@@ -137,20 +203,44 @@ if not icons:
 # ============================================================
 # DISTRIBUCIÓN DE FIBONACCI
 # ============================================================
+#
+# Los logos se colocan sobre la SUPERFICIE
+# de una esfera.
+#
+# No colocamos ningún logo exactamente
+# en los polos.
+#
+# Esto permite que incluso los logos de
+# la zona superior e inferior tengan
+# movimiento orbital visible.
+#
+# ============================================================
 
 particles = []
 
+
 count = len(icons)
 
-golden_angle = math.pi * (
-    3 - math.sqrt(5)
+
+golden_angle = (
+    math.pi *
+    (
+        3 -
+        math.sqrt(5)
+    )
 )
 
+
 # Evitamos los polos exactos.
+
 LATITUDE_LIMIT = 0.86
 
 
 for index, icon in enumerate(icons):
+
+    # --------------------------------------------------------
+    # Distribución vertical
+    # --------------------------------------------------------
 
     normalized = (
         (index + 0.5)
@@ -159,25 +249,35 @@ for index, icon in enumerate(icons):
     )
 
     y = (
-        1
-        -
+        1 -
         2 * normalized
     )
 
     y *= LATITUDE_LIMIT
 
+
+    # --------------------------------------------------------
+    # Radio horizontal de la esfera
+    # --------------------------------------------------------
+
     radius = math.sqrt(
         max(
             0,
-            1 - y * y
+            1 -
+            y * y
         )
     )
 
+
+    # --------------------------------------------------------
+    # Longitud inicial
+    # --------------------------------------------------------
+
     angle = (
-        index
-        *
+        index *
         golden_angle
     )
+
 
     particles.append(
         {
@@ -194,7 +294,11 @@ for index, icon in enumerate(icons):
 # CREAR FRAME
 # ============================================================
 
-def create_frame(frame_number, background):
+def create_frame(
+    frame_number,
+    background
+):
+
     frame = Image.new(
         "RGBA",
         (
@@ -204,53 +308,105 @@ def create_frame(frame_number, background):
         background
     )
 
+
+    # --------------------------------------------------------
+    # Tiempo
+    # --------------------------------------------------------
+
     time = (
-        frame_number /
+        frame_number
+        /
         FPS
     )
 
+
+    # --------------------------------------------------------
+    # Objetos
+    # --------------------------------------------------------
+
     objects = []
 
+
     for particle in particles:
+
+        # ----------------------------------------------------
+        # ROTACIÓN
+        # ----------------------------------------------------
 
         angle = (
             particle["angle"]
             +
-            time * ROTATION_SPEED
+            time *
+            ROTATION_SPEED
         )
 
-        radius = particle["radius"]
+
+        radius = (
+            particle["radius"]
+        )
+
+
+        # ----------------------------------------------------
+        # POSICIÓN SOBRE LA SUPERFICIE
+        # ----------------------------------------------------
 
         x = (
             radius *
             math.cos(angle)
         )
 
+
         z = (
             radius *
             math.sin(angle)
         )
 
-        y = particle["y"]
+
+        y = (
+            particle["y"]
+        )
+
+
+        # ----------------------------------------------------
+        # PROYECCIÓN
+        # ----------------------------------------------------
 
         screen_x = (
-            CENTER_X +
-            x * SPHERE_RADIUS_X
+            CENTER_X
+            +
+            x *
+            SPHERE_RADIUS_X
         )
 
+
         screen_y = (
-            CENTER_Y +
-            y * SPHERE_RADIUS_Y
+            CENTER_Y
+            +
+            y *
+            SPHERE_RADIUS_Y
         )
+
+
+        # ----------------------------------------------------
+        # PROFUNDIDAD
+        # ----------------------------------------------------
 
         depth = (
             z + 1
         ) / 2
 
+
+        # ----------------------------------------------------
+        # ESCALA SEGÚN PROFUNDIDAD
+        # ----------------------------------------------------
+
         scale = (
-            0.58 +
-            depth * 0.42
+            0.58
+            +
+            depth *
+            0.42
         )
+
 
         size = max(
             20,
@@ -260,10 +416,18 @@ def create_frame(frame_number, background):
             )
         )
 
+
+        # ----------------------------------------------------
+        # OPACIDAD SEGÚN PROFUNDIDAD
+        # ----------------------------------------------------
+
         opacity = (
-            0.40 +
-            depth * 0.60
+            0.40
+            +
+            depth *
+            0.60
         )
+
 
         objects.append(
             {
@@ -276,13 +440,29 @@ def create_frame(frame_number, background):
             }
         )
 
+
+    # ========================================================
+    # ORDENAR POR PROFUNDIDAD
+    # ========================================================
+
     objects.sort(
-        key=lambda item: item["z"]
+        key=lambda item:
+        item["z"]
     )
+
+
+    # ========================================================
+    # DIBUJAR LOGOS
+    # ========================================================
 
     for obj in objects:
 
         size = obj["size"]
+
+
+        # ----------------------------------------------------
+        # REDUCIR EL SVG RENDERIZADO
+        # ----------------------------------------------------
 
         resized = obj["icon"].resize(
             (
@@ -292,7 +472,15 @@ def create_frame(frame_number, background):
             Image.Resampling.LANCZOS
         )
 
-        alpha = resized.getchannel("A")
+
+        # ----------------------------------------------------
+        # APLICAR OPACIDAD
+        # ----------------------------------------------------
+
+        alpha = (
+            resized.getchannel("A")
+        )
+
 
         alpha = alpha.point(
             lambda value:
@@ -302,17 +490,33 @@ def create_frame(frame_number, background):
             )
         )
 
-        resized.putalpha(alpha)
+
+        resized.putalpha(
+            alpha
+        )
+
+
+        # ----------------------------------------------------
+        # POSICIÓN
+        # ----------------------------------------------------
 
         x = int(
-            obj["x"] -
+            obj["x"]
+            -
             size / 2
         )
 
+
         y = int(
-            obj["y"] -
+            obj["y"]
+            -
             size / 2
         )
+
+
+        # ----------------------------------------------------
+        # DIBUJAR
+        # ----------------------------------------------------
 
         frame.alpha_composite(
             resized,
@@ -322,99 +526,201 @@ def create_frame(frame_number, background):
             )
         )
 
-    return frame.convert("RGB")
 
-    def generate_gif(background, output_gif):
+    return frame.convert(
+        "RGB"
+    )
+
+
+# ============================================================
+# GENERAR UN GIF
+# ============================================================
+
+def generate_gif(
+    background,
+    output_gif
+):
 
     print()
+    print(
+        "=========================================="
+    )
+
     print(
         f"Generando: {output_gif}"
     )
 
+    print(
+        "=========================================="
+    )
+
+
+    # ========================================================
+    # CREAR FRAMES
+    # ========================================================
+
     frames_rgb = []
 
-    for frame_number in range(FRAME_COUNT):
+
+    for frame_number in range(
+        FRAME_COUNT
+    ):
 
         frame = create_frame(
             frame_number,
             background
         )
 
-        frames_rgb.append(frame)
 
-        if frame_number % FPS == 0:
+        frames_rgb.append(
+            frame
+        )
+
+
+        if (
+            frame_number %
+            FPS
+            == 0
+        ):
+
             print(
-                f"  {frame_number // FPS}"
-                f"/{DURATION} segundos"
+                f"  "
+                f"{frame_number // FPS}"
+                f"/"
+                f"{DURATION}"
+                f" segundos"
             )
 
+
+    # ========================================================
+    # PALETA GLOBAL
+    # ========================================================
+    #
+    # Una única paleta para TODO el GIF.
+    #
+    # Esto evita que los colores de los
+    # logos cambien entre frames.
+    #
+    # ========================================================
+
     print()
-    print("Generando paleta global...")
+    print(
+        "Generando paleta global..."
+    )
+
 
     sample_count = min(
         32,
         len(frames_rgb)
     )
 
-    sample_width = WIDTH // 2
-    sample_height = HEIGHT // 2
+
+    sample_width = (
+        WIDTH // 2
+    )
+
+
+    sample_height = (
+        HEIGHT // 2
+    )
+
 
     palette_canvas = Image.new(
         "RGB",
         (
             sample_width,
-            sample_height * sample_count
+            sample_height *
+            sample_count
         )
     )
 
-    for i in range(sample_count):
+
+    for i in range(
+        sample_count
+    ):
 
         index = int(
             i *
             (
-                len(frames_rgb) - 1
+                len(frames_rgb)
+                -
+                1
             )
             /
             max(
                 1,
-                sample_count - 1
+                sample_count -
+                1
             )
         )
 
-        sample = frames_rgb[index].resize(
-            (
-                sample_width,
-                sample_height
-            ),
-            Image.Resampling.LANCZOS
+
+        sample = (
+            frames_rgb[index]
+            .resize(
+                (
+                    sample_width,
+                    sample_height
+                ),
+                Image.Resampling.LANCZOS
+            )
         )
+
 
         palette_canvas.paste(
             sample,
             (
                 0,
-                i * sample_height
+                i *
+                sample_height
             )
         )
 
-    palette = palette_canvas.quantize(
-        colors=256,
-        method=Image.Quantize.MEDIANCUT
+
+    palette = (
+        palette_canvas.quantize(
+            colors=256,
+            method=Image.Quantize.MEDIANCUT
+        )
     )
 
+
+    # ========================================================
+    # CONVERTIR FRAMES A GIF
+    # ========================================================
+
     print()
-    print("Aplicando paleta global...")
+    print(
+        "Aplicando paleta global..."
+    )
+
 
     frames = []
 
+
     for frame in frames_rgb:
 
-        indexed = frame.quantize(
-            palette=palette,
-            dither=Image.Dither.NONE
+        indexed = (
+            frame.quantize(
+                palette=palette,
+                dither=Image.Dither.NONE
+            )
         )
 
-        frames.append(indexed)
+
+        frames.append(
+            indexed
+        )
+
+
+    # ========================================================
+    # DURACIONES
+    # ========================================================
+    #
+    # Pequeña variación del delay para que
+    # la cadencia no sea completamente uniforme.
+    #
+    # ========================================================
 
     delay_pattern = [
         60,
@@ -429,40 +735,79 @@ def create_frame(frame_number, background):
         60
     ]
 
+
     durations = [
         delay_pattern[
-            i % len(delay_pattern)
+            i %
+            len(delay_pattern)
         ]
-        for i in range(FRAME_COUNT)
+        for i in range(
+            FRAME_COUNT
+        )
     ]
 
+
+    # ========================================================
+    # GIF TEMPORAL
+    # ========================================================
+
     temp_gif = output_gif.with_name(
-        output_gif.stem + "_raw.gif"
+        output_gif.stem +
+        "_raw.gif"
     )
+
+
+    print()
+    print(
+        "Creando GIF temporal..."
+    )
+
 
     frames[0].save(
         temp_gif,
+
         save_all=True,
-        append_images=frames[1:],
+
+        append_images=(
+            frames[1:]
+        ),
+
         duration=durations,
+
         loop=0,
+
         optimize=False,
+
         disposal=1
     )
 
+
+    # ========================================================
+    # OPTIMIZAR CON GIFSICLE
+    # ========================================================
+
     print()
-    print("Optimizando GIF...")
+    print(
+        "Optimizando GIF..."
+    )
+
 
     command = [
         "gifsicle",
+
         "--optimize=3",
+
         "--colors",
         "256",
+
         "--careful",
+
         "--output",
         str(output_gif),
+
         str(temp_gif)
     ]
+
 
     result = subprocess.run(
         command,
@@ -470,19 +815,38 @@ def create_frame(frame_number, background):
         text=True
     )
 
+
     if result.returncode != 0:
 
-        print(result.stdout)
-        print(result.stderr)
+        print(
+            result.stdout
+        )
+
+        print(
+            result.stderr
+        )
 
         raise SystemExit(
             "Gifsicle ha fallado."
         )
 
+
+    # ========================================================
+    # ELIMINAR TEMPORAL
+    # ========================================================
+
     try:
+
         temp_gif.unlink()
+
     except FileNotFoundError:
+
         pass
+
+
+    # ========================================================
+    # INFORMACIÓN FINAL
+    # ========================================================
 
     size_mb = (
         output_gif.stat().st_size
@@ -492,382 +856,95 @@ def create_frame(frame_number, background):
         1024
     )
 
-    print(
-        f"Generado: {output_gif}"
+
+    average_delay = (
+        sum(durations)
+        /
+        len(durations)
     )
 
-    print(
-        f"Tamaño: {size_mb:.2f} MB"
+
+    average_fps = (
+        1000
+        /
+        average_delay
     )
 
+
+    print()
+    print(
+        "=========================================="
+    )
+
+
+    print(
+        "Technologies GIF generado correctamente"
+    )
+
+
+    print(
+        f"Archivo:      {output_gif}"
+    )
+
+
+    print(
+        f"Resolución:   {WIDTH}x{HEIGHT}"
+    )
+
+
+    print(
+        f"Logos:        {count}"
+    )
+
+
+    print(
+        f"Frames:       {FRAME_COUNT}"
+    )
+
+
+    print(
+        f"Duración:     {DURATION}s"
+    )
+
+
+    print(
+        f"Delay medio:  "
+        f"{average_delay:.1f} ms"
+    )
+
+
+    print(
+        f"FPS medio:    "
+        f"{average_fps:.2f}"
+    )
+
+
+    print(
+        f"Tamaño:       "
+        f"{size_mb:.2f} MB"
+    )
+
+
+    print(
+        "=========================================="
+    )
+
+
+# ============================================================
+# GENERAR VERSIÓN OSCURA
+# ============================================================
 
 generate_gif(
     DARK_BACKGROUND,
     OUTPUT_GIF_DARK
 )
 
+
+# ============================================================
+# GENERAR VERSIÓN CLARA
+# ============================================================
+
 generate_gif(
     LIGHT_BACKGROUND,
     OUTPUT_GIF_LIGHT
-)
-
-    # ========================================================
-    # PROFUNDIDAD
-    # ========================================================
-
-    objects.sort(
-        key=lambda item: item["z"]
-    )
-
-
-    # ========================================================
-    # DIBUJAR
-    # ========================================================
-
-    for obj in objects:
-
-        size = obj["size"]
-
-        resized = obj["icon"].resize(
-            (
-                size,
-                size
-            ),
-            Image.Resampling.LANCZOS
-        )
-
-        alpha = resized.getchannel(
-            "A"
-        )
-
-        alpha = alpha.point(
-            lambda value:
-            int(
-                value
-                *
-                obj["opacity"]
-            )
-        )
-
-        resized.putalpha(
-            alpha
-        )
-
-        x = int(
-            obj["x"]
-            -
-            size / 2
-        )
-
-        y = int(
-            obj["y"]
-            -
-            size / 2
-        )
-
-        frame.alpha_composite(
-            resized,
-            (
-                x,
-                y
-            )
-        )
-
-
-    return frame
-
-
-# ============================================================
-# GENERAR FRAMES
-# ============================================================
-
-print()
-print(
-    "Generando animación..."
-)
-
-frames_rgba = []
-
-for frame_number in range(
-    FRAME_COUNT
-):
-
-    frame = create_frame(
-        frame_number
-    )
-
-    frames_rgba.append(
-        frame
-    )
-
-    if frame_number % FPS == 0:
-
-        print(
-            f"  {frame_number // FPS}"
-            f"/{DURATION} segundos"
-        )
-
-
-# ============================================================
-# CONVERTIR A GIF
-# ============================================================
-#
-# GIF solamente permite una transparencia binaria.
-# Reservamos el índice 0 de la paleta para transparencia.
-#
-# ============================================================
-
-print()
-print(
-    "Preparando transparencia..."
-)
-
-frames = []
-
-for frame in frames_rgba:
-
-    # Crear máscara de transparencia
-    alpha = frame.getchannel("A")
-
-    # Convertir el frame a RGB sobre un fondo neutro
-    rgb = Image.new(
-        "RGB",
-        frame.size,
-        (255, 255, 255)
-    )
-
-    rgb.paste(
-        frame,
-        mask=alpha
-    )
-
-    # Convertir a paleta
-    indexed = rgb.quantize(
-        colors=255,
-        method=Image.Quantize.MEDIANCUT,
-        dither=Image.Dither.NONE
-    )
-
-    # Reservar índice 0 para transparencia
-    indexed = indexed.convert("P")
-
-    palette = indexed.getpalette()
-
-    # Insertar color de transparencia en posición 0
-    new_palette = [
-        255, 255, 255
-    ] + palette[:3 * 255]
-
-    indexed.putpalette(
-        new_palette
-    )
-
-    # Desplazar índices existentes +1
-    pixels = indexed.load()
-
-    alpha_pixels = alpha.load()
-
-    for y in range(indexed.height):
-
-        for x in range(indexed.width):
-
-            if alpha_pixels[x, y] < 20:
-
-                pixels[x, y] = 0
-
-            else:
-
-                pixels[x, y] = min(
-                    pixels[x, y] + 1,
-                    255
-                )
-
-    frames.append(
-        indexed
-    )
-
-
-# ============================================================
-# DURACIONES
-# ============================================================
-
-delay_pattern = [
-    60,
-    60,
-    70,
-    60,
-    70,
-    60,
-    60,
-    70,
-    60,
-    60
-]
-
-durations = [
-    delay_pattern[
-        i % len(delay_pattern)
-    ]
-    for i in range(
-        FRAME_COUNT
-    )
-]
-
-
-# ============================================================
-# CREAR GIF TEMPORAL
-# ============================================================
-
-print()
-print(
-    "Creando GIF temporal..."
-)
-
-frames[0].save(
-    TEMP_GIF,
-
-    save_all=True,
-
-    append_images=frames[1:],
-
-    duration=durations,
-
-    loop=0,
-
-    optimize=False,
-
-    disposal=2,
-
-    transparency=0
-)
-
-
-# ============================================================
-# OPTIMIZAR
-# ============================================================
-
-print()
-print(
-    "Optimizando GIF..."
-)
-
-command = [
-    "gifsicle",
-
-    "--optimize=3",
-
-    "--colors",
-    "256",
-
-    "--careful",
-
-    "--output",
-    str(OUTPUT_GIF),
-
-    str(TEMP_GIF)
-]
-
-result = subprocess.run(
-    command,
-    capture_output=True,
-    text=True
-)
-
-
-if result.returncode != 0:
-
-    print(
-        result.stdout
-    )
-
-    print(
-        result.stderr
-    )
-
-    raise SystemExit(
-        "Gifsicle ha fallado."
-    )
-
-
-# ============================================================
-# ELIMINAR TEMPORAL
-# ============================================================
-
-try:
-
-    TEMP_GIF.unlink()
-
-except FileNotFoundError:
-
-    pass
-
-
-# ============================================================
-# INFORMACIÓN FINAL
-# ============================================================
-
-size_mb = (
-    OUTPUT_GIF.stat().st_size
-    /
-    1024
-    /
-    1024
-)
-
-average_delay = (
-    sum(durations)
-    /
-    len(durations)
-)
-
-average_fps = (
-    1000
-    /
-    average_delay
-)
-
-
-print()
-print(
-    "=========================================="
-)
-
-print(
-    "Technologies GIF generado correctamente"
-)
-
-print(
-    f"Resolución:   {WIDTH}x{HEIGHT}"
-)
-
-print(
-    f"Logos:        {count}"
-)
-
-print(
-    f"Frames:       {FRAME_COUNT}"
-)
-
-print(
-    f"Duración:     {DURATION}s"
-)
-
-print(
-    f"Delay medio:  {average_delay:.1f} ms"
-)
-
-print(
-    f"FPS medio:    {average_fps:.2f}"
-)
-
-print(
-    f"Tamaño:       {size_mb:.2f} MB"
-)
-
-print(
-    "Fondo:        Transparente"
-)
-
-print(
-    "=========================================="
 )
