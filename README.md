@@ -2,70 +2,86 @@
 
 ### Analista Programador .NET | Data Scientist | IoT & Embedded Systems Specialist
 
-Me considero un desarrollador polivalente con un perfil híbrido. Combino años de experiencia en el desarrollo de software empresarial e infraestructuras críticas con una especialización activa en Ciencia de Datos, Inteligencia Artificial y arquitecturas de hardware (Sistemas Embebidos, IoT, GIS y tecnologías aeroespaciales).
+Me considero un desarrollador polivalente con un perfil híbrido. Combino años de experiencia en el desarrollo de software empresarial e infraestructuras críticas con una especialización activa en Ciencia de Datos, Inteligencia Artificial y arquitecturas de hardware (Sistemas Embebidos, IoT, GIS y tecnologías Satelitales).
 
 ---
 
-## 🛠️ Tecnologías y Herramientas
+<br>
 
 ## 🛠️ Tecnologías y Herramientas
 
-<picture>
-  <source
-    media="(prefers-color-scheme: dark)"
-    srcset="./assets/technologies-dark.gif"
-  />
-  <source
-    media="(prefers-color-scheme: light)"
-    srcset="./assets/technologies-light.gif"
-  />
-  <img
-    src="./assets/technologies-light.gif"
-    alt="Technologies & Tools"
-    align="left"
-    width="50%"
-  />
-</picture>
+<h3>💻 Desarrollo de Software & Backend</h3>
 
-<h3 align="left" width="50%">💻 Desarrollo de Software & Backend</h3>
-
-<ul align="left" width="50%">
-  <li><b>Lenguajes:</b> C#, Java, PHP, JavaScript, SQL, HTML5, CSS3</li>
-  <li><b>Frameworks & Librerías:</b> .NET Core, .NET Framework 4.8, Spring Boot, ReactJS, jQuery, Bootstrap 4</li>
-  <li><b>Bases de Datos:</b> SQL Server, Oracle PL/SQL</li>
-  <li><b>Control de Versiones & Gestión:</b> Git, TFS, Subversion, Jira</li>
+<ul>
+  <li><b>Lenguajes Programación:</b> C#, Python, Dart, JavaScript, Java, PHP</li>
+  <li><b>Backend:</b> .NET 10, .NET Framework 4.8, Entity Framework, ADO.NET, Web Services, API REST, mensajería HL7, Mirth Connect</li>
+  <li><b>Backend:</b> jQuery, ReactJS, HTML5, CSS3, Bootstrap, Flutter</li>
+  <li><b>Bases de Datos:</b> SQL Server, Redis, Cassandra</li>
+  <li><b>Cloud, DevOps & Control de Versiones:</b> Azure, IIS, Docker, Git, GitHub, TFS, Subversion</li>
+  <li><b>Authentication & Security:</b> OAuth, SAML, Cl@ve, Certificados digitales</li>
 </ul>
 
-<h3 align="left" width="50%">📊 Data Science & Inteligencia Artificial</h3>
+<h3>🧠 Metodologías Ágiles & IA</h3>
 
-<ul align="left" width="50%">
-  <li><b>Análisis de Datos:</b> Python (Pandas, NumPy), JSON</li>
-  <li><b>BI & ETL:</b> Power BI, Pentaho, Crystal Reports, RDLC</li>
+<ul>
+  <li>Scrum, Kanban, Notion, Jira, Prompt Engineering, AI Coding Assistants</li>
 </ul>
 
-<h3 align="left" width="50%">🔌 Hardware, IoT & Sistemas GIS</h3>
+<h3>📊 Data Science & Bussiness Intelligence</h3>
 
-<ul align="left" width="50%">
-  <li><b>Electrónica & Control:</b> Microcontroladores (MSP430, Arduino, Raspberry Pi), MATLAB (Simulink), PSpice, Eagle</li>
-  <li><b>Entornos 3D & GIS:</b> QGIS (Datos satelitales y drones), Unity, Blender, Impresión 3D</li>
-  <li><b>Sistemas & Protocolos:</b> Mensajería HL7, Mirth Connect, Redes Cisco</li>
+<ul>
+  <li>Pandas, NumPy, ETL, Pentaho, Power BI</li>
 </ul>
 
-<h3>🚀 Formación Destacada (Especializaciones SEPE)</h3>
+<h3>📄 Reports</h3>
+
+<ul>
+  <li>Crystal Reports, RDLC</li>
+</ul>
+
+<div align="center">
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="./assets/technologies-dark.gif"
+    />
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="./assets/technologies-light.gif"
+    />
+    <img
+      src="./assets/technologies-light.gif"
+      alt="Technologies & Tools"
+    />
+  </picture>
+</div>
+
+<h3>🔌 IoT, Hardware & Sistemas GIS</h3>
+
+<ul>
+  <li><b>Electrónica & Control:</b> Microcontroladores (ESP32, MSP430, Arduino, Raspberry Pi), MATLAB (Simulink), PSpice, Eagle, Osciloscopio, Generador funciones</li>
+  <li><b>Entornos 3D:</b> Unity, Blender, Impresión 3D</li>
+  <li><b>GIS:</b> QGIS, Datos satelitales y drones</li>
+</ul>
+
+<h3>🚀 Formación Destacada (Especializaciones)</h3>
 
 <p>
 Actualmente me encuentro ampliando y certificando mis conocimientos técnicos mediante itinerarios oficiales del SEPE/Ministerio de Trabajo:
 </p>
 
 <ul>
-  <li>🛰️ <b>Satélites y Drones:</b> Desarrollo de Aplicaciones (IFCD0089)</li>
-  <li>🤖 <b>Inteligencia Artificial y Big Data:</b> aplicables a entornos 5G (IFCD99)</li>
-  <li>🌐 <b>Soluciones de IoT y Smart City:</b> aplicables a entornos 5G (IFCD97)</li>
-  <li>🕶️ <b>Realidad Virtual y Realidad Aumentada:</b> en entornos 5G (IFCD102)</li>
-  <li>📈 <b>Data Science:</b> (IFCT156PO) — <i>Especialización intensiva de 600 horas</i></li>
+  <li>📲 <b>Desarrollo de aplicaciones móviles para IOS y Android con Flutter</b> (IFCD0002) - 240 horas</li>
+  <li>🌐 <b>Programación Soluciones de IoT y Smart City aplicables a entornos 5G</b> (IFCD97) - 150 horas</li>
+  <li>🕶️ <b>Programación Realidad Virtual y Realidad Aumentada aplicables a entornos 5G</b> (IFCD102) - 150 horas</li>
+  <li>🛰️ <b>Satélites y Drones - Desarrollo de Aplicaciones</b> (IFCD0089) - 160 horas</li>
+  <li>🤖 <b>Programación Inteligencia Artificial y Big Data aplicables a entornos 5G</b> (IFCD99) - 150 horas</li>
+  <li>📈 <b>Data Science</b> (IFCT156PO) - 600 horas</li>
 </ul>
 
 ---
+
+<br>
 
 ## 📊 GitHub Stats
 
@@ -107,6 +123,8 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
 
 ---
 
+<br>
+
 ## 💻 Most Used Languages
 
 <p align="center">
@@ -120,6 +138,8 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
 </p>
 
 ---
+
+<br>
 
 ## 📅 Contributions
 
@@ -146,7 +166,10 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
 
 ---
 
+<br>
+
 ## 📬 Conecta conmigo
 
+- 🌐 [Web](https://ispiga.neocities.org)
 - 💼 [Mi Perfil de LinkedIn](https://linkedin.com/ispiga)
 - 📧 [ipinzon.quiroga@gmail.com](mailto:ipinzon.quiroga@gmail.com)
