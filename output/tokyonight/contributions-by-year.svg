@@ -4,28 +4,30 @@
   <line x1="35" y1="45" x2="35" y2="155" stroke="#bf91f3"/>
   <line x1="31" y1="155" x2="35" y2="155" stroke="#bf91f3"/>
   <text x="29" y="158" font-size="10" fill="#bf91f3" text-anchor="end">0</text>
-  <line x1="31" y1="137" x2="35" y2="137" stroke="#bf91f3"/>
-  <text x="29" y="140" font-size="10" fill="#bf91f3" text-anchor="end">20</text>
-  <line x1="31" y1="119" x2="35" y2="119" stroke="#bf91f3"/>
-  <text x="29" y="122" font-size="10" fill="#bf91f3" text-anchor="end">40</text>
-  <line x1="31" y1="100" x2="35" y2="100" stroke="#bf91f3"/>
-  <text x="29" y="103" font-size="10" fill="#bf91f3" text-anchor="end">60</text>
-  <line x1="31" y1="82" x2="35" y2="82" stroke="#bf91f3"/>
-  <text x="29" y="85" font-size="10" fill="#bf91f3" text-anchor="end">80</text>
-  <line x1="31" y1="64" x2="35" y2="64" stroke="#bf91f3"/>
-  <text x="29" y="67" font-size="10" fill="#bf91f3" text-anchor="end">100</text>
+  <line x1="31" y1="140" x2="35" y2="140" stroke="#bf91f3"/>
+  <text x="29" y="143" font-size="10" fill="#bf91f3" text-anchor="end">20</text>
+  <line x1="31" y1="124" x2="35" y2="124" stroke="#bf91f3"/>
+  <text x="29" y="127" font-size="10" fill="#bf91f3" text-anchor="end">40</text>
+  <line x1="31" y1="108" x2="35" y2="108" stroke="#bf91f3"/>
+  <text x="29" y="111" font-size="10" fill="#bf91f3" text-anchor="end">60</text>
+  <line x1="31" y1="93" x2="35" y2="93" stroke="#bf91f3"/>
+  <text x="29" y="96" font-size="10" fill="#bf91f3" text-anchor="end">80</text>
+  <line x1="31" y1="77" x2="35" y2="77" stroke="#bf91f3"/>
+  <text x="29" y="80" font-size="10" fill="#bf91f3" text-anchor="end">100</text>
+  <line x1="31" y1="61" x2="35" y2="61" stroke="#bf91f3"/>
+  <text x="29" y="64" font-size="10" fill="#bf91f3" text-anchor="end">120</text>
   <line x1="31" y1="45" x2="35" y2="45" stroke="#bf91f3"/>
-  <text x="29" y="48" font-size="10" fill="#bf91f3" text-anchor="end">120</text>
+  <text x="29" y="48" font-size="10" fill="#bf91f3" text-anchor="end">140</text>
   <line x1="35" y1="155" x2="325" y2="155" stroke="#bf91f3"/>
-  <rect x="35.00" y="151.33" width="22.33" height="3.67" rx="2" fill="#745b97"><title>2015 — 4 commits</title></rect>
+  <rect x="35.00" y="151.86" width="22.33" height="3.14" rx="2" fill="#745b97"><title>2015 — 4 commits</title></rect>
   <text x="46.17" y="169" font-size="10" fill="#bf91f3" text-anchor="middle">2015</text>
   <rect x="59.33" y="155.00" width="22.33" height="0.00" rx="2" fill="#745b97"><title>2016 — 0 commits</title></rect>
-  <rect x="83.67" y="137.58" width="22.33" height="17.42" rx="2" fill="#745b97"><title>2017 — 19 commits</title></rect>
+  <rect x="83.67" y="140.07" width="22.33" height="14.93" rx="2" fill="#745b97"><title>2017 — 19 commits</title></rect>
   <text x="94.83" y="169" font-size="10" fill="#bf91f3" text-anchor="middle">2017</text>
-  <rect x="108.00" y="149.50" width="22.33" height="5.50" rx="2" fill="#745b97"><title>2018 — 6 commits</title></rect>
-  <rect x="132.33" y="139.42" width="22.33" height="15.58" rx="2" fill="#745b97"><title>2019 — 17 commits</title></rect>
+  <rect x="108.00" y="150.29" width="22.33" height="4.71" rx="2" fill="#745b97"><title>2018 — 6 commits</title></rect>
+  <rect x="132.33" y="141.64" width="22.33" height="13.36" rx="2" fill="#745b97"><title>2019 — 17 commits</title></rect>
   <text x="143.50" y="169" font-size="10" fill="#bf91f3" text-anchor="middle">2019</text>
-  <rect x="156.67" y="154.08" width="22.33" height="0.92" rx="2" fill="#745b97"><title>2020 — 1 commits</title></rect>
+  <rect x="156.67" y="154.21" width="22.33" height="0.79" rx="2" fill="#745b97"><title>2020 — 1 commits</title></rect>
   <rect x="181.00" y="155.00" width="22.33" height="0.00" rx="2" fill="#745b97"><title>2021 — 0 commits</title></rect>
   <text x="192.17" y="169" font-size="10" fill="#bf91f3" text-anchor="middle">2021</text>
   <rect x="205.33" y="155.00" width="22.33" height="0.00" rx="2" fill="#745b97"><title>2022 — 0 commits</title></rect>
@@ -34,6 +36,6 @@
   <rect x="254.00" y="155.00" width="22.33" height="0.00" rx="2" fill="#745b97"><title>2024 — 0 commits</title></rect>
   <rect x="278.33" y="155.00" width="22.33" height="0.00" rx="2" fill="#745b97"><title>2025 — 0 commits</title></rect>
   <text x="289.50" y="169" font-size="10" fill="#bf91f3" text-anchor="middle">2025</text>
-  <rect x="302.67" y="60.58" width="22.33" height="94.42" rx="2" fill="#bf91f3"><title>2026 — 103 commits</title></rect>
+  <rect x="302.67" y="55.21" width="22.33" height="99.79" rx="2" fill="#bf91f3"><title>2026 — 127 commits</title></rect>
   <text x="313.83" y="169" font-size="10" fill="#bf91f3" text-anchor="middle">2026</text>
 </svg>
