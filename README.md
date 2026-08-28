@@ -14,7 +14,7 @@ Me considero un desarrollador polivalente con un perfil híbrido. Combino años 
 
 <ul>
   <li><b>Lenguajes Programación:</b> C#, Python, Dart, JavaScript, Java, PHP</li>
-  <li><b>Backend:</b> .NET 10, .NET Framework 4.8, Entity Framework, ADO.NET, Web Services, API REST, mensajería HL7, Mirth Connect</li>
+  <li><b>Backend:</b> .NET 10, .NET Framework 4.8, Entity Framework, ADO.NET, Web Services, API REST, Postman, Swagger, mensajería HL7, Mirth Connect</li>
   <li><b>Backend:</b> jQuery, ReactJS, HTML5, CSS3, Bootstrap, Flutter</li>
   <li><b>Bases de Datos:</b> SQL Server, Redis, Cassandra</li>
   <li><b>Cloud, DevOps & Control de Versiones:</b> Azure, IIS, Docker, Git, GitHub, TFS, Subversion</li>
