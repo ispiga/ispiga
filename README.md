@@ -2,7 +2,7 @@
 
 ### Full Stack Developer | Software Analyst
 
-Me considero un desarrollador polivalente con un perfil híbrido. Combino años de experiencia en el desarrollo de software empresarial e infraestructuras críticas con una especialización activa en Ciencia de Datos, Inteligencia Artificial, arquitecturas de hardware (Sistemas Embebidos, IoT) y tecnologías Satelitales (GIS).
+Me considero un desarrollador polivalente con un perfil híbrido. Combino años de experiencia en el desarrollo de software empresarial e infraestructuras críticas con una especialización activa en Ciencia de Datos, Inteligencia Artificial, arquitecturas de hardware (Sistemas Embebidos, IoT), tecnologías Satelitales (GIS) y desarrollo de aplicaciones móviles con Flutter y Dart.
 
 ---
 
