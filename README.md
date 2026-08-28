@@ -1,6 +1,6 @@
 # ¡Hola! Soy Ismael 👋
 
-### Analista Programador .NET | Data Scientist | IoT & Embedded Systems Specialist
+### Full Stack Developer | Software Analyst
 
 Me considero un desarrollador polivalente con un perfil híbrido. Combino años de experiencia en el desarrollo de software empresarial e infraestructuras críticas con una especialización activa en Ciencia de Datos, Inteligencia Artificial y arquitecturas de hardware (Sistemas Embebidos, IoT, GIS y tecnologías Satelitales).
 
