@@ -12,7 +12,7 @@
   <text x="320" y="95" font-size="12" font-weight="600" fill="#40c463" text-anchor="end">2015-07-04</text>
   <g transform="translate(20,105.00) scale(0.750)" fill="#586069"><path d="M1.643 3.143L.427 1.927A.25.25 0 000 2.104V5.75c0 .138.112.25.25.25h3.646a.25.25 0 00.177-.427L2.715 4.215a6.5 6.5 0 11-1.18 4.456.75.75 0 10-1.493.154 8.001 8.001 0 101.6-5.682zM7.75 4a.75.75 0 01.75.75v2.992l2.028.812a.75.75 0 01-.557 1.392l-2.5-1A.75.75 0 017 8.25v-3.5A.75.75 0 017.75 4z"/></g>
   <text x="40" y="115" font-size="12" fill="#586069">Active days</text>
-  <text x="320" y="115" font-size="12" font-weight="600" fill="#40c463" text-anchor="end">32</text>
+  <text x="320" y="115" font-size="12" font-weight="600" fill="#40c463" text-anchor="end">33</text>
   <g transform="translate(20,125.00) scale(0.750)" fill="#586069"><path fill-rule="evenodd" d="M1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 0a8 8 0 100 16A8 8 0 008 0zm.5 4.75a.75.75 0 00-1.5 0v3.5a.75.75 0 00.471.696l2.5 1a.75.75 0 00.557-1.392L8.5 7.742V4.75z"/></g>
   <text x="40" y="135" font-size="12" fill="#586069">On GitHub</text>
   <text x="320" y="135" font-size="12" font-weight="600" fill="#40c463" text-anchor="end">11.2 years</text>
