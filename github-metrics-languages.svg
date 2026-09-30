@@ -21,12 +21,12 @@
                         <rect x="0" y="0" width="920" height="8" fill="white" rx="5"/>
                     </mask>
                     <rect mask="url(#languages-bar)" x="0" y="0" width="0" height="8" fill="#d1d5da"/>
-                    <rect mask="url(#languages-bar)" x="0" y="0" width="547.496444804585" height="8" fill="#7355dd"/>
-                    <rect mask="url(#languages-bar)" x="547.496444804585" y="0" width="114.07739325022673" height="8" fill="#e34c26"/>
-                    <rect mask="url(#languages-bar)" x="661.5738380548117" y="0" width="84.3021889271091" height="8" fill="#00B4AB"/>
-                    <rect mask="url(#languages-bar)" x="745.8760269819209" y="0" width="63.26305226271419" height="8" fill="#f34b7d"/>
-                    <rect mask="url(#languages-bar)" x="809.139079244635" y="0" width="62.088040054307285" height="8" fill="#663399"/>
-                    <rect mask="url(#languages-bar)" x="871.2271192989423" y="0" width="48.77288070105771" height="8" fill="#DA3434"/>
+                    <rect mask="url(#languages-bar)" x="0" y="0" width="548.1382848914016" height="8" fill="#7355dd"/>
+                    <rect mask="url(#languages-bar)" x="548.1382848914016" y="0" width="167.71518523971545" height="8" fill="#e34c26"/>
+                    <rect mask="url(#languages-bar)" x="715.853470131117" y="0" width="63.36797649132643" height="8" fill="#00B4AB"/>
+                    <rect mask="url(#languages-bar)" x="779.2214466224434" y="0" width="56.563772520909936" height="8" fill="#663399"/>
+                    <rect mask="url(#languages-bar)" x="835.7852191433534" y="0" width="47.55335133728775" height="8" fill="#f34b7d"/>
+                    <rect mask="url(#languages-bar)" x="883.3385704806411" y="0" width="36.66142951935896" height="8" fill="#DA3434"/>
                 </svg>
                 <div class="row fill-width">
                     <section>
@@ -38,18 +38,18 @@
                                 C#
                             </div>
                             <small>
-                                <div>59.51%</div>
+                                <div>59.58%</div>
                             </small>
                         </div>
                         <div class="field language details">
                             <div class="field">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                                    <path fill="#663399" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"/>
+                                    <path fill="#f34b7d" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"/>
                                 </svg>
-                                CSS
+                                C++
                             </div>
                             <small>
-                                <div>6.75%</div>
+                                <div>5.17%</div>
                             </small>
                         </div>
                     </section>
@@ -62,7 +62,7 @@
                                 HTML
                             </div>
                             <small>
-                                <div>12.4%</div>
+                                <div>18.23%</div>
                             </small>
                         </div>
                         <div class="field language details">
@@ -73,7 +73,7 @@
                                 CMake
                             </div>
                             <small>
-                                <div>5.3%</div>
+                                <div>3.98%</div>
                             </small>
                         </div>
                     </section>
@@ -86,7 +86,7 @@
                                 Dart
                             </div>
                             <small>
-                                <div>9.16%</div>
+                                <div>6.89%</div>
                             </small>
                         </div>
                     </section>
@@ -94,12 +94,12 @@
                         <div class="field language details">
                             <div class="field">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                                    <path fill="#f34b7d" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"/>
+                                    <path fill="#663399" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"/>
                                 </svg>
-                                C++
+                                CSS
                             </div>
                             <small>
-                                <div>6.88%</div>
+                                <div>6.15%</div>
                             </small>
                         </div>
                     </section>
