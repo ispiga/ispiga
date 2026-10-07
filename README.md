@@ -171,5 +171,5 @@ Actualmente me encuentro ampliando y certificando mis conocimientos técnicos me
 ## 📬 Conecta conmigo
 
 - 🌐 [Web](https://ispiga.neocities.org)
-- 💼 [Mi Perfil de LinkedIn](https://linkedin.com/ispiga)
+- 💼 [Mi Perfil de LinkedIn](https://linkedin.com/in/ipinzon)
 - 📧 [ipinzon.quiroga@gmail.com](mailto:ipinzon.quiroga@gmail.com)
